@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JButton - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style type="text/tailwindcss">
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+            /* Simulation of JavaFX styles using Tailwind */
+            .btn {
+                @apply inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-200 cursor-pointer;
+            }
+            .btn-primary {
+                @apply bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-500;
+            }
+            .btn-secondary {
+                @apply bg-slate-200 text-slate-700 hover:bg-slate-300 focus:ring-slate-500;
+            }
+            .btn-success {
+                @apply bg-emerald-500 text-white hover:bg-emerald-600 focus:ring-emerald-500;
+            }
+            .btn-danger {
+                @apply bg-red-500 text-white hover:bg-red-600 focus:ring-red-500;
+            }
+            .btn-warning {
+                @apply bg-amber-500 text-white hover:bg-amber-600 focus:ring-amber-500;
+            }
+            .btn-info {
+                @apply bg-violet-500 text-white hover:bg-violet-600 focus:ring-violet-500;
+            }
+            .btn-dark {
+                @apply bg-slate-900 text-white hover:bg-slate-800 focus:ring-slate-500;
+            }
+
+            .btn-light-primary {
+                @apply bg-blue-50 text-blue-700 hover:bg-blue-100;
+            }
+            .btn-light-success {
+                @apply bg-emerald-50 text-emerald-700 hover:bg-emerald-100;
+            }
+            .btn-light-danger {
+                @apply bg-red-50 text-red-700 hover:bg-red-100;
+            }
+
+            .btn-dashed {
+                @apply bg-transparent border-dashed border-slate-300 text-slate-500 hover:border-blue-500 hover:text-blue-500 hover:bg-blue-50;
+            }
+            .btn-outline {
+                @apply bg-transparent border-solid border-blue-600 text-blue-600 hover:bg-blue-50;
+            }
+
+            .btn-sm {
+                @apply px-3 py-1.5 text-xs;
+            }
+            .btn-lg {
+                @apply px-6 py-3 text-base;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-4xl mx-auto">
+                <!-- Back Button -->
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">JButton</h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Un botón mejorado que extiende la clase nativa
+                        `javafx.scene.control.Button` con estilos predefinidos y
+                        soporte para iconos SVG.
+                    </p>
+                </header>
+
+                <!-- Variants -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Variantes
+                    </h2>
+                    <p class="text-slate-600 mb-6">
+                        El componente soporta múltiples variantes de color para
+                        diferentes contextos semánticos.
+                    </p>
+
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="flex flex-wrap gap-4 mb-6">
+                            <button class="btn btn-primary">Primary</button>
+                            <button class="btn btn-secondary">Secondary</button>
+                            <button class="btn btn-success">Success</button>
+                            <button class="btn btn-danger">Danger</button>
+                            <button class="btn btn-warning">Warning</button>
+                            <button class="btn btn-info">Info</button>
+                            <button class="btn btn-dark">Dark</button>
+                        </div>
+                        <div
+                            class="bg-slate-900 rounded-md p-4 overflow-x-auto"
+                        >
+                            <pre><code class="text-slate-300 font-mono text-sm">// JavaFX Code
+JButton btnPrimary = new JButton("Primary"); // Default is primary
+JButton btnSecondary = new JButton("Secondary").addClass("btn-secondary");
+JButton btnSuccess = new JButton("Success").addClass("btn-success");
+JButton btnDanger = new JButton("Danger").addClass("btn-danger");
+JButton btnWarning = new JButton("Warning").addClass("btn-warning");
+JButton btnInfo = new JButton("Info").addClass("btn-info");
+JButton btnDark = new JButton("Dark").addClass("btn-dark");</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Light Variants -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Variantes Light
+                    </h2>
+                    <p class="text-slate-600 mb-6">
+                        Versiones más sutiles para acciones secundarias o
+                        estados menos prominentes.
+                    </p>
+
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="flex flex-wrap gap-4 mb-6">
+                            <button class="btn btn-light-primary">
+                                Light Primary
+                            </button>
+                            <button class="btn btn-light-success">
+                                Light Success
+                            </button>
+                            <button class="btn btn-light-danger">
+                                Light Danger
+                            </button>
+                            <button class="btn btn-dashed">Dashed</button>
+                        </div>
+                        <div
+                            class="bg-slate-900 rounded-md p-4 overflow-x-auto"
+                        >
+                            <pre><code class="text-slate-300 font-mono text-sm">// Light Variants
+JButton btnLight = new JButton("Light").addClass("btn-light-primary");
+JButton btnLightSuccess = new JButton("Success").addClass("btn-light-success");
+JButton btnDashed = new JButton("Add New").addClass("btn-dashed");</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sizes -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Tamaños
+                    </h2>
+                    <p class="text-slate-600 mb-6">
+                        Disponible en tres tamaños: pequeño (sm), normal (base)
+                        y grande (lg).
+                    </p>
+
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="flex flex-wrap items-center gap-4 mb-6">
+                            <button class="btn btn-primary btn-sm">
+                                Small
+                            </button>
+                            <button class="btn btn-primary">Default</button>
+                            <button class="btn btn-primary btn-lg">
+                                Large
+                            </button>
+                        </div>
+                        <div
+                            class="bg-slate-900 rounded-md p-4 overflow-x-auto"
+                        >
+                            <pre><code class="text-slate-300 font-mono text-sm">JButton btnSmall = new JButton("Small").addClass("btn-sm");
+JButton btnDefault = new JButton("Default");
+JButton btnLarge = new JButton("Large").addClass("btn-lg");</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Icons -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Iconos
+                    </h2>
+                    <p class="text-slate-600 mb-6">
+                        Soporte integrado para iconos SVG mediante la clase
+                        `JIcon`.
+                    </p>
+
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="flex flex-wrap items-center gap-4 mb-6">
+                            <button class="btn btn-primary">
+                                <span class="mr-2">★</span> With Icon
+                            </button>
+                        </div>
+                        <div
+                            class="bg-slate-900 rounded-md p-4 overflow-x-auto"
+                        >
+                            <pre><code class="text-slate-300 font-mono text-sm">// Button with Icon
+JIcon icon = new JIcon(JIcon.STAR);
+JButton btnIcon = new JButton("With Icon", icon);
+
+// Or set manually
+btnIcon.setIcon(new JIcon(JIcon.USER));</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        API Reference
+                    </h2>
+                    <table
+                        class="min-w-full text-left text-sm whitespace-nowrap"
+                    >
+                        <thead
+                            class="uppercase tracking-wider border-b-2 border-slate-200 bg-slate-50 text-slate-600"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-4">Método</th>
+                                <th scope="col" class="px-6 py-4">
+                                    Descripción
+                                </th>
+                                <th scope="col" class="px-6 py-4">
+                                    Parámetros
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    addClass(String... classes)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Añade clases CSS y gestiona inteligentemente
+                                    las variantes.
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    String... styleClasses
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setIcon(JIcon icon)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Establece un icono SVG para el botón.
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    JIcon icon
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

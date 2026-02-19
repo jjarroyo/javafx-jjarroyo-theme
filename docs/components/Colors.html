@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Colores - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style type="text/tailwindcss">
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+            .color-card {
+                @apply flex flex-col rounded-lg overflow-hidden border border-slate-200 shadow-sm transition-shadow hover:shadow-md;
+            }
+            .color-swatch {
+                @apply h-24 w-full;
+            }
+            .color-info {
+                @apply p-4 bg-white;
+            }
+            .color-name {
+                @apply font-mono text-sm font-bold text-slate-800;
+            }
+            .color-hex {
+                @apply text-xs text-slate-500 mt-1;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">
+                        Paleta de Colores
+                    </h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Sistema de colores inspirado en Tailwind CSS, disponible
+                        como variables CSS en JavaFX.
+                    </p>
+                </header>
+
+                <!-- Primary -->
+                <section class="mb-12">
+                    <h2
+                        class="text-2xl font-bold text-slate-900 mb-6 flex items-center"
+                    >
+                        <span
+                            class="w-4 h-4 rounded-full bg-blue-600 mr-2"
+                        ></span>
+                        Primary (Blue)
+                    </h2>
+                    <div
+                        class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4"
+                    >
+                        <div class="color-card">
+                            <div class="color-swatch bg-blue-50"></div>
+                            <div class="color-info">
+                                <div class="color-name">50</div>
+                                <div class="color-hex">#eff6ff</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-swatch bg-blue-100"></div>
+                            <div class="color-info">
+                                <div class="color-name">100</div>
+                                <div class="color-hex">#dbeafe</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-swatch bg-blue-200"></div>
+                            <div class="color-info">
+                                <div class="color-name">200</div>
+                                <div class="color-hex">#bfdbfe</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-swatch bg-blue-400"></div>
+                            <div class="color-info">
+                                <div class="color-name">300 (FX 300)</div>
+                                <div class="color-hex">#60a5fa</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-swatch bg-blue-500"></div>
+                            <div class="color-info">
+                                <div class="color-name">500 (Default)</div>
+                                <div class="color-hex">#3b82f6</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-swatch bg-blue-600"></div>
+                            <div class="color-info">
+                                <div class="color-name">600</div>
+                                <div class="color-hex">#2563eb</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-swatch bg-blue-700"></div>
+                            <div class="color-info">
+                                <div class="color-name">700</div>
+                                <div class="color-hex">#1d4ed8</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slate -->
+                <section class="mb-12">
+                    <h2
+                        class="text-2xl font-bold text-slate-900 mb-6 flex items-center"
+                    >
+                        <span
+                            class="w-4 h-4 rounded-full bg-slate-600 mr-2"
+                        ></span>
+                        Slate (Neutral)
+                    </h2>
+                    <div
+                        class="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-4"
+                    >
+                        <div class="color-card">
+                            <div class="color-swatch bg-slate-50"></div>
+                            <div class="color-info">
+                                <div class="color-name">50</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-swatch bg-slate-100"></div>
+                            <div class="color-info">
+                                <div class="color-name">100</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-swatch bg-slate-200"></div>
+                            <div class="color-info">
+                                <div class="color-name">200</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-swatch bg-slate-300"></div>
+                            <div class="color-info">
+                                <div class="color-name">300</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-swatch bg-slate-400"></div>
+                            <div class="color-info">
+                                <div class="color-name">400</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-swatch bg-slate-500"></div>
+                            <div class="color-info">
+                                <div class="color-name">500</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-swatch bg-slate-600"></div>
+                            <div class="color-info">
+                                <div class="color-name">600</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-swatch bg-slate-700"></div>
+                            <div class="color-info">
+                                <div class="color-name">700</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-swatch bg-slate-800"></div>
+                            <div class="color-info">
+                                <div class="color-name">800</div>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-swatch bg-slate-900"></div>
+                            <div class="color-info">
+                                <div class="color-name">900</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Success -->
+                    <section>
+                        <h2
+                            class="text-xl font-bold text-slate-900 mb-4 text-emerald-600"
+                        >
+                            Emerald (Success)
+                        </h2>
+                        <div class="space-y-2">
+                            <div
+                                class="h-10 w-full bg-emerald-50 rounded flex items-center px-2 text-xs"
+                            >
+                                50 - #ecfdf5
+                            </div>
+                            <div
+                                class="h-10 w-full bg-emerald-100 rounded flex items-center px-2 text-xs"
+                            >
+                                100 - #d1fae5
+                            </div>
+                            <div
+                                class="h-10 w-full bg-emerald-500 rounded flex items-center px-2 text-xs text-white"
+                            >
+                                500 - #10b981
+                            </div>
+                            <div
+                                class="h-10 w-full bg-emerald-600 rounded flex items-center px-2 text-xs text-white"
+                            >
+                                600 - #059669
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Danger -->
+                    <section>
+                        <h2
+                            class="text-xl font-bold text-slate-900 mb-4 text-red-600"
+                        >
+                            Red (Danger)
+                        </h2>
+                        <div class="space-y-2">
+                            <div
+                                class="h-10 w-full bg-red-50 rounded flex items-center px-2 text-xs"
+                            >
+                                50 - #fef2f2
+                            </div>
+                            <div
+                                class="h-10 w-full bg-red-200 rounded flex items-center px-2 text-xs"
+                            >
+                                200 - #fecaca
+                            </div>
+                            <div
+                                class="h-10 w-full bg-red-500 rounded flex items-center px-2 text-xs text-white"
+                            >
+                                500 - #ef4444
+                            </div>
+                            <div
+                                class="h-10 w-full bg-red-600 rounded flex items-center px-2 text-xs text-white"
+                            >
+                                600 - #dc2626
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Warning -->
+                    <section>
+                        <h2
+                            class="text-xl font-bold text-slate-900 mb-4 text-amber-500"
+                        >
+                            Amber (Warning)
+                        </h2>
+                        <div class="space-y-2">
+                            <div
+                                class="h-10 w-full bg-amber-50 rounded flex items-center px-2 text-xs"
+                            >
+                                50 - #fffbeb
+                            </div>
+                            <div
+                                class="h-10 w-full bg-amber-200 rounded flex items-center px-2 text-xs"
+                            >
+                                200 - #fde68a
+                            </div>
+                            <div
+                                class="h-10 w-full bg-amber-500 rounded flex items-center px-2 text-xs text-white"
+                            >
+                                500 - #f59e0b
+                            </div>
+                            <div
+                                class="h-10 w-full bg-amber-600 rounded flex items-center px-2 text-xs text-white"
+                            >
+                                600 - #d97706
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- CSS Variables -->
+                <section class="mt-16">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Uso en CSS
+                    </h2>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">.my-custom-component {
+    -fx-background-color: -color-primary-50;
+    -fx-border-color: -color-primary-500;
+    -fx-text-fill: -color-slate-800;
+}</code></pre>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

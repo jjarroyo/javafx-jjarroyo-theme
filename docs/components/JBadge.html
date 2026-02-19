@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JBadge - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style type="text/tailwindcss">
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+
+            /* Simulation */
+            .badge {
+                @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium;
+            }
+            .badge-primary {
+                @apply bg-blue-500 text-white;
+            }
+            .badge-success {
+                @apply bg-emerald-500 text-white;
+            }
+            .badge-danger {
+                @apply bg-red-500 text-white;
+            }
+            .badge-warning {
+                @apply bg-amber-500 text-white;
+            }
+            .badge-info {
+                @apply bg-violet-500 text-white;
+            }
+            .badge-dark {
+                @apply bg-slate-900 text-white;
+            }
+
+            /* Light Badges */
+            .badge-light-primary {
+                @apply bg-blue-50 text-blue-600;
+            }
+            .badge-light-success {
+                @apply bg-emerald-50 text-emerald-600;
+            }
+            .badge-light-danger {
+                @apply bg-red-50 text-red-600;
+            }
+            .badge-light-warning {
+                @apply bg-amber-50 text-amber-600;
+            }
+            .badge-light-info {
+                @apply bg-violet-50 text-violet-600;
+            }
+            .badge-light-dark {
+                @apply bg-slate-200 text-slate-800;
+            }
+
+            .badge-lg {
+                @apply px-3 py-1 text-sm;
+            }
+            .badge-circle {
+                @apply rounded-full w-6 h-6 flex items-center justify-center p-0;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">JBadge</h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Etiquetas pequeñas para mostrar estados, contadores o
+                        categorías. Hereda de `javafx.scene.control.Label`.
+                    </p>
+                </header>
+
+                <!-- Example -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Variantes y Colores
+                    </h2>
+
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="flex flex-wrap gap-4 items-center">
+                            <span class="badge badge-primary">Primary</span>
+                            <span class="badge badge-success">Success</span>
+                            <span class="badge badge-danger">Danger</span>
+                            <span class="badge badge-warning">Warning</span>
+                            <span class="badge badge-info">Info</span>
+                            <span class="badge badge-dark">Dark</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JBadge badge = new JBadge("New"); // Default is primary
+JBadge successBadge = new JBadge("Completed", "badge-success");
+JBadge dangerBadge = new JBadge("Error", "badge-danger");</code></pre>
+                    </div>
+                </section>
+
+                <!-- Shapes & Sizes -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Formas y Tamaños
+                    </h2>
+
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="flex flex-wrap gap-4 items-center">
+                            <span class="badge badge-primary">Default</span>
+                            <span class="badge badge-primary badge-lg"
+                                >Large</span
+                            >
+                            <span class="badge badge-primary badge-circle"
+                                >9</span
+                            >
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">// Large Badge
+JBadge lgBadge = new JBadge("Large", "badge-lg");
+
+// Circle Badge (Good for counters)
+JBadge countBadge = new JBadge("5", "badge-circle");</code></pre>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        API Reference
+                    </h2>
+                    <table
+                        class="min-w-full text-left text-sm whitespace-nowrap"
+                    >
+                        <thead
+                            class="uppercase tracking-wider border-b-2 border-slate-200 bg-slate-50 text-slate-600"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-4">Método</th>
+                                <th scope="col" class="px-6 py-4">
+                                    Descripción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    new JBadge(String text, String... classes)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Crea un badge con el texto y clases
+                                    opcionales.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    addClass(String... classes)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Añade clases CSS. Gestiona el reemplazo de
+                                    la variante de color por defecto.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

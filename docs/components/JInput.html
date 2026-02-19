@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JInput - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style type="text/tailwindcss">
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+            /* Simulation */
+            .form-label {
+                @apply block text-sm font-medium text-slate-700 mb-1;
+            }
+            .form-input {
+                @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border;
+            }
+            .required {
+                @apply text-red-500 ml-1;
+            }
+
+            .form-input-success {
+                @apply border-green-500 text-green-900 placeholder-green-300 focus:ring-green-500 focus:border-green-500;
+            }
+            .form-input-danger {
+                @apply border-red-500 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500;
+            }
+            .form-input-warning {
+                @apply border-amber-500 text-amber-900 placeholder-amber-300 focus:ring-amber-500 focus:border-amber-500;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-4xl mx-auto">
+                <!-- Back Button -->
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">JInput</h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Campo de entrada de texto estandarizado con soporte para
+                        validación, etiquetas y placeholders.
+                    </p>
+                </header>
+
+                <!-- Basic Usage -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Uso Básico
+                    </h2>
+
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="max-w-sm space-y-4">
+                            <div>
+                                <label class="form-label"
+                                    >Nombre de Usuario</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-input"
+                                    placeholder="Ingresa tu usuario"
+                                />
+                            </div>
+                            <div>
+                                <label class="form-label flex"
+                                    >Email
+                                    <span class="required">*</span></label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-input"
+                                    placeholder="ejemplo@correo.com"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">// Simple Input
+JInput input = new JInput("Ingresa tu usuario");
+
+// Valid Helper: Creates Label + Input boxed in a VBox
+VBox field = new JInput().createWithLabel("Email", true);</code></pre>
+                    </div>
+                </section>
+
+                <!-- Validation States -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Estados de Validación
+                    </h2>
+
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="max-w-sm space-y-4">
+                            <div>
+                                <label class="form-label text-green-700"
+                                    >Input Válido</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-input form-input-success"
+                                    value="Valor correcto"
+                                />
+                            </div>
+                            <div>
+                                <label class="form-label text-red-700"
+                                    >Input Inválido</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-input form-input-danger"
+                                    value="Valor incorrecto"
+                                />
+                            </div>
+                            <div>
+                                <label class="form-label text-amber-700"
+                                    >Input Warning</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-input form-input-warning"
+                                    value="Precaución"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JInput successInput = new JInput();
+successInput.setStatus("form-input-success");
+
+JInput errorInput = new JInput();
+errorInput.setStatus("form-input-danger");
+
+JInput warningInput = new JInput();
+warningInput.setStatus("form-input-warning");</code></pre>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        API Reference
+                    </h2>
+                    <table
+                        class="min-w-full text-left text-sm whitespace-nowrap"
+                    >
+                        <thead
+                            class="uppercase tracking-wider border-b-2 border-slate-200 bg-slate-50 text-slate-600"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-4">Método</th>
+                                <th scope="col" class="px-6 py-4">
+                                    Descripción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    createWithLabel(String label, boolean
+                                    required)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Crea y devuelve un VBox que contiene una
+                                    etiqueta y este input. Útil para formularios
+                                    rápidos.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setStatus(String styleClass)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Aplica estilos de estado (éxito, error,
+                                    advertencia) eliminando los estados
+                                    anteriores.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

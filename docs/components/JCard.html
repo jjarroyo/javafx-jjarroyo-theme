@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JCard - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style type="text/tailwindcss">
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+            /* Simulation of JavaFX styles using Tailwind */
+            .card {
+                @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6;
+            }
+            .card-header {
+                @apply flex items-center justify-between mb-6;
+            }
+            .card-title {
+                @apply text-lg font-bold text-slate-800;
+            }
+            .card-subtitle {
+                @apply text-sm text-slate-500 font-normal block mt-1;
+            }
+            .card-toolbar {
+                @apply flex items-center gap-2;
+            }
+            .card-body {
+                @apply p-0;
+            }
+            .card-footer {
+                @apply mt-6 pt-6 border-t border-gray-100 flex justify-end gap-3;
+            }
+
+            .card-flush {
+                @apply shadow-none border-none bg-transparent p-0;
+            }
+            .card-bordered {
+                @apply border border-gray-300 shadow-none;
+            }
+
+            .btn {
+                @apply inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-blue-500 hover:bg-blue-600 focus:outline-none;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-4xl mx-auto">
+                <!-- Back Button -->
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">JCard</h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Un contenedor flexible y extensible para agrupar
+                        contenido relacionado. Soporta cabeceras, pies de
+                        página, barras de herramientas y contenido colapsable.
+                    </p>
+                </header>
+
+                <!-- Basic Example -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Ejemplo Básico
+                    </h2>
+
+                    <div class="bg-slate-100 p-8 rounded-lg mb-4">
+                        <!-- Card Simulation -->
+                        <div class="card max-w-md mx-auto">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">
+                                        Título de la Tarjeta
+                                    </h3>
+                                    <span class="card-subtitle"
+                                        >Subtítulo descriptivo aquí</span
+                                    >
+                                </div>
+                                <div class="card-toolbar">
+                                    <button class="btn">Acción</button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-slate-600">
+                                    Este es el cuerpo de la tarjeta. Puedes
+                                    colocar cualquier nodo de JavaFX aquí.
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <button
+                                    class="text-sm text-slate-500 hover:text-slate-700"
+                                >
+                                    Cancelar
+                                </button>
+                                <button class="btn">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JCard card = new JCard("Título de la Tarjeta", "Subtítulo descriptivo aquí");
+
+// Add Toolbar items
+card.addToolbarItem(new JButton("Acción"));
+
+// Set Body content
+card.setBody(new Label("Este es el cuerpo de la tarjeta..."));
+
+// Set Footer
+card.setFooter(new JButton("Guardar"));</code></pre>
+                    </div>
+                </section>
+
+                <!-- Features -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Características
+                    </h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="card">
+                            <h3 class="font-semibold text-slate-900 mb-2">
+                                Colapsable
+                            </h3>
+                            <p class="text-sm text-slate-500 mb-4">
+                                Permite al usuario ocultar/mostrar el contenido
+                                del cuerpo.
+                            </p>
+                            <code class="text-xs bg-slate-100 p-1 rounded"
+                                >card.setCollapsible(true);</code
+                            >
+                        </div>
+                        <div class="card">
+                            <h3 class="font-semibold text-slate-900 mb-2">
+                                Scrollable
+                            </h3>
+                            <p class="text-sm text-slate-500 mb-4">
+                                Añade barras de desplazamiento automáticamente
+                                si el contenido excede el tamaño.
+                            </p>
+                            <code class="text-xs bg-slate-100 p-1 rounded"
+                                >card.makeScrollable();</code
+                            >
+                        </div>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        API Reference
+                    </h2>
+                    <table
+                        class="min-w-full text-left text-sm whitespace-nowrap"
+                    >
+                        <thead
+                            class="uppercase tracking-wider border-b-2 border-slate-200 bg-slate-50 text-slate-600"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-4">Método</th>
+                                <th scope="col" class="px-6 py-4">
+                                    Descripción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setTitle(String title)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Establece el título principal de la tarjeta.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setSubtitle(String subtitle)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Establece un subtítulo debajo del título
+                                    principal.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    addToolbarItem(Node node)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Añade un nodo (botón, icono, etc.) a la zona
+                                    derecha de la cabecera.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setBody(Node content)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Establece el nodo de contenido principal.
+                                    Reemplaza el contenido anterior.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setFooter(Node content)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Establece el contenido del pie de página.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setCollapsible(boolean val)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Añade un icono de chevron en la toolbar que
+                                    permite colapsar el cuerpo.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

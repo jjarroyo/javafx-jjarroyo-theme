@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JToast - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style type="text/tailwindcss">
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+
+            /* Simulation */
+            .toast {
+                @apply max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden p-4 flex items-start gap-3 border-l-4;
+            }
+            .toast-success {
+                @apply border-green-500;
+            }
+            .toast-error {
+                @apply border-red-500;
+            }
+            .toast-warning {
+                @apply border-amber-500;
+            }
+            .toast-info {
+                @apply border-violet-500;
+            }
+
+            .toast-title {
+                @apply text-sm font-medium text-gray-900;
+            }
+            .toast-msg {
+                @apply text-sm text-gray-500 mt-1;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">JToast</h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Notificaciones flotantes no bloqueantes que aparecen
+                        temporalmente para informar al usuario.
+                    </p>
+                </header>
+
+                <!-- Example -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Ejemplos
+                    </h2>
+
+                    <div
+                        class="bg-gray-100 p-8 rounded-lg border border-slate-200 shadow-sm mb-4 space-y-4 relative min-h-[300px] flex flex-col items-center justify-center"
+                    >
+                        <button
+                            class="px-4 py-2 bg-blue-600 text-white rounded shadow"
+                            onclick="alert('Simulated Toast Trigger')"
+                        >
+                            Mostrar Toast
+                        </button>
+
+                        <!-- Simulated Toasts -->
+                        <div class="absolute top-4 right-4 space-y-3">
+                            <div class="toast toast-success bg-white">
+                                <div class="flex-1">
+                                    <p class="toast-title">Guardado</p>
+                                    <p class="toast-msg">
+                                        Los cambios se han guardado
+                                        correctamente.
+                                    </p>
+                                </div>
+                                <button
+                                    class="text-gray-400 hover:text-gray-500"
+                                >
+                                    ✕
+                                </button>
+                            </div>
+
+                            <div class="toast toast-error bg-white">
+                                <div class="flex-1">
+                                    <p class="toast-title">Error de Conexión</p>
+                                    <p class="toast-msg">
+                                        No se pudo conectar con el servidor.
+                                    </p>
+                                </div>
+                                <button
+                                    class="text-gray-400 hover:text-gray-500"
+                                >
+                                    ✕
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">// Simple Toast
+JToast.show(getWindow(), "Operación completada", JToast.Type.SUCCESS, JToast.Position.TOP_RIGHT, 3000);
+
+// Toast with Title
+JToast.show(getWindow(), "Error", "No se pudo guardar el archivo", JToast.Type.DANGER, JToast.Position.BOTTOM_RIGHT, 5000);</code></pre>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        API Reference
+                    </h2>
+                    <table
+                        class="min-w-full text-left text-sm whitespace-nowrap"
+                    >
+                        <thead
+                            class="uppercase tracking-wider border-b-2 border-slate-200 bg-slate-50 text-slate-600"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-4">
+                                    Método Estático
+                                </th>
+                                <th scope="col" class="px-6 py-4">
+                                    Descripción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    show(Window owner, String msg, Type type,
+                                    Position pos, int duration)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Muestra un toast simple.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    show(Window owner, String title, String msg,
+                                    Type type, Position pos, int duration)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Muestra un toast con título y mensaje.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="mt-4">
+                        <h3 class="font-semibold mb-2">Enums:</h3>
+                        <ul class="list-disc pl-5 text-slate-600 text-sm">
+                            <li>
+                                <strong>Type:</strong> DEFAULT, SUCCESS, DANGER,
+                                WARNING, INFO
+                            </li>
+                            <li>
+                                <strong>Position:</strong> TOP_RIGHT, TOP_LEFT,
+                                BOTTOM_RIGHT, BOTTOM_LEFT, TOP_CENTER,
+                                BOTTOM_CENTER
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

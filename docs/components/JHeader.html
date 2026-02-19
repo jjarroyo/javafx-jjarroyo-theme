@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JHeader - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style type="text/tailwindcss">
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+
+            /* Simulation */
+            .header {
+                @apply h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between;
+            }
+            .brand {
+                @apply font-bold text-xl text-slate-900 flex items-center;
+            }
+            .menu {
+                @apply hidden md:flex space-x-6 mx-8;
+            }
+            .menu-item {
+                @apply text-sm font-medium text-slate-600 hover:text-blue-500 cursor-pointer;
+            }
+            .toolbar {
+                @apply flex items-center space-x-4;
+            }
+            .profile {
+                @apply flex items-center space-x-3 cursor-pointer pl-4 border-l border-slate-200;
+            }
+            .avatar {
+                @apply h-9 w-9 bg-blue-100 text-blue-500 rounded-md flex items-center justify-center font-bold text-sm;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">JHeader</h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Barra superior completa con soporte para marca, menú de
+                        navegación, toolbar y perfil de usuario.
+                    </p>
+                </header>
+
+                <!-- Example -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Ejemplo
+                    </h2>
+
+                    <div
+                        class="bg-gray-100 p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="header">
+                            <div class="flex items-center">
+                                <div class="brand">
+                                    <span class="mr-2">⚡</span> MetronicFX
+                                </div>
+                                <div class="menu">
+                                    <span class="menu-item text-blue-600"
+                                        >Dashboard</span
+                                    >
+                                    <span class="menu-item">Reportes</span>
+                                    <span class="menu-item flex items-center"
+                                        >Ayuda
+                                        <svg
+                                            class="ml-1 w-3 h-3"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 9l-7 7-7-7"
+                                            ></path></svg
+                                    ></span>
+                                </div>
+                            </div>
+
+                            <div class="toolbar">
+                                <span
+                                    class="text-slate-400 hover:text-slate-600 cursor-pointer"
+                                    >🔔</span
+                                >
+                                <div class="profile">
+                                    <div class="text-right hidden sm:block">
+                                        <p
+                                            class="text-sm font-medium text-slate-900"
+                                        >
+                                            Jorge
+                                        </p>
+                                        <p class="text-xs text-slate-500">
+                                            Admin
+                                        </p>
+                                    </div>
+                                    <div class="avatar">JA</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JHeader header = new JHeader();
+
+header.setBrand(new JIcon(JIcon.LOGO), "MetronicFX");
+
+header.addMenuItem("Dashboard", () -> navigate("home"));
+header.addMenuDropdown("Ayuda", Map.of(
+    "Documentación", () -> openDocs(),
+    "Soporte", () -> openSupport()
+));
+
+header.addToolbarItem(new JIcon(JIcon.BELL)); // Notification Icon
+
+header.setUserProfile("Jorge Arroyo", "admin@demo.com", "JA");</code></pre>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        API Reference
+                    </h2>
+                    <table
+                        class="min-w-full text-left text-sm whitespace-nowrap"
+                    >
+                        <thead
+                            class="uppercase tracking-wider border-b-2 border-slate-200 bg-slate-50 text-slate-600"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-4">Método</th>
+                                <th scope="col" class="px-6 py-4">
+                                    Descripción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setBrand(Node logo, String title)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Configura la sección izquierda (Logo/Marca).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    addMenuItem(...)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Añade enlaces simples o menús desplegables
+                                    al centro.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setUserProfile(...)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Genera la sección de perfil a la derecha con
+                                    menú de usuario integrado.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

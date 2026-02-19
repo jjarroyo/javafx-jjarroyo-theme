@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JSwitch - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style type="text/tailwindcss">
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+
+            /* Simulation */
+            .switch {
+                @apply relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 cursor-pointer;
+            }
+            .switch-checked {
+                @apply bg-blue-500;
+            }
+            .switch-unchecked {
+                @apply bg-gray-200;
+            }
+            .switch-dot {
+                @apply inline-block w-4 h-4 transform bg-white rounded-full transition-transform;
+            }
+            .switch-dot-checked {
+                @apply translate-x-6;
+            }
+            .switch-dot-unchecked {
+                @apply translate-x-1;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">JSwitch</h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Un control de alternancia (toggle) que extiende
+                        `JCheckBox` pero con una apariencia de interruptor
+                        moderno.
+                    </p>
+                </header>
+
+                <!-- Example -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Ejemplo
+                    </h2>
+
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="flex items-center gap-4">
+                            <div class="flex items-center">
+                                <button
+                                    type="button"
+                                    class="switch switch-checked mr-2"
+                                    role="switch"
+                                    aria-checked="true"
+                                >
+                                    <span
+                                        class="switch-dot switch-dot-checked"
+                                    ></span>
+                                </button>
+                                <span class="text-sm font-medium text-gray-900"
+                                    >Notificaciones (Activado)</span
+                                >
+                            </div>
+
+                            <div class="flex items-center">
+                                <button
+                                    type="button"
+                                    class="switch switch-unchecked mr-2"
+                                    role="switch"
+                                    aria-checked="false"
+                                >
+                                    <span
+                                        class="switch-dot switch-dot-unchecked"
+                                    ></span>
+                                </button>
+                                <span class="text-sm font-medium text-gray-900"
+                                    >Modo Avión (Desactivado)</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JSwitch switchBtn = new JSwitch("Notificaciones");
+switchBtn.setSelected(true);
+
+// Listen for changes
+switchBtn.selectedProperty().addListener((obs, oldVal, newVal) -> {
+    System.out.println("Switch is now: " + newVal);
+});</code></pre>
+                    </div>
+                </section>
+
+                <!-- Inheritance Note -->
+                <section class="mb-12">
+                    <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <svg
+                                    class="h-5 w-5 text-blue-400"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                        clip-rule="evenodd"
+                                    />
+                                </svg>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-blue-700">
+                                    <strong>Herencia:</strong> Dado que
+                                    `JSwitch` extiende de `JCheckBox`, hereda
+                                    todas sus propiedades y métodos, pero se
+                                    renderiza visualmente como un interruptor
+                                    deslizante gracias a la clase CSS
+                                    `j-switch`.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        API Reference
+                    </h2>
+                    <table
+                        class="min-w-full text-left text-sm whitespace-nowrap"
+                    >
+                        <thead
+                            class="uppercase tracking-wider border-b-2 border-slate-200 bg-slate-50 text-slate-600"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-4">
+                                    Constructor
+                                </th>
+                                <th scope="col" class="px-6 py-4">
+                                    Descripción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    new JSwitch()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Crea un switch sin texto.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    new JSwitch(String text)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Crea un switch con una etiqueta de texto.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setSelected(boolean value)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Define el estado del interruptor
+                                    (activado/desactivado).
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

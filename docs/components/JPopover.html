@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JPopover - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style type="text/tailwindcss">
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+
+            /* Simulation */
+            .popover {
+                @apply absolute bg-white border border-slate-200 rounded-lg shadow-lg w-64 p-4 z-50;
+            }
+            .popover-arrow {
+                @apply absolute w-3 h-3 bg-white border-l border-t border-slate-200 transform rotate-45 -top-1.5 left-1/2 -ml-1.5;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">JPopover</h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Pop-up ligero con flecha indicadora, ideal para tooltips
+                        ricos, menús contextuales o confirmaciones.
+                    </p>
+                </header>
+
+                <!-- Example -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Ejemplo
+                    </h2>
+
+                    <div
+                        class="bg-white p-12 rounded-lg border border-slate-200 shadow-sm mb-4 flex justify-center"
+                    >
+                        <div class="relative">
+                            <button
+                                class="btn btn-primary bg-blue-600 text-white px-4 py-2 rounded"
+                            >
+                                Click Me
+                            </button>
+
+                            <!-- Popover Simulation -->
+                            <div
+                                class="popover mt-3 left-1/2 transform -translate-x-1/2"
+                            >
+                                <div class="popover-arrow"></div>
+                                <h3 class="font-bold text-sm mb-1">
+                                    Popover Title
+                                </h3>
+                                <p class="text-sm text-slate-600">
+                                    Información adicional detallada aquí.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JPopover popover = new JPopover();
+popover.setTitle("Detalles");
+popover.setBody("Este es un popover informativo.");
+
+button.setOnAction(e -> {
+    popover.show(button);
+});</code></pre>
+                    </div>
+                </section>
+
+                <!-- Features -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Modo Confirmación
+                    </h2>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">popover.setBody("¿Estás seguro de eliminar este ítem?");
+popover.setConfirmationMode("Sí, eliminar", "No", () -> {
+    deleteItem();
+});</code></pre>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        API Reference
+                    </h2>
+                    <table
+                        class="min-w-full text-left text-sm whitespace-nowrap"
+                    >
+                        <thead
+                            class="uppercase tracking-wider border-b-2 border-slate-200 bg-slate-50 text-slate-600"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-4">Método</th>
+                                <th scope="col" class="px-6 py-4">
+                                    Descripción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    show(Node target)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Muestra el popover anclado al nodo objetivo.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setPosition(Position pos)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    TOP, BOTTOM, LEFT, RIGHT.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setTheme(Theme t)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    LIGHT o DARK.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setConfirmMode(...)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Configura botones de acción para flujos de
+                                    confirmación.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JPagination - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style type="text/tailwindcss">
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+
+            /* Simulation */
+            .pagination {
+                @apply flex items-center space-x-1;
+            }
+            .page-btn {
+                @apply px-3 py-2 border border-slate-200 rounded-md text-slate-600 text-sm hover:bg-slate-50 hover:text-slate-900 transition-colors;
+            }
+            .page-active {
+                @apply bg-blue-50 border-blue-200 text-blue-600 font-medium;
+            }
+            .page-disabled {
+                @apply opacity-50 cursor-not-allowed;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">
+                        JPagination
+                    </h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Control de paginación numérico con soporte para
+                        navegación anterior/siguiente y truncamiento
+                        inteligente.
+                    </p>
+                </header>
+
+                <!-- Example -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Ejemplo
+                    </h2>
+
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4 flex justify-center"
+                    >
+                        <div class="pagination">
+                            <button class="page-btn"><</button>
+                            <button class="page-btn">1</button>
+                            <button class="page-btn page-active">2</button>
+                            <button class="page-btn">3</button>
+                            <span class="px-2 text-slate-400">...</span>
+                            <button class="page-btn">10</button>
+                            <button class="page-btn">></button>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JPagination pagination = new JPagination();
+
+// Set Totals
+pagination.totalPagesProperty().set(10);
+pagination.currentPageProperty().set(2);
+
+// Listen for changes
+pagination.setOnPageChange(() -> {
+    int page = pagination.currentPageProperty().get();
+    System.out.println("Cargar página: " + page);
+    // loadData(page);
+});</code></pre>
+                    </div>
+                </section>
+
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Lógica de Visualización
+                    </h2>
+                    <p class="text-slate-600">
+                        El componente calcula automáticamente qué botones
+                        mostrar. Si hay muchas páginas, muestra la primera, la
+                        última, la actual y sus vecinas, colapsando el resto con
+                        puntos suspensivos ("...").
+                    </p>
+                </section>
+
+                <!-- API Reference -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        API Reference
+                    </h2>
+                    <table
+                        class="min-w-full text-left text-sm whitespace-nowrap"
+                    >
+                        <thead
+                            class="uppercase tracking-wider border-b-2 border-slate-200 bg-slate-50 text-slate-600"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-4">
+                                    Propiedad/Método
+                                </th>
+                                <th scope="col" class="px-6 py-4">
+                                    Descripción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    currentPageProperty()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    IntegerProperty para la página actual
+                                    (1-based).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    totalPagesProperty()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    IntegerProperty para el número total de
+                                    páginas.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setOnPageChange(Runnable r)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Registra un callback que se invoca cuando el
+                                    usuario cambia de página.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

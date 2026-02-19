@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JFile - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style type="text/tailwindcss">
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+
+            /* Simulation */
+            .avatar-wrapper {
+                @apply relative w-24 h-24 rounded-full bg-slate-200 overflow-hidden flex items-center justify-center border-2 border-white shadow-sm;
+            }
+            .dropzone {
+                @apply border-2 border-dashed border-slate-300 rounded-lg p-8 text-center bg-slate-50 hover:bg-slate-100 transition-colors cursor-pointer;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">JFile</h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Componente versátil para carga de archivos. Soporta
+                        modos: Botón, Avatar, Cuadrado y Zona de Drop.
+                    </p>
+                </header>
+
+                <!-- Modes -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Modos
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Avatar -->
+                        <div
+                            class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm"
+                        >
+                            <h3 class="font-bold text-slate-800 mb-4">
+                                Avatar Mode
+                            </h3>
+                            <div class="flex items-center space-x-4">
+                                <div class="avatar-wrapper">
+                                    <svg
+                                        class="h-10 w-10 text-slate-400"
+                                        fill="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"
+                                        />
+                                    </svg>
+                                </div>
+                                <div class="text-sm text-slate-500">
+                                    Click to upload
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dropzone -->
+                        <div
+                            class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm"
+                        >
+                            <h3 class="font-bold text-slate-800 mb-4">
+                                DropZone Mode
+                            </h3>
+                            <div class="dropzone">
+                                <svg
+                                    class="mx-auto h-12 w-12 text-slate-400"
+                                    stroke="currentColor"
+                                    fill="none"
+                                    viewBox="0 0 48 48"
+                                >
+                                    <path
+                                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                                <p class="mt-1 text-sm text-slate-600">
+                                    Arrastra archivos aquí o haz clic
+                                </p>
+                                <p class="mt-1 text-xs text-slate-500">
+                                    PNG, JPG hasta 10MB
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-slate-900 rounded-md p-4 mt-6 overflow-x-auto"
+                    >
+                        <pre><code class="text-slate-300 font-mono text-sm">// Avatar
+JFile avatar = new JFile(JFile.Mode.AVATAR);
+avatar.getValidExtensions().addAll(".jpg", ".png");
+
+// DropZone
+JFile drop = new JFile(JFile.Mode.DROP_ZONE);
+drop.setMaxFileCount(5);</code></pre>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        API Reference
+                    </h2>
+                    <table
+                        class="min-w-full text-left text-sm whitespace-nowrap"
+                    >
+                        <thead
+                            class="uppercase tracking-wider border-b-2 border-slate-200 bg-slate-50 text-slate-600"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-4">Método</th>
+                                <th scope="col" class="px-6 py-4">
+                                    Descripción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setMode(Mode mode)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    BUTTON, AVATAR, SQUARE, DROP_ZONE.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    getSelectedFiles()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    ObservableList con los archivos
+                                    seleccionados.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setMaxFileCount(int n)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Define cuántos archivos se pueden subir
+                                    (Default 1).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setMaxFileSize(long bytes)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Tamaño máximo por archivo (Default 10MB).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setShowEdit(boolean b),
+                                    setShowRemove(boolean b)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Habilita botones superpuestos para
+                                    editar/borrar en modos de imagen.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

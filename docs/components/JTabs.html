@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JTabs - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style type="text/tailwindcss">
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+
+            /* Simulation */
+            .tabs-header {
+                @apply flex border-b border-gray-200 space-x-8 mb-4;
+            }
+            .tab-item {
+                @apply py-4 px-1 border-b-2 font-medium text-sm cursor-pointer whitespace-nowrap;
+            }
+            .tab-active {
+                @apply border-blue-500 text-blue-600;
+            }
+            .tab-inactive {
+                @apply border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300;
+            }
+
+            .tabs-pills .tab-item {
+                @apply px-3 py-2 rounded-md border-0;
+            }
+            .tabs-pills .tab-active {
+                @apply bg-blue-100 text-blue-700;
+            }
+            .tabs-pills .tab-inactive {
+                @apply text-gray-500 hover:bg-gray-100;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">JTabs</h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Sistema de pestañas flexible que soporta diferentes
+                        estilos (Línea, Pastilla) y orientaciones (Arriba,
+                        Abajo, Izquierda, Derecha).
+                    </p>
+                </header>
+
+                <!-- Line Style -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Estilo Por Defecto (Line)
+                    </h2>
+
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="tabs-header">
+                            <div class="tab-item tab-active">Perfil</div>
+                            <div class="tab-item tab-inactive">Cuenta</div>
+                            <div class="tab-item tab-inactive">
+                                Notificaciones
+                            </div>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded text-slate-600">
+                            Contenido del Perfil...
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JTabs tabs = new JTabs();
+
+tabs.getTabs().addAll(
+    new JTab("Perfil", new Label("Contenido del Perfil...")),
+    new JTab("Cuenta", new Label("Configuración de Cuenta...")),
+    new JTab("Notificaciones", new Label("Preferencias..."))
+);</code></pre>
+                    </div>
+                </section>
+
+                <!-- Pills Style -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Estilo Pills
+                    </h2>
+
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="flex space-x-2 tabs-pills mb-4">
+                            <div class="tab-item tab-active">Mensual</div>
+                            <div class="tab-item tab-inactive">Anual</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">tabs.setTabStyle(JTabs.TabStyle.PILLS);</code></pre>
+                    </div>
+                </section>
+
+                <!-- Orientation -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Orientación
+                    </h2>
+                    <p class="text-slate-600 mb-4">
+                        Las pestañas pueden colocarse en los 4 lados.
+                    </p>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">tabs.setSide(Side.LEFT);
+// tabs.setSide(Side.RIGHT);
+// tabs.setSide(Side.BOTTOM);</code></pre>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        API Reference
+                    </h2>
+                    <table
+                        class="min-w-full text-left text-sm whitespace-nowrap"
+                    >
+                        <thead
+                            class="uppercase tracking-wider border-b-2 border-slate-200 bg-slate-50 text-slate-600"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-4">Método</th>
+                                <th scope="col" class="px-6 py-4">
+                                    Descripción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    getTabs().add(JTab tab)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Añade una nueva pestaña.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setTabStyle(TabStyle style)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Cambia el estilo visual (LINE, PILLS).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setSide(Side side)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Cambia la posición de los encabezados (TOP,
+                                    BOTTOM, LEFT, RIGHT).
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

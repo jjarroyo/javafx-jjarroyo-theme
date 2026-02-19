@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JIcon - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style type="text/tailwindcss">
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+            .icon-card {
+                @apply flex flex-col items-center justify-center p-4 border border-slate-200 rounded-lg bg-white hover:border-blue-500 hover:shadow-md transition-all cursor-pointer;
+            }
+            .icon-svg {
+                @apply w-8 h-8 text-slate-600 mb-3;
+            }
+            .icon-name {
+                @apply text-xs font-mono text-slate-500 text-center break-all;
+            }
+            .icon-card:hover .icon-svg {
+                @apply text-blue-600;
+            }
+            .icon-card:hover .icon-name {
+                @apply text-blue-600 font-bold;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">JIcon</h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Colección de iconos SVG integrados. Basados en Material
+                        Design.
+                    </p>
+
+                    <div class="mt-6 bg-slate-900 rounded-md p-4">
+                        <pre><code class="text-slate-300 font-mono text-sm">// Uso básico
+JIcon icon = JIcon.HOME;
+Node view = icon.view(); // Retorna un SVGPath funcional
+
+// En botones
+JButton btn = new JButton("Home", JIcon.HOME);</code></pre>
+                    </div>
+                </header>
+
+                <!-- Search -->
+                <div class="mb-8">
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Buscar icono..."
+                        class="w-full max-w-md px-4 py-2 border border-slate-300 rounded-md focus:ring-blue-500 focus:border-blue-500 shadow-sm"
+                        onkeyup="filterIcons()"
+                    />
+                </div>
+
+                <!-- Icons Grid -->
+                <div
+                    id="iconGrid"
+                    class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 mb-12"
+                >
+                    <!-- Using a script to generate this would be cleaner, but for docs we'll simulate the static list -->
+                    <!-- Ideally this list is auto-generated, but I'll add the key ones manually for the documentation example -->
+
+                    <!-- Navigation -->
+                    <div class="icon-card" data-name="ARROW_BACK">
+                        <svg
+                            class="icon-svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+                            /></svg
+                        ><span class="icon-name">ARROW_BACK</span>
+                    </div>
+                    <div class="icon-card" data-name="HOME">
+                        <svg
+                            class="icon-svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
+                            /></svg
+                        ><span class="icon-name">HOME</span>
+                    </div>
+                    <div class="icon-card" data-name="MENU">
+                        <svg
+                            class="icon-svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+                            /></svg
+                        ><span class="icon-name">MENU</span>
+                    </div>
+                    <div class="icon-card" data-name="CLOSE">
+                        <svg
+                            class="icon-svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                            /></svg
+                        ><span class="icon-name">CLOSE</span>
+                    </div>
+                    <div class="icon-card" data-name="SETTINGS">
+                        <svg
+                            class="icon-svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.04.17 0 .34.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.58 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.04-.17 0-.34-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"
+                            /></svg
+                        ><span class="icon-name">SETTINGS</span>
+                    </div>
+
+                    <!-- Action -->
+                    <div class="icon-card" data-name="SEARCH">
+                        <svg
+                            class="icon-svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                            /></svg
+                        ><span class="icon-name">SEARCH</span>
+                    </div>
+                    <div class="icon-card" data-name="ADD">
+                        <svg
+                            class="icon-svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                            /></svg
+                        ><span class="icon-name">ADD</span>
+                    </div>
+                    <div class="icon-card" data-name="EDIT">
+                        <svg
+                            class="icon-svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                            /></svg
+                        ><span class="icon-name">EDIT</span>
+                    </div>
+                    <div class="icon-card" data-name="DELETE">
+                        <svg
+                            class="icon-svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                            /></svg
+                        ><span class="icon-name">DELETE</span>
+                    </div>
+                    <div class="icon-card" data-name="CHECK">
+                        <svg
+                            class="icon-svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                            /></svg
+                        ><span class="icon-name">CHECK</span>
+                    </div>
+
+                    <!-- Alert -->
+                    <div class="icon-card" data-name="INFO">
+                        <svg
+                            class="icon-svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                            /></svg
+                        ><span class="icon-name">INFO</span>
+                    </div>
+                    <div class="icon-card" data-name="WARNING">
+                        <svg
+                            class="icon-svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+                            /></svg
+                        ><span class="icon-name">WARNING</span>
+                    </div>
+                    <div class="icon-card" data-name="ERROR">
+                        <svg
+                            class="icon-svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+                            /></svg
+                        ><span class="icon-name">ERROR</span>
+                    </div>
+
+                    <!-- Social/User -->
+                    <div class="icon-card" data-name="USER">
+                        <svg
+                            class="icon-svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                            /></svg
+                        ><span class="icon-name">USER</span>
+                    </div>
+                    <div class="icon-card" data-name="GROUP">
+                        <svg
+                            class="icon-svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"
+                            /></svg
+                        ><span class="icon-name">GROUP</span>
+                    </div>
+
+                    <!-- Files -->
+                    <div class="icon-card" data-name="FILE">
+                        <svg
+                            class="icon-svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9l-7-7z"
+                            /></svg
+                        ><span class="icon-name">FILE</span>
+                    </div>
+                    <div class="icon-card" data-name="FOLDER">
+                        <svg
+                            class="icon-svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"
+                            /></svg
+                        ><span class="icon-name">FOLDER</span>
+                    </div>
+                    <div class="icon-card" data-name="UPLOAD_CLOUD">
+                        <svg
+                            class="icon-svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"
+                            /></svg
+                        ><span class="icon-name">UPLOAD_CLOUD</span>
+                    </div>
+                </div>
+
+                <p class="text-sm text-slate-500 text-center">
+                    ... y muchos más disponibles en la clase <code>JIcon</code>.
+                </p>
+            </div>
+        </div>
+
+        <script>
+            function filterIcons() {
+                var input = document.getElementById('searchInput');
+                var filter = input.value.toUpperCase();
+                var grid = document.getElementById('iconGrid');
+                var cards = grid.getElementsByClassName('icon-card');
+
+                for (var i = 0; i < cards.length; i++) {
+                    var nameSpan =
+                        cards[i].getElementsByClassName('icon-name')[0];
+                    var txtValue = nameSpan.textContent || nameSpan.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        cards[i].style.display = '';
+                    } else {
+                        cards[i].style.display = 'none';
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

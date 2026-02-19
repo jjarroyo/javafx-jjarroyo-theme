@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JSidebar - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style type="text/tailwindcss">
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+
+            /* Simulation */
+            .sidebar {
+                @apply w-64 bg-slate-900 text-white flex flex-col h-64 rounded-r-lg;
+            }
+            .sidebar-header {
+                @apply h-16 flex items-center px-6 border-b border-white/10;
+            }
+            .sidebar-item {
+                @apply flex items-center px-6 py-3 text-slate-400 hover:text-white hover:bg-white/5 cursor-pointer;
+            }
+            .sidebar-item.active {
+                @apply text-blue-400 bg-blue-500/10 border-r-2 border-blue-500;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">JSidebar</h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Barra lateral de navegación colapsable con soporte para
+                        cabecera, pie de página y modos de colapso
+                        (Compacto/Oculto).
+                    </p>
+                </header>
+
+                <!-- Example -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Ejemplo
+                    </h2>
+
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="sidebar">
+                            <div class="sidebar-header">
+                                <span class="font-bold text-lg">App Logo</span>
+                            </div>
+                            <div class="flex-1 py-4">
+                                <div class="sidebar-item active">
+                                    <span class="mr-3">🏠</span> Dashboard
+                                </div>
+                                <div class="sidebar-item">
+                                    <span class="mr-3">👥</span> Usuarios
+                                </div>
+                                <div class="sidebar-item">
+                                    <span class="mr-3">⚙️</span> Configuración
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JSidebar sidebar = new JSidebar();
+
+// Header
+sidebar.setHeader(new Label("App Title"));
+
+// Items
+JSidebarItem item1 = new JSidebarItem("Dashboard", new JIcon(JIcon.HOME));
+item1.setAction(() -> System.out.println("Go Home"));
+
+JSidebarItem item2 = new JSidebarItem("Users", new JIcon(JIcon.USERS));
+
+sidebar.getItems().addAll(item1, item2);
+
+// Set Active
+item1.setActive(true);</code></pre>
+                    </div>
+                </section>
+
+                <!-- Features -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Características
+                    </h2>
+                    <ul class="list-disc list-inside text-slate-600 space-y-2">
+                        <li>
+                            <strong>Animación:</strong> Expansión y colapso
+                            animados suavemente.
+                        </li>
+                        <li>
+                            <strong>Modos de Colapso:</strong>
+                            <ul class="list-disc list-inside ml-6 mt-1">
+                                <li>
+                                    `COMPACT`: Muestra solo los iconos (ancho
+                                    reducido).
+                                </li>
+                                <li>
+                                    `HIDDEN`: Oculta la barra lateral
+                                    completamente.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Auto-Detección:</strong> Intenta detectar si
+                            debe usar modo compacto basándose en si los items
+                            tienen iconos.
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- API Reference -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        API Reference
+                    </h2>
+                    <table
+                        class="min-w-full text-left text-sm whitespace-nowrap"
+                    >
+                        <thead
+                            class="uppercase tracking-wider border-b-2 border-slate-200 bg-slate-50 text-slate-600"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-4">Método</th>
+                                <th scope="col" class="px-6 py-4">
+                                    Descripción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setExpanded(boolean expanded)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Expande o colapsa el sidebar.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setCollapseMode(CollapseMode mode)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Define el comportamiento al colapsar
+                                    (COMPACT o HIDDEN).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    getItems()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Lista observable de `JSidebarItem`.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setHeader(Node node)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Establece el contenido de la cabecera (junto
+                                    al botón de toggle).
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>
