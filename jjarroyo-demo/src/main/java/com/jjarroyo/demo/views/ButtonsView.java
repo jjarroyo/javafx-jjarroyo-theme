@@ -22,31 +22,31 @@ public class ButtonsView extends ScrollPane {
         
         // Page Title
         VBox pageHeader = new VBox();
-        JLabel title = new JLabel("Botones")
+        JLabel title = new JLabel("Buttons")
             .withStyle("text-2xl", "font-bold", "text-slate-800");
-        JLabel subtitle = new JLabel("Estilos de botones inspirados en Tailwind/JJArroyo")
+        JLabel subtitle = new JLabel("Button styles inspired by Tailwind/JJArroyo")
             .withStyle("text-base", "text-slate-500");
         pageHeader.getChildren().addAll(title, subtitle);
         
         content.getChildren().add(pageHeader);
         
         // Section: Colors
-        content.getChildren().add(new JCard("Colores Sólidos", createSolidButtons()));
+        content.getChildren().add(new JCard("Solid Colors", createSolidButtons()));
 
         // Section: Outline
-        content.getChildren().add(new JCard("Estilo Outline", createOutlineButtons()));
+        content.getChildren().add(new JCard("Outline Style", createOutlineButtons()));
         
         // Section: Sizes
-        content.getChildren().add(new JCard("Tamaños", createSizeButtons()));
+        content.getChildren().add(new JCard("Sizes", createSizeButtons()));
 
         // Section: Light Style
-        content.getChildren().add(new JCard("Estilo Light", createLightButtons()));
+        content.getChildren().add(new JCard("Light Style", createLightButtons()));
 
         // Section: Dashed Style
-        content.getChildren().add(new JCard("Estilo Dashed", createDashedButtons()));
+        content.getChildren().add(new JCard("Dashed Style", createDashedButtons()));
 
         // Section: Icon Text Color Style
-        content.getChildren().add(new JCard("Estilo Icon Text Color & JIcon Integration", createIconButtons()));
+        content.getChildren().add(new JCard("Icon Buttons", createIconButtons()));
 
         // Section: Loading Style
         content.getChildren().add(new JCard("Loading Style", createLoadingButtons()));
@@ -151,7 +151,7 @@ public class ButtonsView extends ScrollPane {
         JButton btnIconPrimary = new JButton("Star Button", JIcon.STAR);
         btnIconPrimary.addClass("btn-accent-primary");
 
-        JButton btnIconInfo = new JButton("Favoritos", JIcon.HEART);
+        JButton btnIconInfo = new JButton("Favorites", JIcon.HEART);
         btnIconInfo.addClass("btn-accent-info");
         
         JButton btnSettings = new JButton("Settings", JIcon.SETTINGS);

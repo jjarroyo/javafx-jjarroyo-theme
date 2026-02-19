@@ -2,6 +2,23 @@
 
 A modern, responsive JavaFX theme library inspired by the Metronic design system, implementing Tailwind CSS concepts for JavaFX applications.
 
+## Screenshots
+
+![Control Panel](docs/images/dashboard.png)
+![Buttons](docs/images/buttons.png)
+![Labels](docs/images/labels.png)
+![Inputs](docs/images/inputs.png)
+![Tables](docs/images/tables.png)
+![Cards](docs/images/cards.png)
+![Files](docs/images/files.png)
+![Popovers](docs/images/popovers.png)
+![Progress](docs/images/progress.png)
+![Tabs](docs/images/tabs.png)
+![Checkboxes](docs/images/checkboxes.png)
+![Alerts](docs/images/alerts.png)
+![Inputs](docs/images/inputs.png)
+![Sliders](docs/images/sliders.png)
+
 ## Component Library
 
 The core of this project is the `jjarroyo-library` which provides a set of custom controls and styles for JavaFX.

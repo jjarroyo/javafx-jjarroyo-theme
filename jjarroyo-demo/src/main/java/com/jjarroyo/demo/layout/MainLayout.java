@@ -80,11 +80,11 @@ public class MainLayout extends javafx.scene.layout.StackPane {
         // Items
         sidebar.getItems().addAll(
             createItem("Dashboard", com.jjarroyo.components.JIcon.HOME.view()),
-            createItem("Botones", com.jjarroyo.components.JIcon.ROCKET.view()),
-            createItem("Etiquetas", com.jjarroyo.components.JIcon.FLAG.view()),
+            createItem("Buttons", com.jjarroyo.components.JIcon.ROCKET.view()),
+            createItem("Labels", com.jjarroyo.components.JIcon.FLAG.view()),
             createItem("Inputs", com.jjarroyo.components.JIcon.EDIT.view()),
-            createItem("Cartas", com.jjarroyo.components.JIcon.LAYERS.view()),
-            createItem("Alertas", com.jjarroyo.components.JIcon.BELL.view()),
+            createItem("Cards", com.jjarroyo.components.JIcon.LAYERS.view()),
+            createItem("Alerts", com.jjarroyo.components.JIcon.BELL.view()),
             createItem("Selects", com.jjarroyo.components.JIcon.LIST.view()),
             createItem("Sliders", com.jjarroyo.components.JIcon.SETTINGS.view()), // Using SETTINGS icon for sliders
             createItem("Accordions", com.jjarroyo.components.JIcon.LIST.view()),   // Formatting fixed
@@ -98,7 +98,7 @@ public class MainLayout extends javafx.scene.layout.StackPane {
             createItem("Toasts", com.jjarroyo.components.JIcon.NOTIFICATIONS.view()),
             createItem("Popovers", com.jjarroyo.components.JIcon.CHAT.view()), // Reusing CHAT icon or similar
             createItem("Icons", com.jjarroyo.components.JIcon.APPS.view()),
-            createItem("Tipografía", com.jjarroyo.components.JIcon.FILE_TEXT.view())
+            createItem("Typography", com.jjarroyo.components.JIcon.FILE_TEXT.view())
         );
         
         return sidebar;
@@ -115,11 +115,11 @@ public class MainLayout extends javafx.scene.layout.StackPane {
 
     private void handleNavigation(String text) {
         if (text.equals("Dashboard")) navigate(new com.jjarroyo.demo.views.DashboardView());
-        else if (text.equals("Botones")) navigate(new ButtonsView());
-        else if (text.equals("Etiquetas")) navigate(new LabelsView());
+        else if (text.equals("Buttons")) navigate(new ButtonsView());
+        else if (text.equals("Labels")) navigate(new LabelsView());
         else if (text.equals("Inputs")) navigate(new InputsView());
-        else if (text.equals("Cartas")) navigate(new CardsView());
-        else if (text.equals("Alertas")) navigate(new AlertsView());
+        else if (text.equals("Cards")) navigate(new CardsView());
+        else if (text.equals("Alerts")) navigate(new AlertsView());
         else if (text.equals("Selects")) navigate(new SelectsView());
         else if (text.equals("Checks & Radios")) navigate(new ChecksRadiosView());
         else if (text.equals("Tabs")) navigate(new TabsView());
@@ -129,7 +129,7 @@ public class MainLayout extends javafx.scene.layout.StackPane {
         else if (text.equals("Toasts")) navigate(new com.jjarroyo.demo.views.ToastsView());
         else if (text.equals("Popovers")) navigate(new com.jjarroyo.demo.views.PopoversView());
         else if (text.equals("Icons")) navigate(new com.jjarroyo.demo.views.IconsView());
-        else if (text.equals("Tipografía")) navigate(new com.jjarroyo.demo.views.TypographyView());
+        else if (text.equals("Typography")) navigate(new com.jjarroyo.demo.views.TypographyView());
         else if (text.equals("Sliders")) navigate(new com.jjarroyo.demo.views.SlidersView());
         else if (text.equals("Accordions")) navigate(new com.jjarroyo.demo.views.AccordionsView());
         else if (text.equals("Progress")) navigate(new com.jjarroyo.demo.views.ProgressView());

@@ -142,6 +142,8 @@ public class JSelect<T> extends StackPane {
         selectedItems.addListener((javafx.collections.ListChangeListener.Change<? extends T> c) -> updateTrigger());
     }
 
+    private static final javafx.css.PseudoClass SHOWING_PSEUDO_CLASS = javafx.css.PseudoClass.getPseudoClass("showing");
+
     private void togglePopup(MouseEvent e) {
         if (popup.isShowing()) {
             popup.hide();
@@ -171,7 +173,11 @@ public class JSelect<T> extends StackPane {
                 content.setPrefWidth(bounds.getWidth());
             }
 
-            popup.show(this, bounds.getMinX(), bounds.getMaxY() + 4);
+            // Update pseudo-class state
+            popup.setOnShown(event -> pseudoClassStateChanged(SHOWING_PSEUDO_CLASS, true));
+            popup.setOnHidden(event -> pseudoClassStateChanged(SHOWING_PSEUDO_CLASS, false));
+
+            popup.show(this, bounds.getMinX(), bounds.getMaxY());
             if (isSearchable()) {
                 searchField.requestFocus();
             }

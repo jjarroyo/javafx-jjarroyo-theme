@@ -1160,7 +1160,8 @@
 .select-trigger:hover {
     -fx-background-color: -color-bg-subtle;
 }
-.j-select:focused .select-trigger {
+.j-select:focused .select-trigger,
+.j-select:showing .select-trigger {
     -fx-background-color: -color-bg-surface;
     -fx-border-color: -color-primary-500;
     -fx-effect: dropshadow(three-pass-box, rgba(59, 130, 246, 0.2), 4, 0, 0, 0);

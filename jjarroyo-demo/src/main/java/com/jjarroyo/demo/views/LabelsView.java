@@ -20,22 +20,22 @@ public class LabelsView extends ScrollPane {
         
         // Page Title
         VBox pageHeader = new VBox();
-        JLabel title = new JLabel("Etiquetas (Badges)")
+        JLabel title = new JLabel("Labels (Badges)")
             .withStyle("text-2xl", "font-bold", "text-slate-800");
-        JLabel subtitle = new JLabel("Estilos de etiquetas y badges")
+        JLabel subtitle = new JLabel("Label and badge styles")
             .withStyle("text-base", "text-slate-500");
         pageHeader.getChildren().addAll(title, subtitle);
         
         content.getChildren().add(pageHeader);
         
         // Section: Basic Badges
-        content.getChildren().add(new JCard("Badges Sólidos", createSolidBadges()));
+        content.getChildren().add(new JCard("Solid Badges", createSolidBadges()));
 
         // Section: Light Badges
-        content.getChildren().add(new JCard("Badges Estilo Light", createLightBadges()));
+        content.getChildren().add(new JCard("Light Badges", createLightBadges()));
         
         // Section: Sizes
-        content.getChildren().add(new JCard("Tamaños", createSizeBadges()));
+        content.getChildren().add(new JCard("Sizes", createSizeBadges()));
     }
 
     private javafx.scene.Node createSolidBadges() {

@@ -28,17 +28,17 @@ public class InputsView extends ScrollPane {
         VBox pageHeader = new VBox();
         JLabel title = new JLabel("Inputs")
             .withStyle("text-2xl", "font-bold", "text-slate-800");
-        JLabel subtitle = new JLabel("Estilos de inputs, grupos y validaciones")
+        JLabel subtitle = new JLabel("Input styles, groups, and validations")
             .withStyle("text-base", "text-slate-500");
         pageHeader.getChildren().addAll(title, subtitle);
         
         content.getChildren().add(pageHeader);
         
         // Basic Inputs
-        content.getChildren().add(new JCard("Inputs Básicos", createBasicInputs()));
+        content.getChildren().add(new JCard("Basic Inputs", createBasicInputs()));
 
         // Sizes
-        content.getChildren().add(new JCard("Tamaños", createSizes()));
+        content.getChildren().add(new JCard("Sizes", createSizes()));
 
         // Input Groups
         content.getChildren().add(new JCard("Input Groups", createInputGroups()));
@@ -50,21 +50,21 @@ public class InputsView extends ScrollPane {
         content.getChildren().add(new JCard("Text Area", createTextArea()));
 
         // Validation States
-        content.getChildren().add(new JCard("Estados de Validación", createValidationInputs()));
+        content.getChildren().add(new JCard("Validation States", createValidationInputs()));
     }
 
     private javafx.scene.Node createValidationInputs() {
         VBox container = new VBox(16);
         
-        JInput valid = new JInput("Input válido");
+        JInput valid = new JInput("Valid input");
         valid.setStatus("form-input-success");
         container.getChildren().add(valid.createWithLabel("Success", false));
         
-        JInput invalid = new JInput("Error en el campo");
+        JInput invalid = new JInput("Error in field");
         invalid.setStatus("form-input-danger");
         container.getChildren().add(invalid.createWithLabel("Danger", true));
         
-        JInput warning = new JInput("Advertencia");
+        JInput warning = new JInput("Warning");
         warning.setStatus("form-input-warning");
         container.getChildren().add(warning.createWithLabel("Warning", false));
 
@@ -78,15 +78,15 @@ public class InputsView extends ScrollPane {
     private javafx.scene.Node createBasicInputs() {
         VBox container = new VBox(16);
         
-        JInput input1 = new JInput("Ejemplo de placeholder...");
-        container.getChildren().add(input1.createWithLabel("Label Básico", false));
+        JInput input1 = new JInput("Placeholder example...");
+        container.getChildren().add(input1.createWithLabel("Basic Label", false));
         
-        JInput input2 = new JInput("Campo requerido...");
-        container.getChildren().add(input2.createWithLabel("Campo Requerido", true));
+        JInput input2 = new JInput("Required field...");
+        container.getChildren().add(input2.createWithLabel("Required Field", true));
         
-        JInput input3 = new JInput("Fondo transparente...");
+        JInput input3 = new JInput("Transparent background...");
         input3.addClass("form-input-transparent");
-        container.getChildren().add(input3.createWithLabel("Input Transparente", false));
+        container.getChildren().add(input3.createWithLabel("Transparent Input", false));
         
         return container;
     }
@@ -111,7 +111,7 @@ public class InputsView extends ScrollPane {
         
         // Button addon
         JInputGroup group1 = new JInputGroup();
-        JInput input1 = new JInput("Buscar...");
+        JInput input1 = new JInput("Search...");
         JButton btn1 = new JButton("Search", JIcon.SETTINGS); // Placeholder icon
         group1.add(input1, btn1);
         
@@ -130,8 +130,8 @@ public class InputsView extends ScrollPane {
     private javafx.scene.Node createPasswordInput() {
         VBox container = new VBox(16);
         
-        JPasswordInput pass = new JPasswordInput("Ingrese contraseña...");
-        container.getChildren().add(pass.createWithLabel("Contraseña", true));
+        JPasswordInput pass = new JPasswordInput("Enter password...");
+        container.getChildren().add(pass.createWithLabel("Password", true));
         
         return container;
     }
@@ -140,13 +140,13 @@ public class InputsView extends ScrollPane {
         VBox container = new VBox(16);
         
         com.jjarroyo.components.JTextArea area1 = new com.jjarroyo.components.JTextArea();
-        area1.setPromptText("Escribe un comentario largo...");
-        container.getChildren().add(area1.createWithLabel("Biografía", false));
+        area1.setPromptText("Write a long comment...");
+        container.getChildren().add(area1.createWithLabel("Biography", false));
         
         com.jjarroyo.components.JTextArea area2 = new com.jjarroyo.components.JTextArea();
-        area2.setText("Texto predefinido...\nSegunda línea...");
+        area2.setText("Predefined text...\nSecond line...");
         area2.setStatus("form-input-success");
-        container.getChildren().add(area2.createWithLabel("Descripción (Validado)", true));
+        container.getChildren().add(area2.createWithLabel("Description (Validated)", true));
         
         return container;
     }
