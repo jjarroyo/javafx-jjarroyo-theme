@@ -21,7 +21,7 @@ public class JJArroyo {
         }
         
         // Load main styles.css
-        String styles = Objects.requireNonNull(JJArroyo.class.getResource("/styles.css")).toExternalForm();
+        String styles = Objects.requireNonNull(JJArroyo.class.getResource("/jjarroyo-theme.css")).toExternalForm();
         
         if (!scene.getStylesheets().contains(styles)) {
             scene.getStylesheets().add(styles);
