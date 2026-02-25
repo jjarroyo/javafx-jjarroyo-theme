@@ -84,11 +84,6 @@
     -color-border-subtle: -color-slate-100;
     -color-border-highlight: -color-primary-500;
 
-    /* Semantic Compatibility Aliases */
-    -color-fg-default: -color-text-primary;
-    -color-fg-subtle: -color-text-secondary;
-    -color-fg-muted: -color-text-muted;
-
     -fx-background-color: -color-bg-body;
     -fx-text-fill: -color-text-primary;
 }
@@ -104,11 +99,6 @@
     -color-text-secondary: -color-slate-400;
     -color-text-muted: -color-slate-500;
     -color-text-inverted: -color-slate-900;
-
-    /* Semantic Compatibility Aliases */
-    -color-fg-default: -color-text-primary;
-    -color-fg-subtle: -color-text-secondary;
-    -color-fg-muted: -color-text-muted;
 
     -color-border-default: -color-slate-700;
     -color-border-subtle: -color-slate-800;
@@ -2736,13 +2726,4 @@
 .date-picker-popup > .calendar-grid > .today:selected {
     -fx-background-color: -color-primary-500;
     -fx-text-fill: white;
-}
-.circular-progress {
-    -fx-alignment: center;
-}
-.circular-progress-track {
-    -fx-stroke: -color-bg-secondary;
-}
-.circular-progress-bar {
-    -fx-stroke: -color-primary;
 }

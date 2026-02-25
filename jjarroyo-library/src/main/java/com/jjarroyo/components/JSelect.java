@@ -148,7 +148,7 @@ public class JSelect<T> extends StackPane {
         if (popup.isShowing()) {
             popup.hide();
         } else {
-            Bounds bounds = localToScreen(getBoundsInLocal());
+            Bounds bounds = trigger.localToScreen(trigger.getBoundsInLocal());
             
             // Sync Stylesheets
             if (getScene() != null) {
@@ -169,15 +169,31 @@ public class JSelect<T> extends StackPane {
             // Need to set min width of popup content
             if (!popup.getContent().isEmpty()) {
                 VBox content = (VBox) popup.getContent().get(0);
-                content.setMinWidth(bounds.getWidth());
-                content.setPrefWidth(bounds.getWidth());
+                content.applyCss();
+                content.layout();
+                
+                // Extraemos el espacio (padding/insets) asignado por el CSS para la sombra
+                double leftInset = content.getInsets().getLeft();
+                double rightInset = content.getInsets().getRight();
+                double topInset = content.getInsets().getTop();
+                
+                // Ajustamos el tamaño total para que el fondo blanco coincida exactamente con el iniciador
+                content.setMinWidth(bounds.getWidth() + leftInset + rightInset);
+                content.setPrefWidth(bounds.getWidth() + leftInset + rightInset);
+                content.setMaxWidth(bounds.getWidth() + leftInset + rightInset);
+
+                // Update pseudo-class state
+                popup.setOnShown(event -> pseudoClassStateChanged(SHOWING_PSEUDO_CLASS, true));
+                popup.setOnHidden(event -> pseudoClassStateChanged(SHOWING_PSEUDO_CLASS, false));
+
+                // Restamos el inset izquierdo y superior para que quede perfectamente alineado
+                // Restamos 1 adicional en Y para superponer ligeramente y anular espacios dobles de borde
+                popup.show(trigger, bounds.getMinX() - leftInset-15, bounds.getMaxY() - topInset - 1);
+            } else {
+                popup.setOnShown(event -> pseudoClassStateChanged(SHOWING_PSEUDO_CLASS, true));
+                popup.setOnHidden(event -> pseudoClassStateChanged(SHOWING_PSEUDO_CLASS, false));
+                popup.show(trigger, bounds.getMinX(), bounds.getMaxY());
             }
-
-            // Update pseudo-class state
-            popup.setOnShown(event -> pseudoClassStateChanged(SHOWING_PSEUDO_CLASS, true));
-            popup.setOnHidden(event -> pseudoClassStateChanged(SHOWING_PSEUDO_CLASS, false));
-
-            popup.show(this, bounds.getMinX(), bounds.getMaxY());
             if (isSearchable()) {
                 searchField.requestFocus();
             }

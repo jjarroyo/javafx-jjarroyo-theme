@@ -150,7 +150,8 @@ card.setFooter(new JButton("Guardar"));</code></pre>
                             </h3>
                             <p class="text-sm text-slate-500 mb-4">
                                 Permite al usuario ocultar/mostrar el contenido
-                                del cuerpo.
+                                del cuerpo. Use `setExpanded` para controlar el
+                                estado.
                             </p>
                             <code class="text-xs bg-slate-100 p-1 rounded"
                                 >card.setCollapsible(true);</code
@@ -166,6 +167,18 @@ card.setFooter(new JButton("Guardar"));</code></pre>
                             </p>
                             <code class="text-xs bg-slate-100 p-1 rounded"
                                 >card.makeScrollable();</code
+                            >
+                        </div>
+                        <div class="card">
+                            <h3 class="font-semibold text-slate-900 mb-2">
+                                Línea Divisoria
+                            </h3>
+                            <p class="text-sm text-slate-500 mb-4">
+                                Añade una línea sutil entre la cabecera y el
+                                cuerpo.
+                            </p>
+                            <code class="text-xs bg-slate-100 p-1 rounded"
+                                >card.setLine(true);</code
                             >
                         </div>
                     </div>
@@ -240,6 +253,41 @@ card.setFooter(new JButton("Guardar"));</code></pre>
                                 <td class="px-6 py-4 text-slate-500">
                                     Añade un icono de chevron en la toolbar que
                                     permite colapsar el cuerpo.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setExpanded(boolean val)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Expande o colapsa la tarjeta
+                                    programáticamente.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setLine(boolean val)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Muestra u oculta la línea divisoria en la
+                                    cabecera.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    makeScrollable()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Envuelve el cuerpo en un ScrollPane.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    addClass(String... classes)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Añade clases CSS adicionales al contenedor
+                                    principal.
                                 </td>
                             </tr>
                         </tbody>

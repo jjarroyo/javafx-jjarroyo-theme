@@ -8,6 +8,10 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 import java.util.Set;
+import javafx.collections.ListChangeListener;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.collections.FXCollections;
 
 public class JTable<T> extends VBox {
 
@@ -15,6 +19,13 @@ public class JTable<T> extends VBox {
     private final JPagination pagination;
     private Runnable onScrollBottom;
     private boolean infiniteScrollEnabled = false;
+    
+    private ObservableList<T> allItems = FXCollections.observableArrayList();
+    private final IntegerProperty itemsPerPage = new SimpleIntegerProperty(10);
+    private final ListChangeListener<T> itemsListener = c -> {
+        updatePagination();
+        updateTableData();
+    };
 
     public JTable() {
         getStyleClass().add("j-table-wrapper");
@@ -27,6 +38,7 @@ public class JTable<T> extends VBox {
 
         // Pagination
         pagination = new JPagination();
+        pagination.setOnPageChange(this::updateTableData);
         
         getChildren().addAll(tableView, pagination);
         
@@ -53,7 +65,47 @@ public class JTable<T> extends VBox {
     public JPagination getPagination() { return pagination; }
     
     public void setItems(ObservableList<T> items) {
-        tableView.setItems(items);
+        if (this.allItems != null) {
+            this.allItems.removeListener(itemsListener);
+        }
+        this.allItems = items != null ? items : FXCollections.observableArrayList();
+        this.allItems.addListener(itemsListener);
+        
+        updatePagination();
+        updateTableData();
+    }
+    
+    public void setItemsPerPage(int items) {
+        this.itemsPerPage.set(items);
+        updatePagination();
+        updateTableData();
+    }
+    
+    private void updatePagination() {
+        int total = allItems.size();
+        int pages = (int) Math.ceil((double) total / itemsPerPage.get());
+        if (pages == 0) pages = 1;
+        pagination.totalPagesProperty().set(pages);
+    }
+
+    private void updateTableData() {
+        int page = pagination.currentPageProperty().get();
+        int totalPages = pagination.totalPagesProperty().get();
+        
+        if (page > totalPages) {
+            page = totalPages;
+            if (page < 1) page = 1;
+            pagination.currentPageProperty().set(page);
+        }
+        
+        int fromIndex = (page - 1) * itemsPerPage.get();
+        int toIndex = Math.min(fromIndex + itemsPerPage.get(), allItems.size());
+        
+        if (fromIndex <= toIndex && fromIndex < allItems.size() && fromIndex >= 0) {
+            tableView.setItems(FXCollections.observableArrayList(allItems.subList(fromIndex, toIndex)));
+        } else {
+            tableView.setItems(FXCollections.observableArrayList());
+        }
     }
     
     public void setOnScrollBottom(Runnable action) {
@@ -73,7 +125,11 @@ public class JTable<T> extends VBox {
     }
     
     public void addItem(T item) {
-        tableView.getItems().add(item);
+        if (allItems != null) {
+            allItems.add(item);
+        } else {
+            tableView.getItems().add(item);
+        }
     }
 }
 

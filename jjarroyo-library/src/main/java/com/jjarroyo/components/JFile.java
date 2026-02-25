@@ -317,6 +317,28 @@ public class JFile extends VBox {
     
     public ObservableList<File> getSelectedFiles() { return selectedFiles; }
     
+    public void setPreviewImage(Image img) {
+        if (mode.get() == Mode.AVATAR || mode.get() == Mode.SQUARE) {
+            if (img != null) {
+                avatarRect.setFill(new ImagePattern(img));
+            } else {
+                avatarRect.setFill(javafx.scene.paint.Color.TRANSPARENT);
+            }
+        }
+    }
+    
+    public void setPreviewFromFile(File file) {
+        if (file != null && file.exists()) {
+             try {
+                 setPreviewImage(new Image(file.toURI().toString()));
+             } catch (Exception e) {
+                 e.printStackTrace();
+             }
+        } else {
+             setPreviewImage(null);
+        }
+    }
+    
     public LongProperty maxFileSizeProperty() { return maxFileSize; }
     public long getMaxFileSize() { return maxFileSize.get(); }
     public void setMaxFileSize(long size) { this.maxFileSize.set(size); }

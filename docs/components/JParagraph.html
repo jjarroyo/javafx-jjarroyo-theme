@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JParagraph - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style type="text/tailwindcss">
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-4xl mx-auto">
+                <!-- Back Button -->
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">
+                        JParagraph
+                    </h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Un componente de texto optimizado para párrafos extensos
+                        y contenido HTML básico. Extiende
+                        `javafx.scene.control.Label`.
+                    </p>
+                </header>
+
+                <!-- Example Section -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Ejemplo
+                    </h2>
+
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="space-y-4">
+                            <p
+                                class="text-slate-700 text-center leading-relaxed"
+                            >
+                                Este es un párrafo centrado que demuestra cómo
+                                JParagraph maneja el ajuste de texto
+                                automáticamente por defecto.
+                            </p>
+                            <p
+                                class="text-slate-700 text-justify border-t pt-4"
+                            >
+                                <strong>Nota:</strong> JParagraph soporta
+                                alineación justificada y conversión básica de
+                                etiquetas HTML como &lt;br&gt; y &lt;p&gt; a
+                                saltos de línea planos para su uso en controles
+                                JavaFX estándar.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JParagraph p = new JParagraph("Texto largo...");
+p.setJustify();
+p.setHtmlText("Línea 1<br>Línea 2");</code></pre>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        API Reference
+                    </h2>
+                    <table
+                        class="min-w-full text-left text-sm whitespace-nowrap"
+                    >
+                        <thead
+                            class="uppercase tracking-wider border-b-2 border-slate-200 bg-slate-50 text-slate-600"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-4">Método</th>
+                                <th scope="col" class="px-6 py-4">
+                                    Descripción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    text(String text)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Establece el texto (Fluent API).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    width(double w)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Establece el ancho pref/min/max (Fluent
+                                    API).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setHtmlText(String html)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Convierte etiquetas basicas HTML a saltos de
+                                    línea.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setAlignCenter/Right/Left/Justify()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Configura la alineación del texto.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    addClass(String... classes)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Añade clases CSS.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

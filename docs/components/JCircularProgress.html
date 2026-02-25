@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JCircularProgress - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style type="text/tailwindcss">
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+            .progress-ring__circle {
+                transition: stroke-dashoffset 0.35s;
+                transform: rotate(-90deg);
+                transform-origin: 50% 50%;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-4xl mx-auto">
+                <!-- Back Button -->
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">
+                        JCircularProgress
+                    </h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Un indicador de progreso circular personalizable.
+                    </p>
+                </header>
+
+                <!-- Example Section -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Ejemplo
+                    </h2>
+
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div
+                            class="flex flex-wrap gap-8 items-center justify-center py-8"
+                        >
+                            <!-- SVG Simulation of circular progress -->
+                            <div class="relative w-24 h-24">
+                                <svg class="w-full h-full">
+                                    <circle
+                                        class="text-slate-200"
+                                        stroke-width="8"
+                                        stroke="currentColor"
+                                        fill="transparent"
+                                        r="40"
+                                        cx="48"
+                                        cy="48"
+                                    />
+                                    <circle
+                                        class="text-blue-500 progress-ring__circle"
+                                        stroke-width="8"
+                                        stroke-dasharray="251.2"
+                                        stroke-dashoffset="62.8"
+                                        stroke-linecap="round"
+                                        stroke="currentColor"
+                                        fill="transparent"
+                                        r="40"
+                                        cx="48"
+                                        cy="48"
+                                    />
+                                </svg>
+                                <span
+                                    class="absolute inset-0 flex items-center justify-center text-sm font-bold"
+                                    >75%</span
+                                >
+                            </div>
+
+                            <div class="relative w-16 h-16">
+                                <svg class="w-full h-full">
+                                    <circle
+                                        class="text-slate-200"
+                                        stroke-width="4"
+                                        stroke="currentColor"
+                                        fill="transparent"
+                                        r="28"
+                                        cx="32"
+                                        cy="32"
+                                    />
+                                    <circle
+                                        class="text-emerald-500 progress-ring__circle"
+                                        stroke-width="4"
+                                        stroke-dasharray="175.8"
+                                        stroke-dashoffset="44"
+                                        stroke-linecap="round"
+                                        stroke="currentColor"
+                                        fill="transparent"
+                                        r="28"
+                                        cx="32"
+                                        cy="32"
+                                    />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JCircularProgress progress = new JCircularProgress(40, 8);
+progress.setProgress(0.75);
+progress.setColor("#3b82f6");</code></pre>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        API Reference
+                    </h2>
+                    <table
+                        class="min-w-full text-left text-sm whitespace-nowrap"
+                    >
+                        <thead
+                            class="uppercase tracking-wider border-b-2 border-slate-200 bg-slate-50 text-slate-600"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-4">Método</th>
+                                <th scope="col" class="px-6 py-4">
+                                    Descripción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setProgress(double val)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Establece el progreso (0.0 a 1.0).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setColor(String webColor)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Color de la barra de progreso (ej:
+                                    "#ff0000").
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setTrackColor(String webColor)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Color del fondo del círculo.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

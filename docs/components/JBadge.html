@@ -121,7 +121,57 @@
                     <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
                         <pre><code class="text-slate-300 font-mono text-sm">JBadge badge = new JBadge("New"); // Default is primary
 JBadge successBadge = new JBadge("Completed", "badge-success");
-JBadge dangerBadge = new JBadge("Error", "badge-danger");</code></pre>
+JBadge dangerBadge = new JBadge("Error", "badge-danger");
+
+// Badge with Icon
+JBadge iconBadge = new JBadge("Settings", new JIcon(JIcon.SETTINGS));</code></pre>
+                    </div>
+                </section>
+
+                <!-- Icons -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Soporte para Iconos
+                    </h2>
+
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="flex flex-wrap gap-4 items-center">
+                            <span
+                                class="badge badge-light-primary inline-flex items-center"
+                            >
+                                <svg
+                                    class="w-3 h-3 mr-1"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"
+                                    />
+                                </svg>
+                                Seguro
+                            </span>
+                            <span
+                                class="badge badge-light-success inline-flex items-center"
+                            >
+                                <svg
+                                    class="w-3 h-3 mr-1"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                                    />
+                                </svg>
+                                Verificado
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JBadge badge = new JBadge("Verificado", "badge-light-success");
+badge.setIcon(new JIcon(JIcon.CHECK));</code></pre>
                     </div>
                 </section>
 
@@ -180,6 +230,23 @@ JBadge countBadge = new JBadge("5", "badge-circle");</code></pre>
                                 <td class="px-6 py-4 text-slate-500">
                                     Crea un badge con el texto y clases
                                     opcionales.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    new JBadge(String text, JIcon icon)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Crea un badge con texto y un icono.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setIcon(JIcon icon)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Establece el icono del badge. Si es null, lo
+                                    elimina.
                                 </td>
                             </tr>
                             <tr>

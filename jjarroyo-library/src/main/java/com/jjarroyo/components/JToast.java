@@ -84,7 +84,8 @@ public class JToast extends Popup {
         messageLabel.setText(message);
 
         // Show to calculate size
-        if (!isShowing()) show(owner);
+        // Show to calculate size
+        if (!isShowing()) super.show(owner);
 
         // Position Logic
         double x = 0, y = 0;
@@ -151,6 +152,28 @@ public class JToast extends Popup {
     // Static helper overload with title
     public static void show(Window owner, String title, String message, Type type, Position pos, int durationMillis) {
         new JToast().show(owner, title, message, type, pos, Duration.millis(durationMillis));
+    }
+    // Factory method for chaining
+    public static JToast make(String title, String message, Type type, int durationMillis) {
+        JToast toast = new JToast();
+        // Store config to show later? Or just return initialized toast.
+        // The show(Window) method takes proper args.
+        // If we use chaining .show(window), we need to store these values.
+        toast.pendingTitle = title;
+        toast.pendingMessage = message;
+        toast.pendingType = type;
+        toast.pendingDuration = Duration.millis(durationMillis);
+        return toast;
+    }
+
+    private String pendingTitle;
+    private String pendingMessage;
+    private Type pendingType = Type.DEFAULT;
+    private Duration pendingDuration;
+    
+    // Overload show to use pending values if available
+    public void show(Window owner) {
+        show(owner, pendingTitle, pendingMessage, pendingType, Position.BOTTOM_RIGHT, pendingDuration); // Default position
     }
 }
 

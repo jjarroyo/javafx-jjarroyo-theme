@@ -16,6 +16,12 @@ public class JBadge extends Label {
         init();
     }
 
+    public JBadge(String text, JIcon icon) {
+        super(text);
+        init();
+        setIcon(icon);
+    }
+
     public JBadge(String text, String... styleClasses) {
         super(text);
         init();
@@ -40,6 +46,24 @@ public class JBadge extends Label {
         }
         getStyleClass().addAll(styleClasses);
         return this;
+    }
+
+    public void setIcon(JIcon icon) {
+        if (icon != null) {
+            javafx.scene.shape.SVGPath svg = new javafx.scene.shape.SVGPath();
+            svg.setContent(icon.getPath());
+            svg.getStyleClass().add("icon-svg");
+            svg.setScaleX(0.8);
+            svg.setScaleY(0.8);
+            svg.setStyle("-fx-fill: currentColor;"); 
+            
+            setGraphic(svg);
+            setGraphicTextGap(6);
+            getStyleClass().add("badge-has-icon");
+        } else {
+            setGraphic(null);
+            getStyleClass().remove("badge-has-icon");
+        }
     }
 }
 

@@ -102,7 +102,10 @@ public class JHeader extends HBox {
         return this;
     }
 
-    public JHeader setUserProfile(String name, String email, String initials) {
+    private Runnable onLogout; // Field to store logout action
+
+    public JHeader setUserProfile(String name, String email, String initials, Runnable onLogout) {
+        this.onLogout = onLogout;
         // Clear previous profile to avoid duplicates if called multiple times, 
         // but keep custom toolbar items if we designed it that way. 
         // Ideally rightBox structure should be: [Toolbar Items] [Profile]
@@ -142,6 +145,11 @@ public class JHeader extends HBox {
         return this;
     }
     
+    // Overload for backward compatibility if needed, though we can just update usage
+    public JHeader setUserProfile(String name, String email, String initials) {
+        return setUserProfile(name, email, initials, null);
+    }
+    
     private void showProfileDropdown(Node target, String name, String email) {
         JPopover pop = new JPopover();
         pop.setPosition(JPopover.Position.BOTTOM);
@@ -165,17 +173,18 @@ public class JHeader extends HBox {
         content.getChildren().add(headerBox);
         
         // Items
-        content.getChildren().add(createDropdownItem("My Profile", () -> {
+        // content.getChildren().add(createDropdownItem("My Profile", () -> {
+        //     pop.hide();
+        //     System.out.println("Profile clicked");
+        // }));
+        // content.getChildren().add(createDropdownItem("Settings", () -> {
+        //     pop.hide();
+        //     System.out.println("Settings clicked");
+        // }));
+        content.getChildren().add(createDropdownItem("Cerrar Sesión", () -> {
             pop.hide();
-            System.out.println("Profile clicked");
-        }));
-        content.getChildren().add(createDropdownItem("Settings", () -> {
-            pop.hide();
-            System.out.println("Settings clicked");
-        }));
-        content.getChildren().add(createDropdownItem("Sign Out", () -> {
-            pop.hide();
-            System.out.println("Logout clicked");
+            if (onLogout != null) onLogout.run();
+            else System.out.println("Logout clicked (no action set)");
         }));
         
         pop.setContentNode(content);

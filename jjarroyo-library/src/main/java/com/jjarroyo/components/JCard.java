@@ -193,6 +193,13 @@ public class JCard extends VBox {
         }
     }
     
+    public JCard setExpanded(boolean expanded) {
+        if (this.expanded != expanded) {
+            toggleCollapse();
+        }
+        return this;
+    }
+    
     private void toggleCollapse() {
         expanded = !expanded;
         if (body != null) {
