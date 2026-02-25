@@ -2,6 +2,14 @@
 
 A modern, responsive JavaFX theme library inspired by the Metronic design system, implementing Tailwind CSS concepts for JavaFX applications.
 
+## Quick Start
+
+To test the demo application and see all components in action, run the following command from the root directory:
+
+```bash
+java -jar "jjarroyo-demo/target/jjarroyo-demo-1.0.0.jar"
+```
+
 ## Screenshots
 
 ![Control Panel](docs/images/dashboard.png)
