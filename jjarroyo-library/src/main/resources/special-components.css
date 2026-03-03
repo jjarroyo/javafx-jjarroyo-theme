@@ -1,0 +1,348 @@
+/* ==========================================================================
+   SPECIAL COMPONENTS - File Uploader, Accordion, Progress Bar, Circular Progress,
+                        Zoom, Design Canvas, SQL Editor
+   ========================================================================== */
+
+/* ─── J-FILE ─────────────────────────────────────────────────────────────────── */
+.j-file {
+    -fx-spacing: 12px;
+}
+
+/* DROP_ZONE */
+.j-file.drop-zone {
+    -fx-background-color: -color-slate-50;
+    -fx-background-radius: 8px;
+    -fx-border-color: -color-primary-300;
+    -fx-border-width: 1px;
+    -fx-border-style: dashed;
+    -fx-border-radius: 8px;
+    -fx-padding: 32px;
+    -fx-alignment: center;
+    -fx-cursor: hand;
+    -fx-min-height: 120px;
+    -fx-transition:
+        -fx-background-color 0.2s,
+        -fx-border-color 0.2s;
+}
+.j-file.drop-zone:hover,
+.j-file.drop-zone.drag-over {
+    -fx-background-color: -color-primary-50;
+    -fx-border-color: -color-primary-500;
+}
+
+.j-file.drop-zone .icon {
+    -fx-fill: -color-primary-500;
+    -fx-scale-x: 2.5;
+    -fx-scale-y: 2.5;
+}
+.j-file.drop-zone .title {
+    -fx-text-fill: -color-slate-800;
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+}
+.j-file.drop-zone .subtitle {
+    -fx-text-fill: -color-slate-500;
+    -fx-font-size: 13px;
+}
+
+/* AVATAR */
+.j-file.avatar {
+    -fx-alignment: center;
+}
+
+.j-file-preview-wrapper {
+    -fx-background-color: -color-slate-50;
+    -fx-background-radius: 50%;
+    -fx-border-color: -color-slate-200;
+    -fx-border-radius: 50%;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.05), 6, 0, 0, 2);
+    -fx-cursor: hand;
+    -fx-align-items: center;
+    -fx-justify-content: center;
+}
+
+.j-file .placeholder-icon {
+    -fx-scale-x: 2;
+    -fx-scale-y: 2;
+    -fx-fill: -color-slate-300;
+}
+.j-file-preview-wrapper .j-icon {
+    -fx-transition: -fx-fill 0.2s;
+}
+
+/* Square */
+.j-file.square {
+    -fx-alignment: center;
+}
+.j-file.square .j-file-preview-wrapper {
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-background-color: -color-slate-50;
+}
+
+/* Hover */
+.j-file-preview-wrapper:hover {
+    -fx-border-color: -color-primary-500;
+    -fx-effect: dropshadow(
+        three-pass-box,
+        rgba(59, 130, 246, 0.25),
+        12,
+        0,
+        0,
+        4
+    );
+}
+.j-file-preview-wrapper:hover .j-icon {
+    -fx-fill: -color-primary-300;
+}
+
+/* Overlay */
+.j-file-overlay {
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-background-radius: 50%;
+    -fx-opacity: 0;
+    -fx-alignment: center;
+    -fx-transition: -fx-opacity 0.2s;
+}
+.j-file.square .j-file-overlay {
+    -fx-background-radius: 12px;
+}
+.j-file-preview-wrapper:hover .j-file-overlay {
+    -fx-opacity: 1;
+}
+
+.j-file-actions {
+    -fx-spacing: 8px;
+    -fx-alignment: center;
+}
+.j-file-action-btn {
+    -fx-background-color: white;
+    -fx-background-radius: 4px;
+    -fx-padding: 6px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 4, 0, 0, 2);
+}
+.j-file-action-btn:hover {
+    -fx-background-color: -color-slate-100;
+}
+.j-file-action-btn .j-icon {
+    -fx-fill: -color-slate-600;
+    -fx-scale-x: 0.8;
+    -fx-scale-y: 0.8;
+}
+
+/* BUTTON mode */
+.j-file.button {
+    -fx-alignment: center-left;
+    -fx-background-color: transparent;
+}
+.j-file.button .btn {
+    -fx-background-color: -color-primary-500;
+    -fx-background-insets: 0;
+    -fx-background-radius: 6px;
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-opacity: 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(59, 130, 246, 0.2), 4, 0, 0, 2);
+}
+.j-file.button .btn:hover {
+    -fx-background-color: -color-primary-600;
+    -fx-effect: dropshadow(three-pass-box, rgba(59, 130, 246, 0.3), 6, 0, 0, 3);
+}
+.j-file.button .btn .j-icon {
+    -fx-fill: white;
+}
+
+/* States */
+.j-file.error .j-file-preview-wrapper,
+.j-file.error.drop-zone {
+    -fx-border-color: -color-danger-500;
+}
+.j-file .error-text {
+    -fx-text-fill: -color-danger-500;
+    -fx-font-size: 12px;
+}
+
+/* Barcode drop zone */
+.barcode-drop-zone {
+    -fx-border-color: #cbd5e1;
+    -fx-border-style: dashed;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 10;
+}
+
+/* ─── ACCORDION ──────────────────────────────────────────────────────────────── */
+.j-accordion {
+    -fx-background-color: transparent;
+}
+.j-accordion-pane {
+    -fx-text-fill: -color-slate-800;
+    -fx-background-color: transparent;
+}
+
+.j-accordion-pane > .title {
+    -fx-background-color: -color-bg-surface;
+    -fx-border-color: -color-border-default;
+    -fx-border-width: 0 0 1px 0;
+    -fx-padding: 12px 16px;
+    -fx-cursor: hand;
+}
+.j-accordion-pane:focused > .title {
+    -fx-background-color: -color-slate-50;
+    -fx-color: -color-slate-50;
+}
+.j-accordion-pane > .title > .text {
+    -fx-font-weight: 600;
+    -fx-font-size: 14px;
+    -fx-fill: -color-text-primary;
+}
+.j-accordion-pane > .title > .arrow-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+.j-accordion-pane > .title > .arrow-button > .arrow {
+    -fx-background-color: -color-slate-400;
+    -fx-padding: 3px;
+}
+
+.j-accordion-pane > .content {
+    -fx-background-color: -color-bg-surface;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 16px;
+}
+.j-accordion-pane:hover > .title {
+    -fx-background-color: -color-bg-surface-hover;
+}
+.j-accordion-pane:expanded > .title {
+    -fx-background-color: -color-bg-surface;
+    -fx-border-bottom-color: transparent;
+}
+.j-accordion-pane:expanded > .title > .text {
+    -fx-fill: -color-primary-600;
+}
+.j-accordion-pane:expanded > .title > .arrow-button > .arrow {
+    -fx-background-color: -color-primary-500;
+}
+
+/* ─── PROGRESS BAR ───────────────────────────────────────────────────────────── */
+.j-progress-bar {
+    -fx-pref-width: 200px;
+    -fx-accent: -color-primary-500;
+    -fx-pref-height: 8px;
+    -fx-min-height: 8px;
+}
+.j-progress-bar .track {
+    -fx-background-color: -color-slate-100;
+    -fx-background-radius: 4px;
+    -fx-background-insets: 0;
+}
+.j-progress-bar .bar {
+    -fx-background-color: -color-primary-500;
+    -fx-background-radius: 4px;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+/* Sizes */
+.j-progress-bar.progress-sm {
+    -fx-pref-height: 4px;
+    -fx-min-height: 4px;
+    -fx-max-height: 4px;
+}
+.j-progress-bar.progress-md {
+    -fx-pref-height: 8px;
+    -fx-min-height: 8px;
+    -fx-max-height: 8px;
+}
+.j-progress-bar.progress-lg {
+    -fx-pref-height: 16px;
+    -fx-min-height: 16px;
+    -fx-max-height: 16px;
+}
+
+/* Colors */
+.j-progress-bar.progress-success .bar {
+    -fx-background-color: -color-success-500;
+}
+.j-progress-bar.progress-danger .bar {
+    -fx-background-color: -color-danger-500;
+}
+.j-progress-bar.progress-warning .bar {
+    -fx-background-color: -color-warning-500;
+}
+.j-progress-bar.progress-info .bar {
+    -fx-background-color: -color-info-500;
+}
+.j-progress-bar.progress-dark .bar {
+    -fx-background-color: -color-slate-800;
+}
+.j-progress-bar.progress-secondary .bar {
+    -fx-background-color: -color-slate-400;
+}
+.j-progress-bar:indeterminate .bar {
+    -fx-background-color: -color-primary-500;
+}
+
+/* ─── CIRCULAR PROGRESS ──────────────────────────────────────────────────────── */
+.circular-progress {
+    -fx-alignment: center;
+}
+.circular-progress-track {
+    -fx-stroke: -color-bg-secondary;
+}
+.circular-progress-bar {
+    -fx-stroke: -color-primary;
+}
+
+/* ─── J-ZOOM ─────────────────────────────────────────────────────────────────── */
+.j-zoom {
+    -fx-background-color: rgba(241, 245, 249, 0.6);
+    -fx-background-radius: 40;
+    -fx-border-color: -color-border-default;
+    -fx-border-radius: 40;
+    -fx-border-width: 1;
+    -fx-pref-width: 80px;
+}
+
+/* ─── DESIGN CANVAS ──────────────────────────────────────────────────────────── */
+.j-design-canvas {
+    -fx-background-color: #f1f5f9;
+}
+
+.label-media {
+    -fx-background-color: white;
+    -fx-background-radius: 16;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1;
+    -fx-border-radius: 16;
+}
+
+.canvas-slot {
+    -fx-transition: 0.2s all ease;
+    -fx-cursor: hand;
+}
+.canvas-slot:hover {
+    -fx-background-color: rgba(59, 130, 246, 0.03);
+    -fx-border-color: -color-primary;
+}
+
+/* ─── J-DRAGGABLE FIELD ──────────────────────────────────────────────────────── */
+.j-draggable-field {
+    -fx-background-color: white;
+    -fx-border-color: -color-border-default;
+    -fx-border-width: 1;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-padding: 10 15 10 15;
+    -fx-cursor: hand;
+}
+.j-draggable-field:hover {
+    -fx-border-color: -color-primary-emphasis;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0, 0, 0);
+}
+
+/* ─── SQL EDITOR ─────────────────────────────────────────────────────────────── */
+/* ─── SQL EDITOR (Migrated to src/main/resources/css/sql-editor-light.css) ─── */

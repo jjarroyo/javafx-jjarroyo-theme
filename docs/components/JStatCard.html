@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JStatCard - JJArroyo Theme Documentation</title>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+            rel="stylesheet"
+        />
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css"
+            rel="stylesheet"
+        />
+        <style>
+            .sidebar {
+                height: calc(100vh - 4rem);
+            }
+            .content-area {
+                min-height: calc(100vh - 4rem);
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-900 font-sans">
+        <!-- Navbar -->
+        <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+            <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex items-center">
+                        <span class="text-xl font-bold text-primary-600"
+                            >JJArroyo Theme</span
+                        >
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <a
+                            href="../index.html"
+                            class="text-slate-500 hover:text-slate-900 px-3 py-2 rounded-md text-sm font-medium"
+                            >Inicio</a
+                        >
+                        <a
+                            href="https://github.com/jjarroyo/javafx-jjarroyo-theme"
+                            class="text-slate-500 hover:text-slate-900 px-3 py-2 rounded-md text-sm font-medium"
+                            >GitHub</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="max-w-8xl mx-auto flex">
+            <!-- Sidebar -->
+            <aside
+                class="w-64 flex-shrink-0 hidden md:block border-r border-slate-200 sidebar sticky top-16 overflow-y-auto bg-white"
+            >
+                <nav class="px-4 py-6 space-y-1">
+                    <div class="pb-4">
+                        <p
+                            class="px-2 text-xs font-semibold text-slate-400 uppercase tracking-wider"
+                        >
+                            Getting Started
+                        </p>
+                        <a
+                            href="../index.html"
+                            class="mt-2 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >Instalación</a
+                        >
+                        <a
+                            href="../index.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >Conceptos de Diseño</a
+                        >
+                        <a
+                            href="../index.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >Iconos</a
+                        >
+                    </div>
+
+                    <div class="py-4">
+                        <p
+                            class="px-2 text-xs font-semibold text-slate-400 uppercase tracking-wider"
+                        >
+                            Feedback & Forms
+                        </p>
+                        <a
+                            href="JToast.html"
+                            class="mt-2 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JToast</a
+                        >
+                        <a
+                            href="JProgress.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JProgress</a
+                        >
+                        <a
+                            href="JCircularProgress.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JCircularProgress</a
+                        >
+                        <a
+                            href="JNumberInput.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JNumberInput</a
+                        >
+                        <a
+                            href="JSearchInput.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JSearchInput</a
+                        >
+                        <a
+                            href="JInputGroup.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JInputGroup</a
+                        >
+                        <a
+                            href="JSwitch.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JSwitch</a
+                        >
+                        <a
+                            href="JSlider.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JSlider</a
+                        >
+                    </div>
+
+                    <div class="py-4">
+                        <p
+                            class="px-2 text-xs font-semibold text-slate-400 uppercase tracking-wider"
+                        >
+                            Layout & Data
+                        </p>
+                        <a
+                            href="JCard.html"
+                            class="mt-2 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JCard</a
+                        >
+                        <a
+                            href="JStatCard.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md bg-primary-50 text-primary-600"
+                            >JStatCard</a
+                        >
+                        <a
+                            href="JStepper.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JStepper</a
+                        >
+                        <a
+                            href="JTimeline.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JTimeline</a
+                        >
+                        <a
+                            href="JSidebar.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JSidebar</a
+                        >
+                        <a
+                            href="JAccordion.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JAccordion</a
+                        >
+                        <a
+                            href="JTabs.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JTabs</a
+                        >
+                        <a
+                            href="JPagination.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JPagination</a
+                        >
+                        <a
+                            href="JTable.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JTable</a
+                        >
+                    </div>
+
+                    <div class="py-4">
+                        <p
+                            class="px-2 text-xs font-semibold text-slate-400 uppercase tracking-wider"
+                        >
+                            Elements
+                        </p>
+                        <a
+                            href="JAvatar.html"
+                            class="mt-2 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JAvatar</a
+                        >
+                        <a
+                            href="JBreadcrumb.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JBreadcrumb</a
+                        >
+                        <a
+                            href="JChip.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JChip</a
+                        >
+                        <a
+                            href="JRating.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JRating</a
+                        >
+                        <a
+                            href="JSkeleton.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JSkeleton</a
+                        >
+                        <a
+                            href="JTooltip.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JTooltip</a
+                        >
+                        <a
+                            href="JParagraph.html"
+                            class="mt-1 group flex items-center px-2 py-2 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            >JParagraph</a
+                        >
+                    </div>
+                </nav>
+            </aside>
+
+            <!-- Main content -->
+            <main
+                class="flex-1 content-area px-4 sm:px-6 lg:px-8 py-8 w-full max-w-4xl mx-auto"
+            >
+                <div class="mb-10">
+                    <h1
+                        class="text-3xl font-extrabold text-slate-900 tracking-tight"
+                    >
+                        JStatCard
+                    </h1>
+                    <p class="mt-4 text-lg text-slate-500">
+                        Un componente que muestra una tarjeta con métricas e
+                        indicadores de rendimiento clave (KPIs), el cual integra
+                        una cuenta regresiva para presentar sus números.
+                    </p>
+                </div>
+
+                <div class="prose prose-slate max-w-none">
+                    <h2 class="text-2xl font-bold text-slate-900 mt-8 mb-4">
+                        Uso Básico
+                    </h2>
+                    <p>
+                        El uso más simple es una tarjeta con título y un número
+                        asignado estáticamente, sin tendencia adicional. Por
+                        defecto animará en 1000 milisegundos desde cero al valor
+                        que determines.
+                    </p>
+
+                    <pre><code class="language-java">JStatCard stat = new JStatCard();
+stat.setTitle("Usuarios Activos");
+stat.setValue(2340);
+</code></pre>
+
+                    <h2 class="text-2xl font-bold text-slate-900 mt-8 mb-4">
+                        Con Prefijos, Sufijos y Decimales
+                    </h2>
+                    <p>
+                        Puedes personalizar la forma en que se muestra el
+                        número, estableciendo cuántos decimales debe de mostrar
+                        usando <code>setDecimalPlaces()</code>.
+                    </p>
+
+                    <pre><code class="language-java">JStatCard revenueCard = new JStatCard();
+revenueCard.setTitle("Ingresos Mensuales");
+// Agregar símbolo de $ y moneda, para quedar ej: $15,000.55 MXN
+revenueCard.setPrefix("$");
+revenueCard.setSuffix(" MXN");
+revenueCard.setDecimalPlaces(2);
+revenueCard.setValue(15000.55);
+</code></pre>
+
+                    <h2 class="text-2xl font-bold text-slate-900 mt-8 mb-4">
+                        Añadiendo Íconos y Tendencia (Trend)
+                    </h2>
+                    <p>
+                        Para mostrar si el KPI fue "bueno o malo" en comparación
+                        de un tiempo anterior, podemos asignar iconos en
+                        combinacion con colores y descripciones de las
+                        tendencias en positivo y negativo.
+                    </p>
+
+                    <pre><code class="language-java">JStatCard bounceCard = new JStatCard();
+bounceCard.setTitle("Tasa de Rebote");
+bounceCard.setSuffix("%");
+bounceCard.setDecimalPlaces(1);
+bounceCard.setValue(42.3, 2000); // Podemos cambiar la duración de la animación! Aqui: 2000ms.
+
+// Asignamos un icono del Enum JIcon, y la clase de color 'danger'
+bounceCard.setIcon(JIcon.CLOSE.view(), "danger");
+
+// Texto de comparación o tendencia en rojo (isPositive = false)
+bounceCard.setTrend("-2.1% que ayer", false);
+</code></pre>
+
+                    <h2 class="text-2xl font-bold text-slate-900 mt-8 mb-4">
+                        API Methods
+                    </h2>
+                    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+                        <table class="min-w-full divide-y divide-slate-200">
+                            <thead class="bg-slate-50">
+                                <tr>
+                                    <th
+                                        scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider"
+                                    >
+                                        Method
+                                    </th>
+                                    <th
+                                        scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider"
+                                    >
+                                        Description
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-slate-200">
+                                <tr>
+                                    <td
+                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900"
+                                    >
+                                        <code>setTitle(String)</code>
+                                    </td>
+                                    <td
+                                        class="px-6 py-4 text-sm text-slate-500"
+                                    >
+                                        Cambia el título superior de la métrica
+                                        (ej. "Total Orders").
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900"
+                                    >
+                                        <code>setValue(double value)</code
+                                        ><br /><code
+                                            >setValue(double value, int
+                                            durationMs)</code
+                                        >
+                                    </td>
+                                    <td
+                                        class="px-6 py-4 text-sm text-slate-500"
+                                    >
+                                        Establece el valor. Anima desde el valor
+                                        en el que estaba anteriormente al nuevo
+                                        de forma dinámica. Se le puede asignar
+                                        un tiempo distinto que el de por defecto
+                                        (1000m).
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900"
+                                    >
+                                        <code
+                                            >setIcon(Node icon, String
+                                            colorClass)</code
+                                        >
+                                    </td>
+                                    <td
+                                        class="px-6 py-4 text-sm text-slate-500"
+                                    >
+                                        Muestra un icono en la zona derecha
+                                        superior incrustado dentro de un circulo
+                                        contenedor. Se recomienda colores como:
+                                        `primary`, `success`, `danger`,
+                                        `warning`, `info`...
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900"
+                                    >
+                                        <code
+                                            >setTrend(String text, boolean
+                                            isPositive)</code
+                                        >
+                                    </td>
+                                    <td
+                                        class="px-6 py-4 text-sm text-slate-500"
+                                    >
+                                        Agrega el pie de página con el resultado
+                                        de alguna comparación o texto que
+                                        explique una tendencia. `isPositive`
+                                        pondrá el texto en formato Success
+                                        (Verde) o en formato Danger (Rojo).
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900"
+                                    >
+                                        <code>setPrefix(String prefix)</code
+                                        ><br /><code
+                                            >setSuffix(String suffix)</code
+                                        >
+                                    </td>
+                                    <td
+                                        class="px-6 py-4 text-sm text-slate-500"
+                                    >
+                                        Strings de texto que irán concatenados
+                                        justamente antes y después del número
+                                        formateado. Por ejemplo: `$` para un
+                                        prefix.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900"
+                                    >
+                                        <code>setDecimalPlaces(int limit)</code>
+                                    </td>
+                                    <td
+                                        class="px-6 py-4 text-sm text-slate-500"
+                                    >
+                                        Cuantos decimales van a imprimirse junto
+                                        al valor durante y al final de la
+                                        animación de dicho número.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Scripts para resaltado de sintaxis -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-java.min.js"></script>
+    </body>
+</html>

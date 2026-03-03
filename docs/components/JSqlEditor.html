@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JSqlEditor - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"
+            rel="stylesheet"
+        />
+        <style type="text/tailwindcss">
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+            .sql-keyword {
+                color: #c678dd;
+                font-weight: 600;
+            }
+            .sql-type {
+                color: #e5c07b;
+            }
+            .sql-string {
+                color: #98c379;
+            }
+            .sql-comment {
+                color: #5c6370;
+                font-style: italic;
+            }
+            .sql-function {
+                color: #61afef;
+            }
+            .sql-number {
+                color: #d19a66;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">
+                        JSqlEditor
+                    </h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Editor de SQL con resaltado de sintaxis, autocompletado,
+                        validación en tiempo real y modo oscuro.
+                    </p>
+                </header>
+
+                <!-- Preview -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Vista Previa
+                    </h2>
+                    <div
+                        class="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden mb-4"
+                    >
+                        <!-- Editor simulation -->
+                        <div
+                            class="bg-white border border-slate-200 rounded-lg overflow-hidden"
+                            style="font-family: 'JetBrains Mono', monospace"
+                        >
+                            <div class="flex text-xs">
+                                <!-- Line numbers -->
+                                <div
+                                    class="bg-slate-50 text-slate-400 text-right py-3 px-3 select-none border-r border-slate-200 leading-6"
+                                >
+                                    1<br />2<br />3<br />4<br />5<br />6<br />7<br />8
+                                </div>
+                                <!-- Code -->
+                                <div
+                                    class="py-3 px-4 leading-6 overflow-x-auto flex-1"
+                                >
+                                    <span class="sql-comment"
+                                        >-- Consulta de ejemplo</span
+                                    ><br />
+                                    <span class="sql-keyword">SELECT</span>
+                                    u.name, u.email,<br />
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span
+                                        class="sql-function"
+                                        >COUNT</span
+                                    >(o.id)
+                                    <span class="sql-keyword">AS</span>
+                                    total<br />
+                                    <span class="sql-keyword">FROM</span> users
+                                    u<br />
+                                    <span class="sql-keyword">LEFT JOIN</span>
+                                    orders o<br />
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span
+                                        class="sql-keyword"
+                                        >ON</span
+                                    >
+                                    o.user_id = u.id<br />
+                                    <span class="sql-keyword">WHERE</span>
+                                    u.role =
+                                    <span class="sql-string">'admin'</span
+                                    ><br />
+                                    <span class="sql-keyword">LIMIT</span>
+                                    <span class="sql-number">10</span>;
+                                </div>
+                            </div>
+                            <!-- Status bar -->
+                            <div
+                                class="flex items-center justify-between bg-slate-50 border-t border-slate-200 px-3 py-1 text-xs text-slate-500"
+                            >
+                                <span>Ln 1, Col 1</span>
+                                <div class="flex items-center gap-3">
+                                    <span class="text-green-600"
+                                        >✓ Sin errores</span
+                                    >
+                                    <span
+                                        class="border-l border-slate-300 pl-3 cursor-pointer hover:text-slate-700"
+                                        >☀ Claro</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JSqlEditor editor = new JSqlEditor();
+editor.setSql("SELECT * FROM users WHERE id = 1;");
+editor.setPrefHeight(300);</code></pre>
+                    </div>
+                </section>
+
+                <!-- Shortcuts -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Atajos de Teclado
+                    </h2>
+                    <div
+                        class="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden"
+                    >
+                        <div class="grid grid-cols-2 gap-px bg-slate-100">
+                            <div class="bg-white p-4 flex items-center gap-3">
+                                <kbd
+                                    class="px-2 py-1 bg-slate-100 border border-slate-300 rounded text-xs font-mono"
+                                    >Ctrl+Shift+F</kbd
+                                >
+                                <span class="text-sm text-slate-600"
+                                    >Formatear SQL</span
+                                >
+                            </div>
+                            <div class="bg-white p-4 flex items-center gap-3">
+                                <kbd
+                                    class="px-2 py-1 bg-slate-100 border border-slate-300 rounded text-xs font-mono"
+                                    >Ctrl+Space</kbd
+                                >
+                                <span class="text-sm text-slate-600"
+                                    >Autocompletar</span
+                                >
+                            </div>
+                            <div class="bg-white p-4 flex items-center gap-3">
+                                <kbd
+                                    class="px-2 py-1 bg-slate-100 border border-slate-300 rounded text-xs font-mono"
+                                    >Ctrl+/</kbd
+                                >
+                                <span class="text-sm text-slate-600"
+                                    >Comentar línea</span
+                                >
+                            </div>
+                            <div class="bg-white p-4 flex items-center gap-3">
+                                <kbd
+                                    class="px-2 py-1 bg-slate-100 border border-slate-300 rounded text-xs font-mono"
+                                    >Ctrl+D</kbd
+                                >
+                                <span class="text-sm text-slate-600"
+                                    >Duplicar línea</span
+                                >
+                            </div>
+                            <div class="bg-white p-4 flex items-center gap-3">
+                                <kbd
+                                    class="px-2 py-1 bg-slate-100 border border-slate-300 rounded text-xs font-mono"
+                                    >Ctrl+Shift+K</kbd
+                                >
+                                <span class="text-sm text-slate-600"
+                                    >Eliminar línea</span
+                                >
+                            </div>
+                            <div class="bg-white p-4 flex items-center gap-3">
+                                <kbd
+                                    class="px-2 py-1 bg-slate-100 border border-slate-300 rounded text-xs font-mono"
+                                    >Tab</kbd
+                                >
+                                <span class="text-sm text-slate-600"
+                                    >Indentar / Aceptar autocompletado</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        API Reference
+                    </h2>
+                    <table
+                        class="min-w-full text-left text-sm whitespace-nowrap"
+                    >
+                        <thead
+                            class="uppercase tracking-wider border-b-2 border-slate-200 bg-slate-50 text-slate-600"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-4">Método</th>
+                                <th scope="col" class="px-6 py-4">
+                                    Descripción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    getSql() / setSql(String)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Obtiene/establece el contenido SQL.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    getText() / setText(String)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Alias de getSql/setSql.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    clear()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Limpia el contenido del editor.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    formatSql()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Formatea el SQL con indentación.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setReadOnly(boolean)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Modo solo lectura.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setDarkMode(boolean)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Activa/desactiva el tema oscuro.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    toggleDarkMode()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Alterna entre tema claro y oscuro.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    getSqlErrors()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Lista de errores de validación SQL.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    copyToClipboard()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Copia el contenido al portapapeles.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    focusEditor()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Da foco al editor.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    dispose()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Libera subscripciones reactivas.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

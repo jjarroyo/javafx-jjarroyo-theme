@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.ScrollPane;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -101,13 +102,14 @@ public class JTabs extends BorderPane {
     private void updateLayout(Side side) {
         // Remove existing header container from layout
         if (headerContainer != null) {
-            getChildren().remove(headerContainer);
+            setTop(null); setBottom(null); setLeft(null); setRight(null);
+            setCenter(contentContainer);
         }
         
         // Create new container
         if (side == Side.TOP || side == Side.BOTTOM) {
             headerContainer = new HBox();
-            ((HBox)headerContainer).setSpacing(20); 
+            ((HBox)headerContainer).setSpacing(4); 
             ((HBox)headerContainer).setAlignment(Pos.CENTER_LEFT);
         } else {
             headerContainer = new VBox();
@@ -129,12 +131,28 @@ public class JTabs extends BorderPane {
             }
         }
 
-        // Position the header container
-        switch (side) {
-            case TOP -> setTop(headerContainer);
-            case BOTTOM -> setBottom(headerContainer);
-            case LEFT -> setLeft(headerContainer);
-            case RIGHT -> setRight(headerContainer);
+        // For TOP/BOTTOM, wrap in a ScrollPane for horizontal scrolling
+        if (side == Side.TOP || side == Side.BOTTOM) {
+            ScrollPane scroll = new ScrollPane(headerContainer);
+            scroll.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+            scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+            scroll.setFitToHeight(true);
+            scroll.setPannable(true);
+            scroll.setStyle("-fx-background-color:transparent;-fx-background:transparent;-fx-padding:0;");
+            scroll.setMinHeight(38);
+            scroll.setPrefHeight(38);
+
+            switch (side) {
+                case TOP    -> setTop(scroll);
+                case BOTTOM -> setBottom(scroll);
+                default -> {}
+            }
+        } else {
+            switch (side) {
+                case LEFT  -> setLeft(headerContainer);
+                case RIGHT -> setRight(headerContainer);
+                default -> {}
+            }
         }
     }
 
@@ -179,12 +197,17 @@ public class JTabs extends BorderPane {
             ((HBox)wrapper).setAlignment(Pos.CENTER_LEFT);
             ((HBox)wrapper).setSpacing(10);
         } else {
-            wrapper = new VBox(textContainer);
-            ((VBox)wrapper).setAlignment(Pos.CENTER);
+            HBox hWrapper = new HBox(6);
+            hWrapper.setAlignment(Pos.CENTER);
+            // Add graphic (icon) if present
+            if (tab.getGraphic() != null) {
+                hWrapper.getChildren().add(tab.getGraphic());
+            }
+            hWrapper.getChildren().add(textContainer);
+            wrapper = hWrapper;
         }
         
         wrapper.getStyleClass().add("j-tab");
-        // Add custom StyleClass from JTab if needed? No, keeping simple.
         
         wrapper.setOnMouseClicked(e -> selectTab(tab));
         

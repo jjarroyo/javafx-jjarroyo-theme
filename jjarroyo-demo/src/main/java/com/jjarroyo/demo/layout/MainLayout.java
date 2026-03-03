@@ -96,9 +96,20 @@ public class MainLayout extends javafx.scene.layout.StackPane {
             createItem("Modals", com.jjarroyo.components.JIcon.CHAT.view()),
             createItem("Data", com.jjarroyo.components.JIcon.LAYOUT.view()),
             createItem("Toasts", com.jjarroyo.components.JIcon.NOTIFICATIONS.view()),
-            createItem("Popovers", com.jjarroyo.components.JIcon.CHAT.view()), // Reusing CHAT icon or similar
+            createItem("Popovers", com.jjarroyo.components.JIcon.CHAT.view()),
             createItem("Icons", com.jjarroyo.components.JIcon.APPS.view()),
-            createItem("Typography", com.jjarroyo.components.JIcon.FILE_TEXT.view())
+            createItem("Typography", com.jjarroyo.components.JIcon.FILE_TEXT.view()),
+            createItem("Dropdowns", com.jjarroyo.components.JIcon.LIST.view()),
+            createItem("Avatars", com.jjarroyo.components.JIcon.PERSON.view()),
+            createItem("Breadcrumbs", com.jjarroyo.components.JIcon.ARROW_FORWARD.view()),
+            createItem("Chips", com.jjarroyo.components.JIcon.TAG.view()),
+            createItem("Number Input", com.jjarroyo.components.JIcon.ADD.view()),
+            createItem("Search Input", com.jjarroyo.components.JIcon.SEARCH.view()),
+            createItem("Skeletons", com.jjarroyo.components.JIcon.APPS.view()),
+            createItem("Steppers", com.jjarroyo.components.JIcon.ARROW_FORWARD.view()),
+            createItem("Timelines", com.jjarroyo.components.JIcon.HOME.view()), // Using HOME temporarily as CLOCK isn't in JIcon
+            createItem("StatCards", com.jjarroyo.components.JIcon.MONEY.view()),
+            createItem("Avanzado", com.jjarroyo.components.JIcon.SETTINGS.view())
         );
         
         return sidebar;
@@ -134,23 +145,40 @@ public class MainLayout extends javafx.scene.layout.StackPane {
         else if (text.equals("Accordions")) navigate(new com.jjarroyo.demo.views.AccordionsView());
         else if (text.equals("Progress")) navigate(new com.jjarroyo.demo.views.ProgressView());
         else if (text.equals("Date Pickers")) navigate(new com.jjarroyo.demo.views.DatePickersView());
+        else if (text.equals("Dropdowns")) navigate(new com.jjarroyo.demo.views.DropdownsView());
+        else if (text.equals("Avatars")) navigate(new com.jjarroyo.demo.views.AvatarView());
+        else if (text.equals("Breadcrumbs")) navigate(new com.jjarroyo.demo.views.BreadcrumbView());
+        else if (text.equals("Chips")) navigate(new com.jjarroyo.demo.views.ChipView());
+        else if (text.equals("Number Input")) navigate(new com.jjarroyo.demo.views.NumberInputView());
+        else if (text.equals("Search Input")) navigate(new com.jjarroyo.demo.views.SearchView());
+        else if (text.equals("Skeletons")) navigate(new com.jjarroyo.demo.views.SkeletonView());
+        else if (text.equals("Steppers")) navigate(new com.jjarroyo.demo.views.StepperView());
+        else if (text.equals("Timelines")) navigate(new com.jjarroyo.demo.views.TimelineView());
+        else if (text.equals("StatCards")) navigate(new com.jjarroyo.demo.views.StatCardView());
+        else if (text.equals("Avanzado")) navigate(new com.jjarroyo.demo.views.AdvancedView());
         else {
             System.out.println("Navigating to " + text);
         }
     }
     
     private void updateActiveState(com.jjarroyo.components.JSidebarItem activeItem) {
-        for (com.jjarroyo.components.JSidebarItem item : sidebar.getItems()) {
-            item.setActive(item == activeItem);
+        for (Node node : sidebar.getItems()) {
+            if (node instanceof com.jjarroyo.components.JSidebarItem) {
+                com.jjarroyo.components.JSidebarItem item = (com.jjarroyo.components.JSidebarItem) node;
+                item.setActive(item == activeItem);
+            }
         }
     }
 
     private void updateActiveItem(String text) {
-        for (com.jjarroyo.components.JSidebarItem item : sidebar.getItems()) {
-            if (item.getText().equals(text)) {
-                item.setActive(true);
-            } else {
-                item.setActive(false);
+        for (Node node : sidebar.getItems()) {
+            if (node instanceof com.jjarroyo.components.JSidebarItem) {
+                com.jjarroyo.components.JSidebarItem item = (com.jjarroyo.components.JSidebarItem) node;
+                if (item.getText().equals(text)) {
+                    item.setActive(true);
+                } else {
+                    item.setActive(false);
+                }
             }
         }
     }

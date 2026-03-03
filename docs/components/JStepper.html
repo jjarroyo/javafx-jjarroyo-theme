@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JStepper - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">JStepper</h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Componente de pasos secuenciales o asistente (wizard)
+                        con validación, progreso y navegación integrada.
+                    </p>
+                </header>
+
+                <!-- Horizontal Stepper Demo -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Ejemplo Básico (Horizontal)
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <!-- Stepper Header -->
+                        <div class="flex items-start pb-4">
+                            <!-- Step 1 (Completed) -->
+                            <div
+                                class="flex flex-col items-center gap-2 min-w-[60px]"
+                            >
+                                <div
+                                    class="w-8 h-8 rounded-full flex items-center justify-center bg-emerald-500 text-white"
+                                >
+                                    <svg
+                                        class="w-4 h-4"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="3"
+                                            d="M5 13l4 4L19 7"
+                                        />
+                                    </svg>
+                                </div>
+                                <div
+                                    class="text-[13px] font-bold text-emerald-500"
+                                >
+                                    Account
+                                </div>
+                                <div class="text-[11px] text-slate-400">
+                                    Basic details
+                                </div>
+                            </div>
+
+                            <!-- Line (Completed) -->
+                            <div
+                                class="flex-1 mt-4 h-[2px] bg-emerald-500"
+                            ></div>
+
+                            <!-- Step 2 (Active) -->
+                            <div
+                                class="flex flex-col items-center gap-2 min-w-[60px]"
+                            >
+                                <div
+                                    class="w-8 h-8 rounded-full flex items-center justify-center bg-blue-600 text-white font-bold text-sm"
+                                >
+                                    2
+                                </div>
+                                <div
+                                    class="text-[13px] font-bold text-blue-600"
+                                >
+                                    Profile
+                                </div>
+                                <div class="text-[11px] text-slate-400">
+                                    Personal info
+                                </div>
+                            </div>
+
+                            <!-- Line (Pending) -->
+                            <div class="flex-1 mt-4 h-[2px] bg-slate-200"></div>
+
+                            <!-- Step 3 (Pending) -->
+                            <div
+                                class="flex flex-col items-center gap-2 min-w-[60px]"
+                            >
+                                <div
+                                    class="w-8 h-8 rounded-full flex items-center justify-center bg-slate-100 text-slate-500 font-bold text-sm"
+                                >
+                                    3
+                                </div>
+                                <div
+                                    class="text-[13px] font-bold text-slate-500"
+                                >
+                                    Verification
+                                </div>
+                                <div class="text-[11px] text-slate-400">
+                                    ID Upload
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stepper Content Area -->
+                        <div class="py-6 flex flex-col gap-4">
+                            <label
+                                class="block text-sm font-medium text-slate-700"
+                                >First Name</label
+                            >
+                            <input
+                                type="text"
+                                class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                placeholder="e.g. Jane"
+                            />
+
+                            <label
+                                class="block text-sm font-medium text-slate-700 mt-2"
+                                >Last Name</label
+                            >
+                            <input
+                                type="text"
+                                class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                placeholder="e.g. Smith"
+                            />
+                        </div>
+
+                        <!-- Stepper Footer Buttons -->
+                        <div
+                            class="pt-4 border-t border-slate-200 flex justify-end gap-3"
+                        >
+                            <button
+                                class="px-4 py-2 border border-slate-300 rounded-md text-slate-700 font-medium hover:bg-slate-50"
+                            >
+                                Back
+                            </button>
+                            <button
+                                class="px-4 py-2 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700"
+                            >
+                                Next Step &rarr;
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JStepper stepper = new JStepper();
+
+// Crear contenidos
+VBox step1 = new VBox(new Label("Email..."));
+VBox step2 = new VBox(new Label("Nombres..."));
+
+// Agregar pasos (Título, Subtítulo, Contenido)
+stepper.addStep("Account", "Basic details", step1);
+stepper.addStep("Profile", "Personal info", step2);
+
+// Capturar eventos y lógica adicional
+stepper.setOnStepChange((oldIndex, newIndex) -> {
+    System.out.println("De paso " + oldIndex + " a " + newIndex);
+});
+
+stepper.setOnFinish(() -> {
+    guardarYEnviarDatos();
+});
+
+// Personalizar botones si se necesita:
+stepper.getBackButton().setText("Atrás");
+stepper.getNextButton().setText("Siguiente");
+stepper.getFinishButton().setText("Enviar");
+</code></pre>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        API Reference
+                    </h2>
+                    <table
+                        class="min-w-full text-left text-sm whitespace-nowrap"
+                    >
+                        <thead
+                            class="uppercase tracking-wider border-b-2 border-slate-200 bg-slate-50 text-slate-600"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-4">Método</th>
+                                <th scope="col" class="px-6 py-4">
+                                    Descripción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    addStep(String title, String subtitle, Node
+                                    content)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Añade un nuevo paso en la secuencia (el
+                                    subtítulo es opcional, puede ser nulo o
+                                    vacío).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setCurrentStepIndex(int index)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Mueve el stepper programáticamente al índice
+                                    especificado (0-based).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setOnStepChange(BiConsumer&lt;Integer,
+                                    Integer&gt;)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Callback al cambiar de paso. Provee
+                                    `(índiceAntiguo, índiceNuevo)`. Ideal para
+                                    validaciones.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setOnFinish(Runnable)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Acción a realizar cuando se hace clic en el
+                                    botón final (Finish).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    getBackButton() / getNextButton() /
+                                    getFinishButton()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Permite acceder a los botones para
+                                    cambiarles el texto o clases CSS.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

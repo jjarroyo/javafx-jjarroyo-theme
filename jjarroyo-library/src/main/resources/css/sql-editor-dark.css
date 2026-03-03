@@ -1,0 +1,153 @@
+/* sql-editor-dark.css — Dark theme for JSqlEditor (RichTextFX) */
+
+/* ─── CodeArea Base ──────────────────────────────────────────────────────────── */
+.j-sql-code-area {
+    -fx-font-family:
+        'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    -fx-font-size: 13px;
+    -fx-background-color: #0f172a; /* slate-900 */
+    -fx-highlight-fill: rgba(59, 130, 246, 0.3);
+    -fx-highlight-text-fill: #f8fafc;
+}
+
+.j-sql-code-area .caret {
+    -fx-stroke: #f8fafc;
+    -fx-stroke-width: 2px;
+}
+
+/* Line numbers gutter */
+.j-sql-code-area .lineno {
+    -fx-font-family: 'JetBrains Mono', 'Consolas', monospace;
+    -fx-font-size: 12px;
+    -fx-background-color: #1e293b; /* slate-800 */
+    -fx-text-fill: #64748b; /* slate-500 */
+    -fx-padding: 0 10px 0 8px;
+    -fx-border-color: transparent #334155 transparent transparent;
+    -fx-border-width: 0 1px 0 0;
+    -fx-alignment: center-right;
+    -fx-min-width: 48px;
+}
+
+/* ─── Syntax Token Colors ────────────────────────────────────────────────────── */
+.sql-keyword {
+    -fx-fill: #3b82f6; /* blue-500 */
+    -fx-font-weight: bold;
+}
+
+.sql-type {
+    -fx-fill: #a78bfa; /* violet-400 */
+}
+
+.sql-function {
+    -fx-fill: #22d3ee; /* cyan-400 */
+}
+
+.sql-string {
+    -fx-fill: #34d399; /* emerald-400 */
+}
+
+.sql-quoted-ident {
+    -fx-fill: #2dd4bf; /* teal-400 */
+    -fx-font-style: italic;
+}
+
+.sql-comment {
+    -fx-fill: #64748b; /* slate-500 */
+    -fx-font-style: italic;
+}
+
+.sql-block-comment {
+    -fx-fill: #475569; /* slate-600 */
+    -fx-font-style: italic;
+}
+
+.sql-number {
+    -fx-fill: #fbbf24; /* amber-400 */
+}
+
+.sql-operator {
+    -fx-fill: #f43f5e; /* rose-500 */
+}
+
+.sql-punctuation {
+    -fx-fill: #94a3b8; /* slate-400 */
+}
+
+/* ─── Error Line Highlight ───────────────────────────────────────────────────── */
+.sql-error-line {
+    -fx-background-color: #451a1a;
+}
+.sql-error-line .lineno {
+    -fx-text-fill: #f87171;
+    -fx-font-weight: bold;
+    -fx-background-color: #7f1d1d;
+}
+
+/* ─── Status Bar ─────────────────────────────────────────────────────────────── */
+.j-sql-status-bar {
+    -fx-background-color: #1e293b;
+    -fx-border-color: #334155 transparent transparent transparent;
+    -fx-border-width: 1px 0 0 0;
+}
+.j-sql-status-label {
+    -fx-font-family: 'Consolas', monospace;
+    -fx-font-size: 11px;
+    -fx-text-fill: #64748b;
+}
+.j-sql-status-ok {
+    -fx-text-fill: #10b981;
+}
+.j-sql-status-error {
+    -fx-text-fill: #f87171;
+    -fx-font-weight: bold;
+}
+
+/* ─── Scroll pane ────────────────────────────────────────────────────────────── */
+.j-sql-scroll .scroll-bar:vertical,
+.j-sql-scroll .scroll-bar:horizontal {
+    -fx-background-color: #0f172a;
+    -fx-pref-width: 12px;
+    -fx-pref-height: 12px;
+    -fx-min-width: 12px;
+    -fx-min-height: 12px;
+    -fx-padding: 0;
+}
+.j-sql-scroll .scroll-bar > .track {
+    -fx-background-color: #1e293b;
+    -fx-background-radius: 6px;
+    -fx-background-insets: 2px;
+}
+.j-sql-scroll .scroll-bar > .thumb {
+    -fx-background-color: #475569;
+    -fx-background-radius: 6px;
+    -fx-background-insets: 2px;
+}
+.j-sql-scroll .scroll-bar > .thumb:hover {
+    -fx-background-color: #64748b;
+    -fx-background-insets: 1px;
+}
+.j-sql-scroll > .corner,
+.j-sql-scroll .corner {
+    -fx-background-color: #0f172a;
+}
+
+/* ─── Autocomplete Popup ─────────────────────────────────────────────────────── */
+.j-sql-autocomplete-list {
+    -fx-background-color: #1e293b;
+    -fx-border-color: #334155;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 12, 0, 0, 4);
+}
+.j-sql-autocomplete-list .list-cell {
+    -fx-text-fill: #f8fafc;
+    -fx-background-color: transparent;
+}
+.j-sql-autocomplete-list .list-cell:selected {
+    -fx-background-color: #1e3a8a;
+    -fx-text-fill: #3b82f6;
+}
+.j-sql-autocomplete-list .list-cell:hover {
+    -fx-background-color: #334155;
+}

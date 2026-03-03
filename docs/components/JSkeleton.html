@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JSkeleton - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+            @keyframes pulse {
+                0%,
+                100% {
+                    opacity: 0.6;
+                }
+                50% {
+                    opacity: 0.3;
+                }
+            }
+            .skeleton {
+                animation: pulse 1.6s ease-in-out infinite;
+                background-color: #e2e8f0;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">JSkeleton</h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Placeholders animados de carga (shimmer/pulse) para
+                        indicar contenido que se está cargando.
+                    </p>
+                </header>
+
+                <!-- Text Lines -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Líneas de Texto
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="space-y-2 py-2">
+                            <div class="skeleton h-3.5 w-72 rounded-md"></div>
+                            <div class="skeleton h-3.5 w-72 rounded-md"></div>
+                            <div class="skeleton h-3.5 w-40 rounded-md"></div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JSkeleton.text(3); // 3 líneas animadas</code></pre>
+                    </div>
+                </section>
+
+                <!-- Avatar + Text -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Avatar + Texto (User Row)
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="space-y-4 py-2">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="skeleton w-10 h-10 rounded-full"
+                                ></div>
+                                <div class="space-y-2">
+                                    <div
+                                        class="skeleton h-3.5 w-40 rounded-md"
+                                    ></div>
+                                    <div
+                                        class="skeleton h-3.5 w-28 rounded-md"
+                                    ></div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="skeleton w-10 h-10 rounded-full"
+                                ></div>
+                                <div class="space-y-2">
+                                    <div
+                                        class="skeleton h-3.5 w-40 rounded-md"
+                                    ></div>
+                                    <div
+                                        class="skeleton h-3.5 w-28 rounded-md"
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JSkeleton.userRow(); // avatar 40px + 2 líneas</code></pre>
+                    </div>
+                </section>
+
+                <!-- Card -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Card Skeleton
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="flex gap-4 justify-center py-2">
+                            <div
+                                class="w-72 border border-slate-200 rounded-xl p-4 space-y-3"
+                            >
+                                <div
+                                    class="skeleton h-36 w-full rounded-lg"
+                                ></div>
+                                <div
+                                    class="skeleton h-3.5 w-56 rounded-md"
+                                ></div>
+                                <div
+                                    class="skeleton h-3.5 w-72 rounded-md"
+                                ></div>
+                                <div
+                                    class="skeleton h-3.5 w-48 rounded-md"
+                                ></div>
+                            </div>
+                            <div
+                                class="w-72 border border-slate-200 rounded-xl p-4 space-y-3"
+                            >
+                                <div
+                                    class="skeleton h-36 w-full rounded-lg"
+                                ></div>
+                                <div
+                                    class="skeleton h-3.5 w-56 rounded-md"
+                                ></div>
+                                <div
+                                    class="skeleton h-3.5 w-72 rounded-md"
+                                ></div>
+                                <div
+                                    class="skeleton h-3.5 w-48 rounded-md"
+                                ></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JSkeleton.card(); // imagen + título + 2 líneas</code></pre>
+                    </div>
+                </section>
+
+                <!-- Custom Shapes -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Formas Personalizadas
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="flex gap-4 items-end justify-center py-2">
+                            <div class="skeleton w-20 h-20 rounded-lg"></div>
+                            <div class="skeleton w-32 h-10 rounded-lg"></div>
+                            <div class="skeleton w-48 h-6 rounded-md"></div>
+                            <div class="skeleton w-12 h-12 rounded-full"></div>
+                            <div class="skeleton w-8 h-8 rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JSkeleton.rect(80, 80);   // rectángulo
+JSkeleton.rect(120, 40);  // barra
+JSkeleton.avatar(48);     // círculo 48px
+JSkeleton.avatar();       // círculo 40px (default)</code></pre>
+                    </div>
+                </section>
+
+                <!-- Table -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Tabla
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="space-y-2 py-2">
+                            <div class="flex gap-3">
+                                <div
+                                    class="skeleton h-3.5 w-28 rounded-md"
+                                ></div>
+                                <div
+                                    class="skeleton h-3.5 w-20 rounded-md"
+                                ></div>
+                                <div
+                                    class="skeleton h-3.5 w-20 rounded-md"
+                                ></div>
+                                <div
+                                    class="skeleton h-3.5 w-20 rounded-md"
+                                ></div>
+                            </div>
+                            <div class="flex gap-3">
+                                <div
+                                    class="skeleton h-3.5 w-28 rounded-md"
+                                ></div>
+                                <div
+                                    class="skeleton h-3.5 w-20 rounded-md"
+                                ></div>
+                                <div
+                                    class="skeleton h-3.5 w-20 rounded-md"
+                                ></div>
+                                <div
+                                    class="skeleton h-3.5 w-20 rounded-md"
+                                ></div>
+                            </div>
+                            <div class="flex gap-3">
+                                <div
+                                    class="skeleton h-3.5 w-28 rounded-md"
+                                ></div>
+                                <div
+                                    class="skeleton h-3.5 w-20 rounded-md"
+                                ></div>
+                                <div
+                                    class="skeleton h-3.5 w-20 rounded-md"
+                                ></div>
+                                <div
+                                    class="skeleton h-3.5 w-20 rounded-md"
+                                ></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JSkeleton.table(5, 4); // 5 filas, 4 columnas</code></pre>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        API Reference
+                    </h2>
+                    <table
+                        class="min-w-full text-left text-sm whitespace-nowrap"
+                    >
+                        <thead
+                            class="uppercase tracking-wider border-b-2 border-slate-200 bg-slate-50 text-slate-600"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-4">Método</th>
+                                <th scope="col" class="px-6 py-4">
+                                    Descripción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    JSkeleton.line(double width)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Línea individual animada.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    JSkeleton.text(int lines)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Grupo de líneas de texto.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    JSkeleton.rect(w, h)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Rectángulo con esquinas redondeadas.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    JSkeleton.avatar(double size)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Círculo (default 40px).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    JSkeleton.card()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Card con imagen + texto.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    JSkeleton.userRow()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Avatar + 2 líneas de texto.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    JSkeleton.table(rows, cols)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Tabla de skeleton.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    stop()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Detiene la animación.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

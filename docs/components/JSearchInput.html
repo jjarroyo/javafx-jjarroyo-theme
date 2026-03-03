@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JSearchInput - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">
+                        JSearchInput
+                    </h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Campo de búsqueda con ícono, botón de borrar (clear) y
+                        soporte para autocompletado con popup.
+                    </p>
+                </header>
+
+                <!-- Basic Search -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Búsqueda Básica
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div
+                            class="w-full max-w-sm relative flex items-center bg-white border border-slate-300 rounded-md focus-within:border-indigo-400 focus-within:ring-1 focus-within:ring-indigo-400 transition-all"
+                        >
+                            <svg
+                                class="w-5 h-5 text-slate-400 ml-3"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                ></path>
+                            </svg>
+                            <input
+                                type="text"
+                                class="w-full py-2 px-3 text-sm focus:outline-none bg-transparent"
+                                placeholder="Buscar por nombre..."
+                            />
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JSearchInput search = new JSearchInput();
+search.setPromptText("Buscar por nombre...");
+search.setOnSearch(query -&gt; System.out.println("Resultados para: " + query));</code></pre>
+                    </div>
+                </section>
+
+                <!-- Search With Autocomplete -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Con Autocompletado (Clear Button Visible)
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="relative w-full max-w-sm">
+                            <div
+                                class="w-full relative flex items-center bg-white border border-indigo-400 ring-1 ring-indigo-400 rounded-md transition-all"
+                            >
+                                <svg
+                                    class="w-5 h-5 text-slate-400 ml-3"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                    ></path>
+                                </svg>
+                                <input
+                                    type="text"
+                                    class="w-full py-2 px-3 text-sm focus:outline-none bg-transparent"
+                                    value="Per"
+                                />
+                                <button
+                                    class="mr-2 text-slate-400 hover:text-slate-600 transition-colors"
+                                >
+                                    <svg
+                                        class="w-4 h-4"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M6 18L18 6M6 6l12 12"
+                                        ></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <!-- Fake Popup -->
+                            <div
+                                class="absolute mt-1 w-full bg-white border border-slate-200 rounded-md shadow-lg z-10 text-sm"
+                            >
+                                <div class="py-1">
+                                    <div
+                                        class="px-3 py-2 bg-slate-50 text-indigo-600 cursor-pointer"
+                                    >
+                                        Perú
+                                    </div>
+                                    <div
+                                        class="px-3 py-2 hover:bg-slate-50 cursor-pointer"
+                                    >
+                                        Peras
+                                    </div>
+                                    <div
+                                        class="px-3 py-2 hover:bg-slate-50 cursor-pointer"
+                                    >
+                                        Persianas
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">// 1. Con lista estática (filtra automáticamente)
+search.setSuggestions(List.of("Perú", "Colombia", "Argentina"));
+
+// 2. Con proveedor dinámico (ej. llamadas a API)
+search.setSuggestionProvider(query -&gt; {
+    if (query.length() &lt; 2) return List.of();
+    return db.fetchResults(query);
+});</code></pre>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        API Reference
+                    </h2>
+                    <table
+                        class="min-w-full text-left text-sm whitespace-nowrap"
+                    >
+                        <thead
+                            class="uppercase tracking-wider border-b-2 border-slate-200 bg-slate-50 text-slate-600"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-4">Método</th>
+                                <th scope="col" class="px-6 py-4">
+                                    Descripción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setPromptText(String)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Placeholder del TextField.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    getText() / setText()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Valor actual de la búsqueda.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setClearable(boolean)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Ocultar/mostrar la ✕ para borrar (default:
+                                    true).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setSuggestions(List)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Asigna lista estática (filtra por contains).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setSuggestionProvider(Function)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Retorna sugerencias dinámicas según texto.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setOnSearch(Consumer)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Callback al presionar ENTER o seleccionar
+                                    item.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    getTextField()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Acceso directo al control base.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JAvatar - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style type="text/tailwindcss">
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-4xl mx-auto">
+                <!-- Back Button -->
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">JAvatar</h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Componente de avatar para mostrar identidad de usuario
+                        con iniciales, imágenes, estados y grupos.
+                    </p>
+                </header>
+
+                <!-- Sizes -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Tamaños
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div
+                            class="flex flex-wrap gap-8 items-end justify-center py-4"
+                        >
+                            <div class="flex flex-col items-center gap-2">
+                                <div
+                                    class="w-6 h-6 rounded-full bg-indigo-100 flex items-center justify-center"
+                                >
+                                    <span
+                                        class="text-[8px] font-bold text-indigo-600"
+                                        >JA</span
+                                    >
+                                </div>
+                                <span class="text-xs text-slate-400"
+                                    >XS (24px)</span
+                                >
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center"
+                                >
+                                    <span
+                                        class="text-[10px] font-bold text-indigo-600"
+                                        >JA</span
+                                    >
+                                </div>
+                                <span class="text-xs text-slate-400"
+                                    >SM (32px)</span
+                                >
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center"
+                                >
+                                    <span
+                                        class="text-sm font-bold text-indigo-600"
+                                        >JA</span
+                                    >
+                                </div>
+                                <span class="text-xs text-slate-400"
+                                    >MD (40px)</span
+                                >
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center"
+                                >
+                                    <span
+                                        class="text-base font-bold text-indigo-600"
+                                        >JA</span
+                                    >
+                                </div>
+                                <span class="text-xs text-slate-400"
+                                    >LG (48px)</span
+                                >
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <div
+                                    class="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center"
+                                >
+                                    <span
+                                        class="text-xl font-bold text-indigo-600"
+                                        >JA</span
+                                    >
+                                </div>
+                                <span class="text-xs text-slate-400"
+                                    >XL (64px)</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JAvatar avatar = new JAvatar("JA");
+avatar.setSize(JAvatar.Size.XS);  // 24px
+avatar.setSize(JAvatar.Size.SM);  // 32px
+avatar.setSize(JAvatar.Size.MD);  // 40px (default)
+avatar.setSize(JAvatar.Size.LG);  // 48px
+avatar.setSize(JAvatar.Size.XL);  // 64px</code></pre>
+                    </div>
+                </section>
+
+                <!-- Colors -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Colores
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div
+                            class="flex flex-wrap gap-6 items-center justify-center py-4"
+                        >
+                            <div class="flex flex-col items-center gap-2">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center"
+                                >
+                                    <span
+                                        class="text-sm font-bold text-indigo-600"
+                                        >AB</span
+                                    >
+                                </div>
+                                <span class="text-xs text-slate-400"
+                                    >primary</span
+                                >
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center"
+                                >
+                                    <span
+                                        class="text-sm font-bold text-green-600"
+                                        >CD</span
+                                    >
+                                </div>
+                                <span class="text-xs text-slate-400"
+                                    >success</span
+                                >
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center"
+                                >
+                                    <span class="text-sm font-bold text-red-600"
+                                        >EF</span
+                                    >
+                                </div>
+                                <span class="text-xs text-slate-400"
+                                    >danger</span
+                                >
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center"
+                                >
+                                    <span
+                                        class="text-sm font-bold text-amber-600"
+                                        >GH</span
+                                    >
+                                </div>
+                                <span class="text-xs text-slate-400"
+                                    >warning</span
+                                >
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center"
+                                >
+                                    <span
+                                        class="text-sm font-bold text-blue-600"
+                                        >IJ</span
+                                    >
+                                </div>
+                                <span class="text-xs text-slate-400">info</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center"
+                                >
+                                    <span
+                                        class="text-sm font-bold text-slate-600"
+                                        >KL</span
+                                    >
+                                </div>
+                                <span class="text-xs text-slate-400"
+                                    >slate</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">avatar.setColor("primary");   // indigo
+avatar.setColor("success");   // green
+avatar.setColor("danger");    // red
+avatar.setColor("warning");   // amber
+avatar.setColor("info");      // blue
+avatar.setColor("slate");     // gray</code></pre>
+                    </div>
+                </section>
+
+                <!-- Status Badges -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Estado (Badge)
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div
+                            class="flex flex-wrap gap-10 items-center justify-center py-4"
+                        >
+                            <div class="flex flex-col items-center gap-2">
+                                <div class="relative">
+                                    <div
+                                        class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center"
+                                    >
+                                        <span
+                                            class="text-sm font-bold text-indigo-600"
+                                            >JA</span
+                                        >
+                                    </div>
+                                    <span
+                                        class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-white rounded-full"
+                                    ></span>
+                                </div>
+                                <span class="text-xs text-slate-400"
+                                    >Online</span
+                                >
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <div class="relative">
+                                    <div
+                                        class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center"
+                                    >
+                                        <span
+                                            class="text-sm font-bold text-indigo-600"
+                                            >ML</span
+                                        >
+                                    </div>
+                                    <span
+                                        class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-amber-400 border-2 border-white rounded-full"
+                                    ></span>
+                                </div>
+                                <span class="text-xs text-slate-400">Away</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <div class="relative">
+                                    <div
+                                        class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center"
+                                    >
+                                        <span
+                                            class="text-sm font-bold text-indigo-600"
+                                            >CG</span
+                                        >
+                                    </div>
+                                    <span
+                                        class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-red-500 border-2 border-white rounded-full"
+                                    ></span>
+                                </div>
+                                <span class="text-xs text-slate-400">Busy</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <div class="relative">
+                                    <div
+                                        class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center"
+                                    >
+                                        <span
+                                            class="text-sm font-bold text-indigo-600"
+                                            >AR</span
+                                        >
+                                    </div>
+                                    <span
+                                        class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-slate-400 border-2 border-white rounded-full"
+                                    ></span>
+                                </div>
+                                <span class="text-xs text-slate-400"
+                                    >Offline</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">avatar.setStatus(JAvatar.Status.ONLINE);   // punto verde
+avatar.setStatus(JAvatar.Status.AWAY);     // punto amarillo
+avatar.setStatus(JAvatar.Status.BUSY);     // punto rojo
+avatar.setStatus(JAvatar.Status.OFFLINE);  // punto gris</code></pre>
+                    </div>
+                </section>
+
+                <!-- Group -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Grupo de Avatares
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="flex items-center justify-center py-4">
+                            <div class="flex -space-x-3">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center ring-2 ring-white"
+                                >
+                                    <span
+                                        class="text-xs font-bold text-indigo-600"
+                                        >JA</span
+                                    >
+                                </div>
+                                <div
+                                    class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center ring-2 ring-white"
+                                >
+                                    <span
+                                        class="text-xs font-bold text-green-600"
+                                        >ML</span
+                                    >
+                                </div>
+                                <div
+                                    class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center ring-2 ring-white"
+                                >
+                                    <span class="text-xs font-bold text-red-600"
+                                        >CG</span
+                                    >
+                                </div>
+                                <div
+                                    class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center ring-2 ring-white"
+                                >
+                                    <span
+                                        class="text-xs font-bold text-slate-500"
+                                        >+2</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JAvatar.Group group = new JAvatar.Group(
+    new JAvatar("JA").setColor("primary"),
+    new JAvatar("ML").setColor("success"),
+    new JAvatar("CG").setColor("danger"),
+    new JAvatar("D"),
+    new JAvatar("E")
+);
+group.setMax(3); // muestra "+2"</code></pre>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        API Reference
+                    </h2>
+                    <table
+                        class="min-w-full text-left text-sm whitespace-nowrap"
+                    >
+                        <thead
+                            class="uppercase tracking-wider border-b-2 border-slate-200 bg-slate-50 text-slate-600"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-4">Método</th>
+                                <th scope="col" class="px-6 py-4">
+                                    Descripción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    new JAvatar(String initials)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Constructor con iniciales directas.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    new JAvatar(String first, String last)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Auto-genera iniciales del nombre.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setSize(Size size)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    XS (24px), SM (32px), MD (40px), LG (48px),
+                                    XL (64px).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setColor(String color)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    primary, success, danger, warning, info,
+                                    slate.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setImage(Image img)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Muestra una imagen circular en lugar de
+                                    iniciales.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setStatus(Status status)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    ONLINE, AWAY, BUSY, OFFLINE, NONE.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setInitials(String initials)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Cambia las iniciales dinámicamente.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    new JAvatar.Group(JAvatar...)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Grupo de avatares apilados.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    group.setMax(int max)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Máximo visible; extra muestra "+N".
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

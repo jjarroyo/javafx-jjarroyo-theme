@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JChip - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style type="text/tailwindcss">
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">JChip</h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Etiquetas y chips para categorías, estados, filtros y
+                        tags con variantes, colores e íconos.
+                    </p>
+                </header>
+
+                <!-- Soft Variant -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Variante Soft (default)
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="flex flex-wrap gap-2 justify-center py-2">
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-100 text-indigo-700"
+                                >primary</span
+                            >
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700"
+                                >success</span
+                            >
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-700"
+                                >danger</span
+                            >
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-700"
+                                >warning</span
+                            >
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700"
+                                >info</span
+                            >
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-600"
+                                >slate</span
+                            >
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">new JChip("primary").setColor("primary"); // default variant = SOFT
+new JChip("success").setColor("success");</code></pre>
+                    </div>
+                </section>
+
+                <!-- Filled Variant -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Variante Filled
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="flex flex-wrap gap-2 justify-center py-2">
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-600 text-white"
+                                >primary</span
+                            >
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-600 text-white"
+                                >success</span
+                            >
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-red-600 text-white"
+                                >danger</span
+                            >
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-amber-600 text-white"
+                                >warning</span
+                            >
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-600 text-white"
+                                >info</span
+                            >
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-600 text-white"
+                                >slate</span
+                            >
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">new JChip("primary").setColor("primary").setVariant(JChip.Variant.FILLED);</code></pre>
+                    </div>
+                </section>
+
+                <!-- Outlined Variant -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Variante Outlined
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="flex flex-wrap gap-2 justify-center py-2">
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border border-indigo-500 text-indigo-600"
+                                >primary</span
+                            >
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border border-green-500 text-green-600"
+                                >success</span
+                            >
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border border-red-500 text-red-600"
+                                >danger</span
+                            >
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border border-amber-500 text-amber-600"
+                                >warning</span
+                            >
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border border-blue-500 text-blue-600"
+                                >info</span
+                            >
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border border-slate-400 text-slate-600"
+                                >slate</span
+                            >
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">new JChip("primary").setColor("primary").setVariant(JChip.Variant.OUTLINED);</code></pre>
+                    </div>
+                </section>
+
+                <!-- Sizes -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Tamaños
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div
+                            class="flex flex-wrap gap-3 items-center justify-center py-2"
+                        >
+                            <span
+                                class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-700"
+                                >Small</span
+                            >
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700"
+                                >Medium</span
+                            >
+                            <span
+                                class="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-semibold bg-blue-100 text-blue-700"
+                                >Large</span
+                            >
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">new JChip("Small").setChipSize(JChip.Size.SM);
+new JChip("Medium").setChipSize(JChip.Size.MD);  // default
+new JChip("Large").setChipSize(JChip.Size.LG);</code></pre>
+                    </div>
+                </section>
+
+                <!-- With Icons -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Con Íconos
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="flex flex-wrap gap-2 justify-center py-2">
+                            <span
+                                class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700"
+                            >
+                                <svg
+                                    class="w-3 h-3"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                                    />
+                                </svg>
+                                Activo
+                            </span>
+                            <span
+                                class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-700"
+                            >
+                                <svg
+                                    class="w-3 h-3"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+                                    />
+                                </svg>
+                                Error
+                            </span>
+                            <span
+                                class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700"
+                            >
+                                <svg
+                                    class="w-3 h-3"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                                    />
+                                </svg>
+                                Info
+                            </span>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">new JChip("Activo", JIcon.CHECK.view()).setColor("success");
+new JChip("Error", JIcon.ERROR.view()).setColor("danger");</code></pre>
+                    </div>
+                </section>
+
+                <!-- Dismissible -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Dismissible (Cerrables)
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <div class="flex flex-wrap gap-2 justify-center py-2">
+                            <span
+                                class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-100 text-indigo-700"
+                            >
+                                JavaScript
+                                <button
+                                    class="ml-1 text-indigo-400 hover:text-indigo-700 text-[10px]"
+                                >
+                                    ✕
+                                </button>
+                            </span>
+                            <span
+                                class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700"
+                            >
+                                Java
+                                <button
+                                    class="ml-1 text-green-400 hover:text-green-700 text-[10px]"
+                                >
+                                    ✕
+                                </button>
+                            </span>
+                            <span
+                                class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-700"
+                            >
+                                Python
+                                <button
+                                    class="ml-1 text-red-400 hover:text-red-700 text-[10px]"
+                                >
+                                    ✕
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JChip chip = new JChip("JavaScript");
+chip.setColor("primary")
+    .setDismissible(true)
+    .setOnDismiss(() -> container.getChildren().remove(chip));</code></pre>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        API Reference
+                    </h2>
+                    <table
+                        class="min-w-full text-left text-sm whitespace-nowrap"
+                    >
+                        <thead
+                            class="uppercase tracking-wider border-b-2 border-slate-200 bg-slate-50 text-slate-600"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-4">Método</th>
+                                <th scope="col" class="px-6 py-4">
+                                    Descripción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    new JChip(String text)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Constructor con texto.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    new JChip(String text, Node icon)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Constructor con texto e ícono.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setColor(String color)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    primary, success, danger, warning, info,
+                                    slate.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setVariant(Variant v)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    SOFT (default), FILLED, OUTLINED.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setChipSize(Size s)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    SM, MD (default), LG.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setIcon(Node icon)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Ícono a la izquierda del texto.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setDismissible(boolean)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Habilita el botón ✕ de cerrar.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setOnDismiss(Runnable)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Callback al cerrar el chip.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setText(String) / getText()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Getter/setter del texto.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

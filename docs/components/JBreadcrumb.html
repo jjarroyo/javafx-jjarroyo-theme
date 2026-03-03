@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JBreadcrumb - Documentación</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style type="text/tailwindcss">
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 text-slate-800">
+        <div class="min-h-screen p-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <a
+                        href="../index.html"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            />
+                        </svg>
+                        Volver al Índice
+                    </a>
+                </div>
+
+                <header class="mb-8 border-b border-slate-200 pb-8">
+                    <h1 class="text-3xl font-bold text-slate-900">
+                        JBreadcrumb
+                    </h1>
+                    <p class="mt-2 text-lg text-slate-600">
+                        Navegación tipo migas de pan para indicar la ubicación
+                        actual del usuario dentro de la aplicación.
+                    </p>
+                </header>
+
+                <!-- Basic -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Ejemplo Básico
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <nav class="flex items-center space-x-2 text-sm">
+                            <a
+                                href="#"
+                                class="text-slate-500 hover:text-slate-700 font-medium"
+                                >Inicio</a
+                            >
+                            <span class="text-slate-400">/</span>
+                            <a
+                                href="#"
+                                class="text-slate-500 hover:text-slate-700 font-medium"
+                                >Usuarios</a
+                            >
+                            <span class="text-slate-400">/</span>
+                            <span class="text-indigo-600 font-bold"
+                                >Perfil</span
+                            >
+                        </nav>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JBreadcrumb bc = new JBreadcrumb();
+bc.addItem("Inicio", () -> navigate("home"));
+bc.addItem("Usuarios", () -> navigate("users"));
+bc.addItem("Perfil"); // último = activo</code></pre>
+                    </div>
+                </section>
+
+                <!-- Separators -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Separadores
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4 space-y-4"
+                    >
+                        <nav class="flex items-center space-x-2 text-sm">
+                            <span class="text-slate-500 font-medium">Home</span>
+                            <span class="text-slate-400">/</span>
+                            <span class="text-slate-500 font-medium"
+                                >Settings</span
+                            >
+                            <span class="text-slate-400">/</span>
+                            <span class="text-indigo-600 font-bold"
+                                >Profile</span
+                            >
+                        </nav>
+                        <nav class="flex items-center space-x-2 text-sm">
+                            <span class="text-slate-500 font-medium">Home</span>
+                            <span class="text-slate-400">›</span>
+                            <span class="text-slate-500 font-medium"
+                                >Settings</span
+                            >
+                            <span class="text-slate-400">›</span>
+                            <span class="text-indigo-600 font-bold"
+                                >Profile</span
+                            >
+                        </nav>
+                        <nav class="flex items-center space-x-2 text-sm">
+                            <span class="text-slate-500 font-medium">Home</span>
+                            <span class="text-slate-400">→</span>
+                            <span class="text-slate-500 font-medium"
+                                >Settings</span
+                            >
+                            <span class="text-slate-400">→</span>
+                            <span class="text-indigo-600 font-bold"
+                                >Profile</span
+                            >
+                        </nav>
+                        <nav class="flex items-center space-x-2 text-sm">
+                            <span class="text-slate-500 font-medium">Home</span>
+                            <span class="text-slate-400">•</span>
+                            <span class="text-slate-500 font-medium"
+                                >Settings</span
+                            >
+                            <span class="text-slate-400">•</span>
+                            <span class="text-indigo-600 font-bold"
+                                >Profile</span
+                            >
+                        </nav>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">bc.setSeparator("/");  // default
+bc.setSeparator("›");
+bc.setSeparator("→");
+bc.setSeparator("•");</code></pre>
+                    </div>
+                </section>
+
+                <!-- Colors -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Colores del Item Activo
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4 space-y-3"
+                    >
+                        <nav class="flex items-center space-x-2 text-sm">
+                            <span class="text-slate-500 font-medium"
+                                >Inicio</span
+                            >
+                            <span class="text-slate-400">/</span>
+                            <span class="text-slate-500 font-medium"
+                                >Sección</span
+                            >
+                            <span class="text-slate-400">/</span>
+                            <span class="text-indigo-600 font-bold"
+                                >primary</span
+                            >
+                        </nav>
+                        <nav class="flex items-center space-x-2 text-sm">
+                            <span class="text-slate-500 font-medium"
+                                >Inicio</span
+                            >
+                            <span class="text-slate-400">/</span>
+                            <span class="text-slate-500 font-medium"
+                                >Sección</span
+                            >
+                            <span class="text-slate-400">/</span>
+                            <span class="text-green-600 font-bold"
+                                >success</span
+                            >
+                        </nav>
+                        <nav class="flex items-center space-x-2 text-sm">
+                            <span class="text-slate-500 font-medium"
+                                >Inicio</span
+                            >
+                            <span class="text-slate-400">/</span>
+                            <span class="text-slate-500 font-medium"
+                                >Sección</span
+                            >
+                            <span class="text-slate-400">/</span>
+                            <span class="text-red-600 font-bold">danger</span>
+                        </nav>
+                        <nav class="flex items-center space-x-2 text-sm">
+                            <span class="text-slate-500 font-medium"
+                                >Inicio</span
+                            >
+                            <span class="text-slate-400">/</span>
+                            <span class="text-slate-500 font-medium"
+                                >Sección</span
+                            >
+                            <span class="text-slate-400">/</span>
+                            <span class="text-amber-600 font-bold"
+                                >warning</span
+                            >
+                        </nav>
+                        <nav class="flex items-center space-x-2 text-sm">
+                            <span class="text-slate-500 font-medium"
+                                >Inicio</span
+                            >
+                            <span class="text-slate-400">/</span>
+                            <span class="text-slate-500 font-medium"
+                                >Sección</span
+                            >
+                            <span class="text-slate-400">/</span>
+                            <span class="text-blue-600 font-bold">info</span>
+                        </nav>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">bc.setActiveColor("primary");   // indigo (default)
+bc.setActiveColor("success");   // green
+bc.setActiveColor("danger");    // red
+bc.setActiveColor("warning");   // amber
+bc.setActiveColor("info");      // blue</code></pre>
+                    </div>
+                </section>
+
+                <!-- With Icons -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        Con Íconos
+                    </h2>
+                    <div
+                        class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm mb-4"
+                    >
+                        <nav class="flex items-center space-x-2 text-sm">
+                            <a
+                                href="#"
+                                class="flex items-center gap-1 text-slate-500 hover:text-slate-700 font-medium"
+                            >
+                                <svg
+                                    class="w-4 h-4"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"
+                                    />
+                                </svg>
+                                Dashboard
+                            </a>
+                            <span class="text-slate-400">/</span>
+                            <a
+                                href="#"
+                                class="flex items-center gap-1 text-slate-500 hover:text-slate-700 font-medium"
+                            >
+                                <svg
+                                    class="w-4 h-4"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"
+                                    />
+                                </svg>
+                                Usuarios
+                            </a>
+                            <span class="text-slate-400">/</span>
+                            <span
+                                class="flex items-center gap-1 text-indigo-600 font-bold"
+                            >
+                                <svg
+                                    class="w-4 h-4"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                                    />
+                                </svg>
+                                Jorge Arroyo
+                            </span>
+                        </nav>
+                    </div>
+                    <div class="bg-slate-900 rounded-md p-4 overflow-x-auto">
+                        <pre><code class="text-slate-300 font-mono text-sm">JBreadcrumb bc = new JBreadcrumb();
+bc.addItem("Dashboard", JIcon.DASHBOARD.view(), () -> nav("dash"))
+  .addItem("Usuarios", JIcon.PERSON.view(), () -> nav("users"))
+  .addItem("Jorge Arroyo", JIcon.USER.view());</code></pre>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                        API Reference
+                    </h2>
+                    <table
+                        class="min-w-full text-left text-sm whitespace-nowrap"
+                    >
+                        <thead
+                            class="uppercase tracking-wider border-b-2 border-slate-200 bg-slate-50 text-slate-600"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-4">Método</th>
+                                <th scope="col" class="px-6 py-4">
+                                    Descripción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 bg-white">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    addItem(String text, Runnable action)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Agrega un item clickeable.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    addItem(String text)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Agrega el item activo (último).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    addItem(String, Node icon, Runnable)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Item con ícono y acción.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setPath(String... paths)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Establece todo el path de una vez.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setSeparator(String sep)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Separador entre items (default: "/").
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    setActiveColor(String color)
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Color del item activo: primary, success,
+                                    danger, etc.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-blue-600">
+                                    clear()
+                                </td>
+                                <td class="px-6 py-4 text-slate-500">
+                                    Limpia todos los items.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

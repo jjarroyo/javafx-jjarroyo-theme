@@ -1,6 +1,7 @@
 package com.jjarroyo.demo.views;
 
 import com.jjarroyo.components.JCard;
+import com.jjarroyo.components.JParagraph;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -21,7 +22,7 @@ public class TypographyView extends ScrollPane {
         VBox header = new VBox(8);
         Label title = new Label("Typography");
         title.getStyleClass().add("page-title");
-        Label subtitle = new Label("Headings, body text, lists, and more.");
+        Label subtitle = new Label("Headings, body text, paragraphs, and more.");
         subtitle.getStyleClass().add("page-subtitle");
         header.getChildren().addAll(title, subtitle);
         content.getChildren().add(header);
@@ -71,6 +72,57 @@ public class TypographyView extends ScrollPane {
         textCard.setBody(textBody);
         content.getChildren().add(textCard);
         
+        // JParagraph Card
+        JCard paragraphCard = new JCard("JParagraph", "Componente de párrafo con alineación y estilos");
+        VBox paragraphBody = new VBox(20);
+        paragraphBody.setPadding(new Insets(24));
+        
+        // Left aligned
+        Label lblLeft = new Label("Alineación Izquierda");
+        lblLeft.getStyleClass().addAll("text-sm", "font-bold", "text-slate-600");
+        JParagraph pLeft = new JParagraph("Este párrafo está alineado a la izquierda. JParagraph extiende Label con soporte para wrap automático, alineación y estilos fluidos.", true);
+        pLeft.setAlignLeft();
+        pLeft.withStyle("text-base", "text-slate-500");
+        
+        // Center aligned
+        Label lblCenter = new Label("Alineación Centro");
+        lblCenter.getStyleClass().addAll("text-sm", "font-bold", "text-slate-600");
+        JParagraph pCenter = new JParagraph("Este párrafo está centrado. Ideal para títulos descriptivos y textos de presentación que necesitan enfoque visual.", true);
+        pCenter.setAlignCenter();
+        pCenter.withStyle("text-base", "text-slate-500");
+        
+        // Right aligned
+        Label lblRight = new Label("Alineación Derecha");
+        lblRight.getStyleClass().addAll("text-sm", "font-bold", "text-slate-600");
+        JParagraph pRight = new JParagraph("Este párrafo está alineado a la derecha. Útil para firmas, fechas o contenido secundario.", true);
+        pRight.setAlignRight();
+        pRight.withStyle("text-base", "text-slate-500");
+        
+        // Justified
+        Label lblJustify = new Label("Justificado");
+        lblJustify.getStyleClass().addAll("text-sm", "font-bold", "text-slate-600");
+        JParagraph pJustify = new JParagraph("Este párrafo está justificado. El texto se distribuye uniformemente entre los márgenes izquierdo y derecho, creando un aspecto limpio y profesional similar al de un periódico o revista.", true);
+        pJustify.setJustify();
+        pJustify.withStyle("text-base", "text-slate-500");
+        
+        // Styled
+        Label lblStyled = new Label("Con Estilos");
+        lblStyled.getStyleClass().addAll("text-sm", "font-bold", "text-slate-600");
+        JParagraph pStyled = new JParagraph("Este párrafo usa la API fluida withStyle() para aplicar múltiples clases CSS de forma encadenada.", true);
+        pStyled.setAlignLeft();
+        pStyled.withStyle("text-lg", "text-primary", "font-bold");
+        
+        paragraphBody.getChildren().addAll(
+            lblLeft, pLeft,
+            lblCenter, pCenter,
+            lblRight, pRight,
+            lblJustify, pJustify,
+            lblStyled, pStyled
+        );
+        
+        paragraphCard.setBody(paragraphBody);
+        content.getChildren().add(paragraphCard);
+        
         setContent(content);
     }
     
@@ -86,5 +138,3 @@ public class TypographyView extends ScrollPane {
         return lbl;
     }
 }
-
-

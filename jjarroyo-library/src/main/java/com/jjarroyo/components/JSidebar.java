@@ -9,8 +9,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
+import javafx.collections.ObservableList; 
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -20,10 +19,6 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-import javafx.collections.ObservableList;
-import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.scene.Node;
 
 public class JSidebar extends VBox {
 
@@ -32,15 +27,20 @@ public class JSidebar extends VBox {
         HIDDEN   // Width 0
     }
 
-    private ObservableList<JSidebarItem> items = FXCollections.observableArrayList();
+    public enum SidebarVariant {
+        DEFAULT, // Dark/Standard
+        LIGHT    // White background
+    }
+
+    private ObservableList<Node> items = FXCollections.observableArrayList();
     private VBox itemsContainer;
     private ScrollPane scrollPane;
-    private HBox footerContainer;
-    private VBox headerContainer;
+    private HBox footerContainer; 
     private Button toggleBtn;
 
     private BooleanProperty expanded = new SimpleBooleanProperty(true);
     private ObjectProperty<CollapseMode> collapseMode = new SimpleObjectProperty<>(CollapseMode.COMPACT);
+    private ObjectProperty<SidebarVariant> variant = new SimpleObjectProperty<>(SidebarVariant.DEFAULT);
     
     // Widths
     private double expandedWidth = 250;
@@ -52,7 +52,7 @@ public class JSidebar extends VBox {
     }
 
     private HBox topBar;
-    private HBox headerContentWrapper;
+    private VBox headerContentWrapper;
     private Node headerNode;
 
     private void init() {
@@ -61,15 +61,14 @@ public class JSidebar extends VBox {
         setMinWidth(Region.USE_PREF_SIZE);
         setMaxWidth(Region.USE_PREF_SIZE);
 
-        // Top Bar (Header + Toggle)
+        // Header content wrapper — full width, above the toggle bar
+        headerContentWrapper = new VBox();
+        headerContentWrapper.getStyleClass().add("j-sidebar-header-content");
+
+        // Top Bar (Toggle only)
         topBar = new HBox();
         topBar.getStyleClass().add("j-sidebar-header");
-        topBar.setAlignment(Pos.CENTER_LEFT);
-        
-        // Wrapper for User Header (Title/Logo)
-        headerContentWrapper = new HBox();
-        headerContentWrapper.setAlignment(Pos.CENTER_LEFT);
-        HBox.setHgrow(headerContentWrapper, Priority.ALWAYS);
+        topBar.setAlignment(Pos.CENTER_RIGHT);
         
         // Toggle Button (Hamburger)
         toggleBtn = new Button();
@@ -77,12 +76,7 @@ public class JSidebar extends VBox {
         toggleBtn.setGraphic(JIcon.MENU.view()); // Use Hamburger
         toggleBtn.setOnAction(e -> setExpanded(!isExpanded()));
         
-        // Spacer to push toggle to right? No, standard HBox will place them next to each other.
-        // If we want Title [Spacer] Toggle:
-        Region spacer = new Region();
-        HBox.setHgrow(spacer, Priority.ALWAYS);
-
-        topBar.getChildren().addAll(headerContentWrapper, spacer, toggleBtn);
+        topBar.getChildren().add(toggleBtn);
 
         // Scrollable Items Container
         itemsContainer = new VBox();
@@ -95,13 +89,17 @@ public class JSidebar extends VBox {
         scrollPane.getStyleClass().add("j-sidebar-scroll");
         VBox.setVgrow(scrollPane, Priority.ALWAYS);
 
-        // Remove Footer Container logic
-        // ...
+        // Footer Container
+        footerContainer = new HBox();
+        footerContainer.getStyleClass().add("j-sidebar-footer");
+        footerContainer.setAlignment(Pos.CENTER_LEFT);
+        footerContainer.setManaged(false);
+        footerContainer.setVisible(false);
 
-        getChildren().addAll(topBar, scrollPane);
+        getChildren().addAll(headerContentWrapper, topBar, scrollPane, footerContainer);
 
         // Items Listener
-        items.addListener((ListChangeListener<JSidebarItem>) c -> {
+        items.addListener((ListChangeListener<Node>) c -> {
             while (c.next()) {
                 if (c.wasAdded()) {
                    itemsContainer.getChildren().addAll(c.getAddedSubList());
@@ -118,7 +116,11 @@ public class JSidebar extends VBox {
     }
 
     private void checkAutoCollapseMode() {
-        boolean hasIcons = items.stream().anyMatch(item -> item.getIcon() != null);
+        boolean hasIcons = items.stream()
+            .filter(node -> node instanceof JSidebarItem)
+            .map(node -> (JSidebarItem) node)
+            .anyMatch(item -> item.getIcon() != null);
+        
         if (hasIcons) {
              setCollapseMode(CollapseMode.COMPACT);
         } else {
@@ -162,10 +164,49 @@ public class JSidebar extends VBox {
         headerContentWrapper.getChildren().clear();
         if (header != null) {
             headerContentWrapper.getChildren().add(header);
+            headerContentWrapper.setVisible(true);
+            headerContentWrapper.setManaged(true);
+            topBar.setVisible(false);
+            topBar.setManaged(false);
+        } else {
+            headerContentWrapper.setVisible(false);
+            headerContentWrapper.setManaged(false);
+            topBar.setVisible(true);
+            topBar.setManaged(true);
+        }
+    }
+
+    public void setFooter(Node footer) {
+        footerContainer.getChildren().clear();
+        if (footer != null) {
+            footerContainer.getChildren().add(footer);
+            footerContainer.setManaged(true);
+            footerContainer.setVisible(true);
+        } else {
+            footerContainer.setManaged(false);
+            footerContainer.setVisible(false);
+        }
+    }
+
+    public void setVariant(SidebarVariant variant) {
+        this.variant.set(variant);
+        getStyleClass().removeAll("sidebar-default", "sidebar-light");
+        if (variant == SidebarVariant.LIGHT) {
+            getStyleClass().add("sidebar-light");
+            setStyle("-fx-background-color: white; -fx-border-color: -color-border-default; -fx-border-width: 0 1 0 0;");
+            topBar.setStyle("-fx-background-color: white; -fx-border-color: -color-border-default; -fx-border-width: 0 0 1 0;");
+            itemsContainer.setStyle("-fx-background-color: white;");
+            scrollPane.setStyle("-fx-background-color: white; -fx-background: white;");
+        } else {
+            getStyleClass().add("sidebar-default");
+            setStyle(null);
+            topBar.setStyle(null);
+            itemsContainer.setStyle(null);
+            scrollPane.setStyle(null);
         }
     }
     
-    public ObservableList<JSidebarItem> getItems() {
+    public ObservableList<Node> getItems() {
         return items;
     }
     

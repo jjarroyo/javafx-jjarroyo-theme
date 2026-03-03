@@ -1,0 +1,195 @@
+/* sql-editor-light.css — Light theme for JSqlEditor (RichTextFX) */
+
+/* ─── CodeArea Base ──────────────────────────────────────────────────────────── */
+.j-sql-code-area {
+    -fx-font-family:
+        'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    -fx-font-size: 13px;
+    -fx-background-color: white;
+    -fx-highlight-fill: rgba(59, 130, 246, 0.22);
+    -fx-highlight-text-fill: #1e293b;
+}
+
+.j-sql-code-area .caret {
+    -fx-stroke: #1e293b;
+    -fx-stroke-width: 2px;
+}
+
+/* Line numbers gutter */
+.j-sql-code-area .lineno {
+    -fx-font-family: 'JetBrains Mono', 'Consolas', monospace;
+    -fx-font-size: 12px;
+    -fx-background-color: #f8fafc;
+    -fx-text-fill: #94a3b8;
+    -fx-padding: 0 10px 0 8px;
+    -fx-border-color: transparent #e2e8f0 transparent transparent;
+    -fx-border-width: 0 1px 0 0;
+    -fx-alignment: center-right;
+    -fx-min-width: 48px;
+}
+
+/* ─── Syntax Token Colors ────────────────────────────────────────────────────── */
+.sql-keyword {
+    -fx-fill: #2563eb; /* blue-600 */
+    -fx-font-weight: bold;
+}
+
+.sql-type {
+    -fx-fill: #7c3aed; /* violet-600 */
+}
+
+.sql-function {
+    -fx-fill: #0891b2; /* cyan-600 */
+}
+
+.sql-string {
+    -fx-fill: #059669; /* emerald-600 */
+}
+
+.sql-quoted-ident {
+    -fx-fill: #0d9488; /* teal-600 */
+    -fx-font-style: italic;
+}
+
+.sql-comment {
+    -fx-fill: #94a3b8; /* slate-400 */
+    -fx-font-style: italic;
+}
+
+.sql-block-comment {
+    -fx-fill: #64748b; /* slate-500 */
+    -fx-font-style: italic;
+}
+
+.sql-number {
+    -fx-fill: #d97706; /* amber-600 */
+}
+
+.sql-operator {
+    -fx-fill: #e11d48; /* rose-600 */
+}
+
+.sql-punctuation {
+    -fx-fill: #64748b; /* slate-500 */
+}
+
+/* ─── Error Line Highlight ───────────────────────────────────────────────────── */
+.sql-error-line {
+    -fx-background-color: #fff1f2; /* rose-50 */
+}
+.sql-error-line .lineno {
+    -fx-text-fill: #ef4444;
+    -fx-font-weight: bold;
+    -fx-background-color: #ffe4e6; /* rose-100 */
+}
+
+/* ─── Status Bar ─────────────────────────────────────────────────────────────── */
+.j-sql-status-bar {
+    -fx-background-color: #f8fafc;
+    -fx-border-color: #e2e8f0 transparent transparent transparent;
+    -fx-border-width: 1px 0 0 0;
+    -fx-background-radius: 0 0 8px 8px;
+}
+.j-sql-status-label {
+    -fx-font-family: 'Consolas', monospace;
+    -fx-font-size: 11px;
+    -fx-text-fill: #94a3b8;
+}
+.j-sql-status-ok {
+    -fx-text-fill: #10b981;
+}
+.j-sql-status-error {
+    -fx-text-fill: #ef4444;
+    -fx-font-weight: bold;
+}
+
+/* ─── Scroll pane ────────────────────────────────────────────────────────────── */
+.j-sql-scroll .scroll-bar:vertical,
+.j-sql-scroll .scroll-bar:horizontal {
+    -fx-background-color: #f1f5f9;
+    -fx-pref-width: 12px; /* vertical: grosor */
+    -fx-pref-height: 12px; /* horizontal: grosor */
+    -fx-min-width: 12px;
+    -fx-min-height: 12px;
+    -fx-padding: 0;
+}
+
+.j-sql-scroll .scroll-bar:vertical > .track-background,
+.j-sql-scroll .scroll-bar:horizontal > .track-background {
+    -fx-background-color: transparent;
+}
+
+.j-sql-scroll .scroll-bar:vertical > .track,
+.j-sql-scroll .scroll-bar:horizontal > .track {
+    -fx-background-color: #e2e8f0;
+    -fx-background-radius: 6px;
+    -fx-background-insets: 2px;
+    -fx-border-color: transparent;
+}
+
+/* ── Thumb — color sólido, siempre visible ── */
+.j-sql-scroll .scroll-bar:vertical > .thumb,
+.j-sql-scroll .scroll-bar:horizontal > .thumb {
+    -fx-background-color: #64748b; /* slate-500: claramente visible en light */
+    -fx-background-radius: 6px;
+    -fx-background-insets: 2px;
+    /* min-height/min-width se fuerzan desde Java (ver patch .java) */
+}
+
+.j-sql-scroll .scroll-bar:vertical > .thumb:hover,
+.j-sql-scroll .scroll-bar:horizontal > .thumb:hover {
+    -fx-background-color: #334155; /* slate-700 on hover */
+    -fx-background-insets: 1px;
+}
+
+.j-sql-scroll .scroll-bar:vertical > .thumb:pressed,
+.j-sql-scroll .scroll-bar:horizontal > .thumb:pressed {
+    -fx-background-color: #1e293b;
+    -fx-background-insets: 1px;
+}
+
+/* ── Ocultar las flechas (arriba/abajo, izq/der) — estilo moderno ── */
+.j-sql-scroll .scroll-bar > .increment-button,
+.j-sql-scroll .scroll-bar > .decrement-button,
+.j-sql-scroll .scroll-bar > .increment-button > .increment-arrow,
+.j-sql-scroll .scroll-bar > .decrement-button > .decrement-arrow {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-pref-height: 0;
+    -fx-pref-width: 0;
+    -fx-min-height: 0;
+    -fx-min-width: 0;
+    -fx-max-height: 0;
+    -fx-max-width: 0;
+    -fx-shape: '';
+}
+
+/* ── Esquina donde se cruzan ambas barras ── */
+.j-sql-scroll > .corner,
+.j-sql-scroll .corner {
+    -fx-background-color: #f1f5f9;
+}
+
+/* ─── Autocomplete Popup ─────────────────────────────────────────────────────── */
+.j-sql-autocomplete-list {
+    -fx-background-color: white;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 12, 0, 0, 4);
+    -fx-font-family: 'Consolas', monospace;
+    -fx-font-size: 12px;
+}
+.j-sql-autocomplete-list .list-cell {
+    -fx-padding: 4px 10px;
+    -fx-text-fill: #1e293b;
+    -fx-background-color: transparent;
+}
+.j-sql-autocomplete-list .list-cell:selected {
+    -fx-background-color: #eff6ff;
+    -fx-text-fill: #2563eb;
+}
+.j-sql-autocomplete-list .list-cell:hover {
+    -fx-background-color: #f8fafc;
+}

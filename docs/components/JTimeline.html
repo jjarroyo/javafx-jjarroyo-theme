@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JTimeline - JJArroyo Theme</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+        />
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: {
+                                50: '#f0f9ff',
+                                100: '#e0f2fe',
+                                500: '#0ea5e9',
+                                600: '#0284c7',
+                            },
+                        },
+                    },
+                },
+            };
+        </script>
+    </head>
+    <body class="bg-slate-50 text-slate-900">
+        <!-- Navbar -->
+        <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex items-center">
+                        <a href="../index.html" class="flex items-center gap-2">
+                            <div
+                                class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-xl"
+                            >
+                                J
+                            </div>
+                            <span class="font-bold text-xl"
+                                >JJArroyo Theme</span
+                            >
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex gap-8">
+            <!-- Sidebar -->
+            <div class="hidden md:block w-64 flex-shrink-0">
+                <div class="sticky top-24 space-y-8">
+                    <div>
+                        <h3 class="font-semibold text-slate-900 mb-3">
+                            Componentes
+                        </h3>
+                        <ul class="space-y-2 border-l border-slate-200">
+                            <li>
+                                <a
+                                    href="JButton.html"
+                                    class="block pl-4 py-1 text-slate-600 hover:text-primary-600 hover:border-primary-600 hover:border-l"
+                                    >JButton</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="JCard.html"
+                                    class="block pl-4 py-1 text-slate-600 hover:text-primary-600 hover:border-primary-600 hover:border-l"
+                                    >JCard</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="JInput.html"
+                                    class="block pl-4 py-1 text-slate-600 hover:text-primary-600 hover:border-primary-600 hover:border-l"
+                                    >JInput</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="JToast.html"
+                                    class="block pl-4 py-1 text-slate-600 hover:text-primary-600 hover:border-primary-600 hover:border-l"
+                                    >JToast</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="JModal.html"
+                                    class="block pl-4 py-1 text-slate-600 hover:text-primary-600 hover:border-primary-600 hover:border-l"
+                                    >JModal</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="JEmptyState.html"
+                                    class="block pl-4 py-1 text-slate-600 hover:text-primary-600 hover:border-primary-600 hover:border-l"
+                                    >JEmptyState</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="JSidebar.html"
+                                    class="block pl-4 py-1 text-slate-600 hover:text-primary-600 hover:border-primary-600 hover:border-l"
+                                    >JSidebar</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="JBadge.html"
+                                    class="block pl-4 py-1 text-slate-600 hover:text-primary-600 hover:border-primary-600 hover:border-l"
+                                    >JBadge</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="JAvatar.html"
+                                    class="block pl-4 py-1 text-slate-600 hover:text-primary-600 hover:border-primary-600 hover:border-l"
+                                    >JAvatar</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="JTimeline.html"
+                                    class="block pl-4 py-1 text-primary-600 border-primary-600 border-l font-medium"
+                                    >JTimeline</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="JStepper.html"
+                                    class="block pl-4 py-1 text-slate-600 hover:text-primary-600 hover:border-primary-600 hover:border-l"
+                                    >JStepper</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="flex-1 min-w-0">
+                <div class="mb-8">
+                    <h1 class="text-3xl font-bold mb-4">JTimeline</h1>
+                    <p class="text-lg text-slate-600">
+                        Un componente para mostrar eventos, historial o pasos en
+                        un formato de línea de tiempo con orientación vertical u
+                        horizontal.
+                    </p>
+                </div>
+
+                <!-- Uso Básico -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold mb-6">Uso Básico</h2>
+
+                    <div
+                        class="bg-white rounded-xl border border-slate-200 overflow-hidden mb-6"
+                    >
+                        <div
+                            class="p-6 border-b border-slate-200 flex justify-center bg-slate-50"
+                        >
+                            <!-- Simulated Timeline Form -->
+                            <div
+                                class="max-w-md w-full relative border-l-2 border-slate-200 ml-4 py-4"
+                            >
+                                <!-- Event 1 -->
+                                <div class="mb-8 relative pl-6">
+                                    <div
+                                        class="absolute w-4 h-4 bg-primary-500 rounded-full border-2 border-white -left-[9px] top-1"
+                                    ></div>
+                                    <div
+                                        class="font-bold text-slate-900 text-sm"
+                                    >
+                                        System Update
+                                    </div>
+                                    <div class="text-slate-500 text-xs mt-1">
+                                        10:00 AM
+                                    </div>
+                                    <div class="text-slate-600 text-sm mt-1">
+                                        The system was updated to version 2.1.0.
+                                    </div>
+                                </div>
+                                <!-- Event 2 -->
+                                <div class="relative pl-6">
+                                    <div
+                                        class="absolute w-4 h-4 bg-green-500 rounded-full border-2 border-white -left-[9px] top-1"
+                                    ></div>
+                                    <div
+                                        class="font-bold text-slate-900 text-sm"
+                                    >
+                                        Database Backup
+                                    </div>
+                                    <div class="text-slate-500 text-xs mt-1">
+                                        11:30 AM
+                                    </div>
+                                    <div class="text-slate-600 text-sm mt-1">
+                                        Automated backup completed without
+                                        errors.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <pre><code class="language-java">JTimeline timeline = new JTimeline();
+
+JTimeline.Event e1 = new JTimeline.Event("System Update", "The system was updated to version 2.1.0.", "10:00 AM");
+e1.setColorClass("primary"); // Punto y línea azules
+
+JTimeline.Event e2 = new JTimeline.Event("Database Backup", "Automated backup completed without errors.", "11:30 AM");
+e2.setColorClass("success"); // Punto verde
+
+timeline.addEvent(e1);
+timeline.addEvent(e2);</code></pre>
+                    </div>
+                </section>
+
+                <!-- Eventos con Iconos Personalizados -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold mb-6">
+                        Iconos y Contenido Personalizado
+                    </h2>
+
+                    <div
+                        class="bg-white rounded-xl border border-slate-200 overflow-hidden mb-6"
+                    >
+                        <div class="p-6 border-b border-slate-200">
+                            <p class="text-slate-600 mb-4">
+                                Puedes asignar un nodo custom (`Node`) como
+                                icono para cada paso, en lugar del punto por
+                                defecto. También es posible agregar un visor o
+                                componente custom debajo de la descripción.
+                            </p>
+                        </div>
+                        <pre><code class="language-java">JTimeline.Event eFile = new JTimeline.Event("Archivo Subido", "ReporteMensual.pdf", "Hoy");
+eFile.setIcon(JIcon.FILE.view()); // Icono del tema
+eFile.setColorClass("info");  // Color de resaltado
+
+// Contenido inyectado
+VBox customReceipt = new VBox(new Label("Visor de archivo..."));
+eFile.setCustomContent(customReceipt);
+
+timeline.addEvent(eFile);</code></pre>
+                    </div>
+                </section>
+
+                <!-- Orientación Horizontal -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold mb-6">
+                        Orientación Horizontal
+                    </h2>
+                    <div
+                        class="bg-white rounded-xl border border-slate-200 overflow-hidden mb-6"
+                    >
+                        <div class="p-6 border-b border-slate-200">
+                            <p class="text-slate-600 mb-4">
+                                El `JTimeline` soporta disposición horizontal
+                                con `.setOrientation(Orientation.HORIZONTAL)`.
+                            </p>
+                        </div>
+                        <pre><code class="language-java">JTimeline timelineH = new JTimeline();
+timelineH.setOrientation(Orientation.HORIZONTAL);
+
+timelineH.addEvent("Phase 1", "Planning", "Jan 2024");
+timelineH.addEvent("Phase 2", "Development", "Feb 2024");
+timelineH.addEvent("Phase 3", "Testing", "Apr 2024");
+timelineH.addEvent("Phase 4", "Launch", "Jun 2024");</code></pre>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section>
+                    <h2 class="text-2xl font-bold mb-6">
+                        Propiedades y Métodos (`JTimeline`)
+                    </h2>
+                    <div
+                        class="bg-white rounded-xl border border-slate-200 overflow-hidden"
+                    >
+                        <table class="w-full text-sm text-left">
+                            <thead
+                                class="bg-slate-50 text-slate-600 border-b border-slate-200"
+                            >
+                                <tr>
+                                    <th class="px-6 py-3 font-semibold">
+                                        Método
+                                    </th>
+                                    <th class="px-6 py-3 font-semibold">
+                                        Descripción
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200">
+                                <tr>
+                                    <td
+                                        class="px-6 py-4 font-mono text-primary-600"
+                                    >
+                                        setOrientation(Orientation)
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        Define si la línea de tiempo es
+                                        `VERTICAL` (por defecto) o `HORIZONTAL`.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        class="px-6 py-4 font-mono text-primary-600"
+                                    >
+                                        addEvent(...)
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        Agrega un `Event` (soporta sobrecarga
+                                        básica y avanzada por objeto).
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        class="px-6 py-4 font-mono text-primary-600"
+                                    >
+                                        getEvents()
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        Obtiene la lista observable de eventos
+                                        (`ObservableList&lt;Event&gt;`).
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <script>
+            hljs.highlightAll();
+        </script>
+    </body>
+</html>

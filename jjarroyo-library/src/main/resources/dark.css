@@ -1,0 +1,43 @@
+/* ==========================================================================
+   DARK MODE - Variables semánticas para modo oscuro (.root.dark)
+   ========================================================================== */
+
+.root.dark {
+    /* ─── TOKENS SEMÁNTICOS (SISTEMA) ───────────────────────────────────── */
+    -color-bg-body: -color-slate-900;
+    -color-bg-surface: -color-slate-800;
+    -color-bg-surface-hover: -color-slate-700;
+    -color-bg-subtle: -color-slate-800;
+
+    -color-text-primary: -color-slate-100;
+    -color-text-secondary: -color-slate-400;
+    -color-text-muted: -color-slate-500;
+    -color-text-inverted: -color-slate-900;
+
+    -color-border-default: -color-slate-700;
+    -color-border-subtle: -color-slate-800;
+    -color-border-highlight: -color-primary-400;
+
+    /* Re-aplicar overrides de sistema */
+    -fx-background-color: -color-bg-body;
+    -fx-text-fill: -color-text-primary;
+
+    /* Compatibilidad heredada */
+    -color-fg-default: -color-text-primary;
+    -color-fg-subtle: -color-text-secondary;
+    -color-fg-muted: -color-text-muted;
+
+    /* ─── SQL EDITOR TOKENS (DARK) ─────────────────────────────────────── */
+    -sql-surface: -color-slate-900;
+    -sql-border: -color-slate-700;
+    -sql-border-focus: -color-primary-500;
+    -sql-gutter-bg: -color-slate-800;
+    -sql-gutter-border: -color-slate-700;
+    -sql-line-num: -color-slate-500;
+    -sql-line-num-hover: -color-slate-300;
+    -sql-text: -color-slate-200;
+    -sql-selection: #2563eb;
+    -sql-status-bg: -color-slate-800;
+    -sql-status-border: -color-slate-700;
+    -sql-status-text: -color-slate-400;
+}
