@@ -23,7 +23,7 @@ echo Running Demo Application...
 echo ==========================================
 
 rem Run the Demo JAR
-java -jar jjarroyo-demo/target/jjarroyo-demo-1.2.0.jar
+java -jar jjarroyo-demo/target/jjarroyo-demo-1.3.0.jar
 if %ERRORLEVEL% NEQ 0 (
     echo Application execution failed!
     pause
