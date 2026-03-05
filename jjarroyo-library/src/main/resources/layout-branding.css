@@ -1,0 +1,58 @@
+/* ==========================================================================
+   LAYOUT BRANDING - Estilos para pantallas de Login y Branding
+   ========================================================================== */
+
+.login-branding {
+    -fx-background-color: linear-gradient(to bottom right, #6366f1, #a855f7);
+    -fx-padding: 60px;
+    -fx-alignment: center;
+}
+
+.branding-title {
+    -fx-text-fill: white;
+    -fx-font-size: 42px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 15, 0, 0, 5);
+}
+
+.branding-subtitle {
+    -fx-text-fill: rgba(255, 255, 255, 0.9);
+    -fx-font-size: 18px;
+    -fx-text-alignment: center;
+    -fx-max-width: 300px;
+}
+
+.login-form-container {
+    -fx-background-color: -color-bg-surface;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.05), 20, 0, -10, 0);
+}
+
+.login-title {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-text-primary;
+    -fx-padding: 0 0 0 0;
+}
+
+.login-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: -color-text-secondary;
+    -fx-padding: 0 0 5 0;
+}
+
+.login-link {
+    -fx-text-fill: -color-primary-500;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+    -fx-padding: 0 0 5 0;
+}
+.login-link:hover {
+    -fx-underline: true;
+    -fx-text-fill: -color-primary-600;
+}
+
+.status-message {
+    -fx-font-size: 13px;
+    -fx-text-fill: -color-danger-500;
+    -fx-padding: 5 0 0 0;
+}

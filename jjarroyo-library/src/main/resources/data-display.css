@@ -79,6 +79,17 @@
     -fx-padding: 4px 0;
 }
 
+/* ─── J-TABLE SEARCH WRAPPER ─────────────────────────────────────────────────── */
+.j-table-search-wrapper {
+    -fx-alignment: center-left;
+    -fx-spacing: 12px;
+    -fx-padding: 8px 0;
+}
+.j-table-filter-bar {
+    -fx-alignment: center-right;
+    -fx-spacing: 8px;
+}
+
 /* ─── J-TABLE CHECKBOX COLUMN ────────────────────────────────────────────────── */
 .j-table-checkbox-col {
     -fx-alignment: center;

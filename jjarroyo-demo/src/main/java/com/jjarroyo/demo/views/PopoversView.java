@@ -48,7 +48,6 @@ public class PopoversView extends ScrollPane {
             JPopover pop = new JPopover();
             pop.setTitle("Dark Theme")
                .setBody("This popover uses the dark theme variant.")
-               .setTheme(JPopover.Theme.DARK)
                .show(btnDark);
         });
         

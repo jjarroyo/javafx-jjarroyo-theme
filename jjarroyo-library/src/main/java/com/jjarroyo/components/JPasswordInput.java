@@ -60,6 +60,21 @@ public class JPasswordInput extends StackPane {
         contentString.getChildren().addAll(inputStack, toggleButton);
         
         getChildren().add(contentString);
+
+        // JavaFX no soporta :focused-within en CSS.
+        // Usamos listeners para toggle la clase 'input-focused' en el wrapper.
+        passwordField.focusedProperty().addListener((obs, oldVal, newVal) -> updateFocusStyle());
+        textField.focusedProperty().addListener((obs, oldVal, newVal) -> updateFocusStyle());
+    }
+
+    private void updateFocusStyle() {
+        if (passwordField.isFocused() || textField.isFocused()) {
+            if (!getStyleClass().contains("input-focused")) {
+                getStyleClass().add("input-focused");
+            }
+        } else {
+            getStyleClass().remove("input-focused");
+        }
     }
     
     private void toggleVisibility() {
@@ -122,6 +137,28 @@ public class JPasswordInput extends StackPane {
         }
         container.getChildren().add(this);
         return container;
+    }
+
+    /**
+     * Applies the modern style to internal fields.
+     */
+    public JPasswordInput setModern(boolean modern) {
+        if (modern) {
+            if (!getStyleClass().contains("form-input-modern")) {
+                getStyleClass().add("form-input-modern");
+            }
+            passwordField.getStyleClass().add("form-input-modern");
+            textField.getStyleClass().add("form-input-modern");
+        } else {
+            getStyleClass().remove("form-input-modern");
+            passwordField.getStyleClass().remove("form-input-modern");
+            textField.getStyleClass().remove("form-input-modern");
+        }
+        return this;
+    }
+
+    public PasswordField getPasswordField() {
+        return passwordField;
     }
 }
 

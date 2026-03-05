@@ -38,19 +38,19 @@ public class ChipView extends ScrollPane {
 
     private javafx.scene.Node createSoftVariant() {
         FlowPane flow = new FlowPane(8, 8);
-        String[] colors = {"primary", "success", "danger", "warning", "info", "slate"};
-        for (String color : colors) {
-            flow.getChildren().add(new JChip(color).setColor(color));
+        JChip.ChipColor[] colors = JChip.ChipColor.values();
+        for (JChip.ChipColor color : colors) {
+            flow.getChildren().add(new JChip(color.name().toLowerCase()).setColor(color));
         }
         return flow;
     }
 
     private javafx.scene.Node createFilledVariant() {
         FlowPane flow = new FlowPane(8, 8);
-        String[] colors = {"primary", "success", "danger", "warning", "info", "slate"};
-        for (String color : colors) {
+        JChip.ChipColor[] colors = JChip.ChipColor.values();
+        for (JChip.ChipColor color : colors) {
             flow.getChildren().add(
-                new JChip(color).setColor(color).setVariant(JChip.Variant.FILLED)
+                new JChip(color.name().toLowerCase()).setColor(color).setVariant(JChip.Variant.FILLED)
             );
         }
         return flow;
@@ -58,10 +58,10 @@ public class ChipView extends ScrollPane {
 
     private javafx.scene.Node createOutlinedVariant() {
         FlowPane flow = new FlowPane(8, 8);
-        String[] colors = {"primary", "success", "danger", "warning", "info", "slate"};
-        for (String color : colors) {
+        JChip.ChipColor[] colors = JChip.ChipColor.values();
+        for (JChip.ChipColor color : colors) {
             flow.getChildren().add(
-                new JChip(color).setColor(color).setVariant(JChip.Variant.OUTLINED)
+                new JChip(color.name().toLowerCase()).setColor(color).setVariant(JChip.Variant.OUTLINED)
             );
         }
         return flow;
@@ -70,9 +70,9 @@ public class ChipView extends ScrollPane {
     private javafx.scene.Node createSizes() {
         FlowPane flow = new FlowPane(8, 8);
         flow.getChildren().addAll(
-            new JChip("Small").setChipSize(JChip.Size.SM).setColor("info"),
-            new JChip("Medium").setChipSize(JChip.Size.MD).setColor("info"),
-            new JChip("Large").setChipSize(JChip.Size.LG).setColor("info")
+            new JChip("Small").setChipSize(JChip.Size.SM).setColor(JChip.ChipColor.INFO),
+            new JChip("Medium").setChipSize(JChip.Size.MD).setColor(JChip.ChipColor.INFO),
+            new JChip("Large").setChipSize(JChip.Size.LG).setColor(JChip.ChipColor.INFO)
         );
         return flow;
     }
@@ -80,10 +80,10 @@ public class ChipView extends ScrollPane {
     private javafx.scene.Node createWithIcons() {
         FlowPane flow = new FlowPane(8, 8);
         flow.getChildren().addAll(
-            new JChip("Activo", JIcon.CHECK.view()).setColor("success"),
-            new JChip("Error", JIcon.ERROR.view()).setColor("danger"),
-            new JChip("Info", JIcon.INFO.view()).setColor("info"),
-            new JChip("Alerta", JIcon.WARNING.view()).setColor("warning")
+            new JChip("Activo", JIcon.CHECK.view()).setColor(JChip.ChipColor.SUCCESS),
+            new JChip("Error", JIcon.ERROR.view()).setColor(JChip.ChipColor.DANGER),
+            new JChip("Info", JIcon.INFO.view()).setColor(JChip.ChipColor.INFO),
+            new JChip("Alerta", JIcon.WARNING.view()).setColor(JChip.ChipColor.WARNING)
         );
         return flow;
     }
@@ -91,7 +91,7 @@ public class ChipView extends ScrollPane {
     private javafx.scene.Node createDismissible() {
         FlowPane flow = new FlowPane(8, 8);
         String[] tags = {"JavaScript", "Java", "Python", "TypeScript", "Rust"};
-        String[] colors = {"primary", "success", "danger", "warning", "info"};
+        JChip.ChipColor[] colors = {JChip.ChipColor.PRIMARY, JChip.ChipColor.SUCCESS, JChip.ChipColor.DANGER, JChip.ChipColor.WARNING, JChip.ChipColor.INFO};
         for (int i = 0; i < tags.length; i++) {
             final JChip chip = new JChip(tags[i]);
             chip.setColor(colors[i])

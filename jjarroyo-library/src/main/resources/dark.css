@@ -63,7 +63,7 @@
 }
 
 .root.dark .j-sidebar.light {
-    -fx-background-color: -color-bg-surface;
+    /* No forzar background aquí, dejar que herede o use la lógica corregida */
 }
 .root.dark .j-header {
     -fx-background-color: -color-bg-surface;
@@ -91,4 +91,71 @@
 .root.dark .card-header-line,
 .root.dark .card-footer {
     -fx-border-color: transparent transparent -color-border-default transparent;
+}
+
+/* ─── SIDEBAR DEFAULT (siempre oscuro) ────────────────────────────── */
+.root.dark .j-sidebar.sidebar-default {
+    -fx-background-color: #0f172a; /* Slate 900 real */
+}
+.root.dark .j-sidebar.sidebar-default .j-sidebar-header {
+    -fx-border-color: transparent transparent rgba(255, 255, 255, 0.1)
+        transparent;
+}
+.root.dark .j-sidebar-item:hover {
+    -fx-background-color: rgba(148, 163, 184, 0.08);
+}
+.root.dark .j-sidebar-item:hover .label {
+    -fx-text-fill: white;
+}
+.root.dark .j-sidebar-item:hover .j-icon {
+    -fx-fill: #cbd5e1; /* Slate 300 real */
+}
+.root.dark .j-sidebar-item.active {
+    -fx-background-color: rgba(59, 130, 246, 0.15);
+}
+.root.dark .j-sidebar-item.active .label {
+    -fx-text-fill: #93c5fd; /* Primary 300 */
+    -fx-font-weight: 600;
+}
+.root.dark .j-sidebar-item .label {
+    -fx-text-fill: #94a3b8; /* Slate 400 real */
+}
+.root.dark .j-sidebar-item .j-icon {
+    -fx-fill: #64748b; /* Slate 500 real */
+}
+.root.dark .j-sidebar-toggle:hover {
+    -fx-background-color: #1e293b;
+}
+/* User profile hover en dark */
+.root.dark .j-header-user-profile:hover {
+    -fx-background-color: #334155; /* Slate 700 real */
+}
+
+/* ─── TABLE EMPTY STATE (DARK) ─────────────────────────────────── */
+.root.dark .j-table-empty-state .label {
+    -fx-text-fill: rgba(255, 255, 255, 0.6);
+}
+
+/* ─── TABLE COLUMN BORDERS (DARK) ──────────────────────────────── */
+.root.dark .j-table-view .column-header {
+    -fx-border-color: transparent transparent #334155 transparent;
+}
+.root.dark .j-table-view .table-row-cell {
+    -fx-border-color: transparent transparent #1e293b transparent;
+}
+.root.dark .j-table-view .table-cell {
+    -fx-border-color: transparent;
+}
+.root.dark .j-table-view .table-row-cell:selected {
+    -fx-background-color: rgba(59, 130, 246, 0.15);
+}
+.root.dark .j-table-view .table-row-cell:selected .table-cell {
+    -fx-border-color: transparent;
+    -fx-text-fill: #f8fafc;
+}
+
+/* ─── MODAL (DARK) ─────────────────────────────────────────────── */
+.root.dark .j-modal-dialog {
+    -fx-background-color: #1e293b; /* Slate 800 */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 20, 0, 0, 10);
 }

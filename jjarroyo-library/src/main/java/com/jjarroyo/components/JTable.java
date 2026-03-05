@@ -60,6 +60,7 @@ public class JTable<T> extends VBox {
     private boolean searchable = false;
     private TextField searchField;
     private HBox searchBar;
+    private HBox filterBar;
     private String searchPlaceholder = "Buscar...";
     private final List<String> searchProperties = new ArrayList<>();
 
@@ -407,20 +408,42 @@ public class JTable<T> extends VBox {
         searchBar.getStyleClass().add("j-table-search");
         searchBar.setAlignment(Pos.CENTER_LEFT);
         searchBar.getChildren().addAll(searchIcon, searchField);
+        searchBar.setMaxWidth(Double.MAX_VALUE);
+        searchBar.setPadding(new Insets(8, 0, 0, 0));
+
+        // Filter bar for custom buttons on the right
+        filterBar = new HBox(8);
+        filterBar.setAlignment(Pos.CENTER_RIGHT);
+        filterBar.getStyleClass().add("j-table-filter-bar");
+
+        // Wrapper: search (left 50%) + filter bar (right 50%)
+        HBox searchWrapper = new HBox(12);
+        searchWrapper.getStyleClass().add("j-table-search-wrapper");
+        HBox.setHgrow(searchBar, Priority.ALWAYS);
+        HBox.setHgrow(filterBar, Priority.ALWAYS);
+       // searchWrapper.setPadding(new Insets(8, 0, 0, 0));
+        searchWrapper.getChildren().addAll(searchBar, filterBar);
 
         // Filter on text change
         searchField.textProperty().addListener((obs, old, newVal) -> {
             applyFilter();
         });
 
-        getChildren().add(0, searchBar);
+        getChildren().add(0, searchWrapper);
+    }
+
+    /** Returns the filter bar HBox where custom filter buttons can be added. */
+    public HBox getFilterBar() {
+        return filterBar;
     }
 
     private void removeSearchBar() {
         if (searchBar != null) {
-            getChildren().remove(searchBar);
+            // Remove the wrapper (parent of searchBar)
+            getChildren().removeIf(n -> n.getStyleClass().contains("j-table-search-wrapper"));
             searchBar = null;
             searchField = null;
+            filterBar = null;
             applyFilter();
         }
     }

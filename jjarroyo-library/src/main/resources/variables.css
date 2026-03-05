@@ -130,3 +130,39 @@
     -sql-hl-string: #059669; /* Emerald 600 */
     -sql-hl-number: #d97706; /* Amber 600 */
 }
+
+/* ─── LABEL & HEADINGS ─────────────────────────────────────────────────── */
+.j-label {
+    -fx-text-fill: -color-text-primary;
+}
+
+.h1 {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-text-primary;
+}
+.h2 {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-text-primary;
+}
+.h3 {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-text-primary;
+}
+.h4 {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-text-primary;
+}
+.h5 {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-text-primary;
+}
+.h6 {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-text-primary;
+}

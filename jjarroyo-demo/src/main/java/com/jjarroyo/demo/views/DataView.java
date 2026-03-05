@@ -245,10 +245,10 @@ public class DataView extends ScrollPane {
         table.addColumn("Rol", "role", user -> {
             JChip chip = new JChip(user.getRole());
             switch (user.getRole()) {
-                case "Admin": chip.setColor("danger"); break;
-                case "Editor": chip.setColor("warning"); break;
-                case "Moderator": chip.setColor("info"); break;
-                default: chip.setColor("primary"); break;
+                case "Admin": chip.setColor(JChip.ChipColor.DANGER); break;
+                case "Editor": chip.setColor(JChip.ChipColor.WARNING); break;
+                case "Moderator": chip.setColor(JChip.ChipColor.INFO); break;
+                default: chip.setColor(JChip.ChipColor.PRIMARY); break;
             }
             chip.setChipSize(JChip.Size.SM);
             return chip;
@@ -258,11 +258,11 @@ public class DataView extends ScrollPane {
         table.addColumn("Estado", "status", user -> {
             JChip chip = new JChip(user.getStatus());
             switch (user.getStatus()) {
-                case "Activo": chip.setColor("success"); break;
-                case "Inactivo": chip.setColor("slate"); break;
-                case "Pendiente": chip.setColor("warning"); break;
-                case "Suspendido": chip.setColor("danger"); break;
-                default: chip.setColor("primary"); break;
+                case "Activo": chip.setColor(JChip.ChipColor.SUCCESS); break;
+                case "Inactivo": chip.setColor(JChip.ChipColor.SLATE); break;
+                case "Pendiente": chip.setColor(JChip.ChipColor.WARNING); break;
+                case "Suspendido": chip.setColor(JChip.ChipColor.DANGER); break;
+                default: chip.setColor(JChip.ChipColor.PRIMARY); break;
             }
             chip.setChipSize(JChip.Size.SM);
             return chip;
@@ -347,10 +347,10 @@ public class DataView extends ScrollPane {
         table.addColumn("Rol", "role", user -> {
             JChip chip = new JChip(user.getRole());
             switch (user.getRole()) {
-                case "Admin": chip.setColor("danger"); break;
-                case "Editor": chip.setColor("warning"); break;
-                case "Moderator": chip.setColor("info"); break;
-                default: chip.setColor("primary"); break;
+                case "Admin": chip.setColor(JChip.ChipColor.DANGER); break;
+                case "Editor": chip.setColor(JChip.ChipColor.WARNING); break;
+                case "Moderator": chip.setColor(JChip.ChipColor.INFO); break;
+                default: chip.setColor(JChip.ChipColor.PRIMARY); break;
             }
             chip.setChipSize(JChip.Size.SM);
             return chip;
@@ -362,11 +362,11 @@ public class DataView extends ScrollPane {
         table.addColumn("Estado", "status", user -> {
             JChip chip = new JChip(user.getStatus());
             switch (user.getStatus()) {
-                case "Activo": chip.setColor("success"); break;
-                case "Inactivo": chip.setColor("slate"); break;
-                case "Pendiente": chip.setColor("warning"); break;
-                case "Suspendido": chip.setColor("danger"); break;
-                default: chip.setColor("primary"); break;
+                case "Activo": chip.setColor(JChip.ChipColor.SUCCESS); break;
+                case "Inactivo": chip.setColor(JChip.ChipColor.SLATE); break;
+                case "Pendiente": chip.setColor(JChip.ChipColor.WARNING); break;
+                case "Suspendido": chip.setColor(JChip.ChipColor.DANGER); break;
+                default: chip.setColor(JChip.ChipColor.PRIMARY); break;
             }
             chip.setChipSize(JChip.Size.SM);
             return chip;

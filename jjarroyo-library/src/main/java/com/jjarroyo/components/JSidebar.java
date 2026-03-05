@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -42,6 +43,9 @@ public class JSidebar extends VBox {
     private ObjectProperty<CollapseMode> collapseMode = new SimpleObjectProperty<>(CollapseMode.COMPACT);
     private ObjectProperty<SidebarVariant> variant = new SimpleObjectProperty<>(SidebarVariant.DEFAULT);
     
+    private HBox brandContainer;
+    private Label brandTitle;
+    
     // Widths
     private double expandedWidth = 250;
     private double compactWidth = 70;
@@ -65,18 +69,23 @@ public class JSidebar extends VBox {
         headerContentWrapper = new VBox();
         headerContentWrapper.getStyleClass().add("j-sidebar-header-content");
 
-        // Top Bar (Toggle only)
+        // Top Bar (Brand + Toggle)
         topBar = new HBox();
         topBar.getStyleClass().add("j-sidebar-header");
-        topBar.setAlignment(Pos.CENTER_RIGHT);
+        topBar.setAlignment(Pos.CENTER_LEFT);
         
+        brandContainer = new HBox(12);
+        brandContainer.getStyleClass().add("j-sidebar-brand");
+        brandContainer.setAlignment(Pos.CENTER_LEFT);
+        HBox.setHgrow(brandContainer, Priority.ALWAYS);
+
         // Toggle Button (Hamburger)
         toggleBtn = new Button();
         toggleBtn.getStyleClass().add("j-sidebar-toggle");
         toggleBtn.setGraphic(JIcon.MENU.view()); // Use Hamburger
         toggleBtn.setOnAction(e -> setExpanded(!isExpanded()));
         
-        topBar.getChildren().add(toggleBtn);
+        topBar.getChildren().addAll(brandContainer, toggleBtn);
 
         // Scrollable Items Container
         itemsContainer = new VBox();
@@ -144,6 +153,10 @@ public class JSidebar extends VBox {
                  headerContentWrapper.setVisible(false);
                  headerContentWrapper.setManaged(false);
              }
+             if (brandContainer != null) {
+                 brandContainer.setVisible(false);
+                 brandContainer.setManaged(false);
+             }
              if (getCollapseMode() == CollapseMode.COMPACT) getStyleClass().add("compact");
              else getStyleClass().add("hidden");
         } else {
@@ -151,6 +164,10 @@ public class JSidebar extends VBox {
              if (headerContentWrapper != null) {
                  headerContentWrapper.setVisible(true);
                  headerContentWrapper.setManaged(true);
+             }
+             if (brandContainer != null) {
+                 brandContainer.setVisible(true);
+                 brandContainer.setManaged(true);
              }
              getStyleClass().remove("compact");
              getStyleClass().remove("hidden");
@@ -166,13 +183,21 @@ public class JSidebar extends VBox {
             headerContentWrapper.getChildren().add(header);
             headerContentWrapper.setVisible(true);
             headerContentWrapper.setManaged(true);
-            topBar.setVisible(false);
-            topBar.setManaged(false);
         } else {
             headerContentWrapper.setVisible(false);
             headerContentWrapper.setManaged(false);
-            topBar.setVisible(true);
-            topBar.setManaged(true);
+        }
+    }
+
+    public void setBrand(Node logo, String title) {
+        brandContainer.getChildren().clear();
+        if (logo != null) {
+            brandContainer.getChildren().add(logo);
+        }
+        if (title != null && !title.isEmpty()) {
+            brandTitle = new Label(title);
+            brandTitle.getStyleClass().add("j-sidebar-brand-text");
+            brandContainer.getChildren().add(brandTitle);
         }
     }
 
@@ -190,19 +215,11 @@ public class JSidebar extends VBox {
 
     public void setVariant(SidebarVariant variant) {
         this.variant.set(variant);
-        getStyleClass().removeAll("sidebar-default", "sidebar-light");
+        getStyleClass().removeAll("sidebar-default", "sidebar-light", "light");
         if (variant == SidebarVariant.LIGHT) {
-            getStyleClass().add("sidebar-light");
-            setStyle("-fx-background-color: white; -fx-border-color: -color-border-default; -fx-border-width: 0 1 0 0;");
-            topBar.setStyle("-fx-background-color: white; -fx-border-color: -color-border-default; -fx-border-width: 0 0 1 0;");
-            itemsContainer.setStyle("-fx-background-color: white;");
-            scrollPane.setStyle("-fx-background-color: white; -fx-background: white;");
+            getStyleClass().add("light");
         } else {
             getStyleClass().add("sidebar-default");
-            setStyle(null);
-            topBar.setStyle(null);
-            itemsContainer.setStyle(null);
-            scrollPane.setStyle(null);
         }
     }
     

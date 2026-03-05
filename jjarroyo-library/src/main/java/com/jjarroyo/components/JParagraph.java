@@ -25,6 +25,7 @@ public class JParagraph extends Label {
         setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         setMaxWidth(Double.MAX_VALUE);
         setMaxHeight(Double.MAX_VALUE);
+        setMinHeight(javafx.scene.layout.Region.USE_PREF_SIZE);
     }
     
     public JParagraph text(String text) {

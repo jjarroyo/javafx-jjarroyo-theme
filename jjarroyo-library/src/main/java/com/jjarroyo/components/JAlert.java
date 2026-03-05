@@ -19,6 +19,13 @@ public class JAlert extends HBox {
     private StackPane dismissContainer;
     private StackPane dismissButton;
 
+    public JAlert() {
+        this("", null);
+        // Sin texto, oculto por defecto
+        setVisible(false);
+        setManaged(false);
+    }
+
     public JAlert(String title) {
         this(title, null);
     }
@@ -108,6 +115,21 @@ public class JAlert extends HBox {
         } else {
             dismissContainer.setVisible(false);
             dismissContainer.setManaged(false);
+        }
+        return this;
+    }
+
+    /**
+     * Establece el texto del alert y lo hace visible.
+     */
+    public JAlert setText(String text) {
+        titleLabel.setText(text);
+        if (text != null && !text.isEmpty()) {
+            setVisible(true);
+            setManaged(true);
+        } else {
+            setVisible(false);
+            setManaged(false);
         }
         return this;
     }

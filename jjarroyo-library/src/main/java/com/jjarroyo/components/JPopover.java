@@ -1,8 +1,6 @@
 package com.jjarroyo.components;
 
-import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
-import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,14 +16,12 @@ import javafx.util.Duration;
 
 public class JPopover extends Popup {
 
-    public enum Theme { LIGHT, DARK }
     public enum Position { TOP, RIGHT, BOTTOM, LEFT }
 
     private final VBox container;
     private final Polygon arrow;
     private final VBox contentBox;
     
-    private Theme theme = Theme.LIGHT;
     private Position position = Position.TOP;
     
     // Content Parts
@@ -91,23 +87,6 @@ public class JPopover extends Popup {
         return this;
     }
     
-    public JPopover setTheme(Theme theme) {
-        this.theme = theme;
-        updateTheme();
-        return this;
-    }
-    
-    public JPopover setPosition(Position pos) {
-        this.position = pos;
-        return this;
-    }
-    
-    private void updateTheme() {
-        container.getStyleClass().remove("j-popover-dark");
-        if (theme == Theme.DARK) {
-            container.getStyleClass().add("j-popover-dark");
-        }
-    }
     
     // Confirmation Mode Helper
     public JPopover setConfirmationMode(String yesText, String noText, Runnable onYes) {
@@ -130,6 +109,11 @@ public class JPopover extends Popup {
         return this;
     }
     
+    public JPopover setPosition(Position pos) {
+        this.position = pos;
+        return this;
+    }
+
     public void show(Node target) {
         // 1. Re-assemble container based on orientation
         // We need the correct container type (VBox for Vertical, HBox for Horizontal)
@@ -137,12 +121,33 @@ public class JPopover extends Popup {
         
         arrow.getPoints().clear();
         
+        // Auto-detect dark mode from target context
+        boolean isDark = false;
+        Node current = target;
+        while (current != null) {
+            if (current.getStyleClass().contains("dark")) {
+                isDark = true;
+                break;
+            }
+            current = current.getParent();
+        }
+        if (!isDark && target != null && target.getScene() != null && target.getScene().getRoot() != null) {
+            if (target.getScene().getRoot().getStyleClass().contains("dark")) {
+                isDark = true;
+            }
+        }
+
         if (position == Position.TOP || position == Position.BOTTOM) {
             VBox vBox = new VBox();            
             vBox.getStyleClass().add("j-popover");
+            vBox.setStyle("-fx-background-color: transparent;"); // Force transparency to avoid flash
             vBox.setMouseTransparent(false);
             vBox.setAlignment(javafx.geometry.Pos.CENTER);
-            if (theme == Theme.DARK) vBox.getStyleClass().add("j-popover-dark");
+            
+            if (isDark) {
+                vBox.getStyleClass().add("j-popover-dark");
+                vBox.setStyle("-fx-background-color: #1e293b; -fx-background-radius: 8px;"); // Direct hex to be sure
+            }
             
             if (position == Position.TOP) {
                 arrow.getPoints().addAll(0d, 0d, 10d, 10d, 20d, 0d); // Point Down
@@ -155,9 +160,14 @@ public class JPopover extends Popup {
         } else {
             HBox hBox = new HBox();          
             hBox.getStyleClass().add("j-popover");
+            hBox.setStyle("-fx-background-color: transparent;"); // Force transparency to avoid flash
             hBox.setMouseTransparent(false);
             hBox.setAlignment(javafx.geometry.Pos.CENTER);
-            if (theme == Theme.DARK) hBox.getStyleClass().add("j-popover-dark");
+            
+            if (isDark) {
+                hBox.getStyleClass().add("j-popover-dark");
+                hBox.setStyle("-fx-background-color: #1e293b; -fx-background-radius: 8px;"); // Direct hex to be sure
+            }
             
             if (position == Position.LEFT) {
                 arrow.getPoints().addAll(0d, 0d, 10d, 10d, 0d, 20d); // Point Right
@@ -169,20 +179,45 @@ public class JPopover extends Popup {
             activeContainer = hBox;
         }
         
+        // 2. Prepare style context BEFORE adding to scene
+        if (target != null && target.getScene() != null) {
+            activeContainer.getStylesheets().setAll(target.getScene().getStylesheets());
+        }
+        
+        // Ensure container is transparent at Java level
+        activeContainer.setBackground(javafx.scene.layout.Background.EMPTY);
+        activeContainer.setStyle("-fx-background-color: transparent !important;");
+        activeContainer.setOpacity(0);
+        activeContainer.applyCss();
+        activeContainer.layout();
+
         getContent().clear();
         getContent().add(activeContainer);
         
-        // 2. Calculate Coordinates
+        // 3. Calculate and Set Initial Position
         Window window = target.getScene().getWindow();
         Bounds bounds = target.localToScreen(target.getBoundsInLocal());
         
-        // Show off-screen first to calculate size
-        super.show(window);
+        // Temporarily show with 0 opacity to get dimensions
+        setOpacity(0);
+        super.show(window, 0, 0); // Show at 0,0 first
+        
+        // Now we have dimensions
+        double width = activeContainer.getWidth();
+        double height = activeContainer.getHeight();
+        
+        // Aggressive transparency fix (standard JavaFX remedy for Popup flash)
+        javafx.application.Platform.runLater(() -> {
+            if (getScene() != null) {
+                getScene().setFill(javafx.scene.paint.Color.TRANSPARENT);
+                if (getScene().getRoot() != null) {
+                    getScene().getRoot().setStyle("-fx-background-color: transparent !important;");
+                }
+            }
+        });
         
         double x = 0;
         double y = 0;
-        double width = activeContainer.getWidth();
-        double height = activeContainer.getHeight();
         
         if (position == Position.TOP) {
             x = bounds.getMinX() + (bounds.getWidth() / 2) - (width / 2);
@@ -206,17 +241,19 @@ public class JPopover extends Popup {
     }
     
     private void playEntranceAnimation(Node node) {
+        node.setOpacity(0); // Ensure it starts at 0
         FadeTransition fade = new FadeTransition(Duration.millis(200), node);
         fade.setFromValue(0);
         fade.setToValue(1);
         
         ScaleTransition scale = new ScaleTransition(Duration.millis(200), node);
-        scale.setFromX(0.8);
-        scale.setFromY(0.8);
+        scale.setFromX(0.95);
+        scale.setFromY(0.95);
         scale.setToX(1.0);
         scale.setToY(1.0);
         
         ParallelTransition pt = new ParallelTransition(fade, scale);
+        pt.setOnFinished(e -> setOpacity(1)); // Make popup itself opaque only after animation starts
         pt.play();
     }
 }

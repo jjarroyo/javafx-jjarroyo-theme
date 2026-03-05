@@ -67,5 +67,19 @@ public class JInput extends TextField {
         }
         return this;
     }
+
+    /**
+     * Applies the modern style with more padding and rounded corners.
+     */
+    public JInput setModern(boolean modern) {
+        if (modern) {
+            if (!getStyleClass().contains("form-input-modern")) {
+                getStyleClass().add("form-input-modern");
+            }
+        } else {
+            getStyleClass().remove("form-input-modern");
+        }
+        return this;
+    }
 }
 

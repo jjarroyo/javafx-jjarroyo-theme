@@ -57,6 +57,14 @@ public class JModal extends StackPane {
             dialogContainer.getChildren().add(content);
         }
 
+        // Clip so children respect rounded corners
+        javafx.scene.shape.Rectangle clip = new javafx.scene.shape.Rectangle();
+        clip.setArcWidth(24);
+        clip.setArcHeight(24);
+        clip.widthProperty().bind(dialogContainer.widthProperty());
+        clip.heightProperty().bind(dialogContainer.heightProperty());
+        dialogContainer.setClip(clip);
+
         // Add children
         getChildren().addAll(backdrop, dialogContainer);
         setAlignment(Pos.CENTER);

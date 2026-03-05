@@ -13,6 +13,43 @@
     -fx-transition: all 0.2s;
 }
 
+/* Modern Button Variant */
+.btn-modern {
+    -fx-background-color: #6366f1;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-padding: 15px 30px;
+    -fx-background-radius: 12px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(
+        three-pass-box,
+        rgba(99, 102, 241, 0.3),
+        10,
+        0,
+        0,
+        4
+    );
+}
+
+.btn-modern:hover {
+    -fx-background-color: #4f46e5;
+    -fx-translate-y: -2px;
+    -fx-effect: dropshadow(
+        three-pass-box,
+        rgba(99, 102, 241, 0.4),
+        15,
+        0,
+        0,
+        6
+    );
+}
+
+.btn-modern:pressed {
+    -fx-background-color: #4338ca;
+    -fx-translate-y: 1px;
+}
+
 .btn-has-icon {
     -fx-padding: 6px 15px; /* Reduce vertical padding to compensate for icon height */
 }
@@ -151,6 +188,28 @@
     -fx-font-size: 16px;
 }
 
+/* ─── LOADING STATE ─────────────────────────────────────────────────────────── */
+.btn-loading {
+    -fx-opacity: 0.85;
+}
+.btn-spinner {
+    -fx-min-width: 18px;
+    -fx-min-height: 18px;
+    -fx-max-width: 18px;
+    -fx-max-height: 18px;
+    -fx-pref-width: 18px;
+    -fx-pref-height: 18px;
+}
+.btn-spinner .indicator {
+    -fx-progress-color: white;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+.btn-spinner .percentage {
+    -fx-fill: transparent;
+    -fx-font-size: 0;
+}
+
 /* ─── BASE BADGE ─────────────────────────────────────────────────────────────── */
 .badge {
     -fx-padding: 3px 6px;
@@ -161,13 +220,29 @@
 }
 
 /* ─── SOLID BADGES ───────────────────────────────────────────────────────────── */
-.badge-primary   { -fx-background-color: -color-primary-500; }
-.badge-success   { -fx-background-color: -color-success-500; }
-.badge-danger    { -fx-background-color: -color-danger-500; }
-.badge-warning   { -fx-background-color: -color-warning-500; -fx-text-fill: white; }
-.badge-info      { -fx-background-color: -color-info-500; }
-.badge-dark      { -fx-background-color: -color-slate-900; }
-.badge-secondary { -fx-background-color: -color-secondary-200; -fx-text-fill: -color-slate-800; }
+.badge-primary {
+    -fx-background-color: -color-primary-500;
+}
+.badge-success {
+    -fx-background-color: -color-success-500;
+}
+.badge-danger {
+    -fx-background-color: -color-danger-500;
+}
+.badge-warning {
+    -fx-background-color: -color-warning-500;
+    -fx-text-fill: white;
+}
+.badge-info {
+    -fx-background-color: -color-info-500;
+}
+.badge-dark {
+    -fx-background-color: -color-slate-900;
+}
+.badge-secondary {
+    -fx-background-color: -color-secondary-200;
+    -fx-text-fill: -color-slate-800;
+}
 
 /* ─── LIGHT BADGES ───────────────────────────────────────────────────────────── */
 .badge-light-primary {

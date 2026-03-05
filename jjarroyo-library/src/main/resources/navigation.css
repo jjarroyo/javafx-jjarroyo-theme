@@ -40,18 +40,44 @@
 
 /* ─── J-SIDEBAR ──────────────────────────────────────────────────────────────── */
 .j-sidebar {
-    -fx-background-color: -color-slate-900;
-}
-.j-sidebar.light {
     -fx-background-color: -color-bg-surface;
     -fx-border-color: transparent -color-border-default transparent transparent;
     -fx-border-width: 0 1px 0 0;
 }
+.j-sidebar.sidebar-default {
+    -fx-background-color: -color-slate-900;
+}
+.j-sidebar.light {
+    -fx-background-color: -color-bg-surface;
+}
 
 .j-sidebar-header {
-    -fx-padding: 20px;
+    -fx-padding: 0 16px 0 24px;
     -fx-alignment: center-left;
-    -fx-min-height: 80px;
+    -fx-min-height: 64px;
+    -fx-pref-height: 64px;
+    -fx-border-color: transparent transparent -color-border-default transparent;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.j-sidebar-brand {
+    -fx-alignment: center-left;
+    -fx-spacing: 12px;
+}
+
+.j-sidebar-brand-text {
+    -fx-text-fill: -color-text-primary;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+/* Default Dark Sidebar Overrides */
+.j-sidebar.sidebar-default .j-sidebar-brand-text {
+    -fx-text-fill: white;
+}
+.j-sidebar.sidebar-default .j-sidebar-header {
+    -fx-border-color: transparent transparent rgba(255, 255, 255, 0.1)
+        transparent;
 }
 
 /* Scrollbar oculto por defecto, visible en light o hover */
@@ -123,25 +149,26 @@
 }
 
 .j-sidebar-item:hover {
-    -fx-background-color: -color-slate-800;
+    -fx-background-color: rgba(148, 163, 184, 0.08);
 }
 .j-sidebar-item:hover .label {
-    -fx-text-fill: white;
+    -fx-text-fill: -color-slate-600;
 }
 .j-sidebar-item:hover .j-icon {
-    -fx-fill: -color-slate-300;
+    -fx-fill: -color-slate-600;
 }
 
 .j-sidebar-item.active {
-    -fx-background-color: -color-slate-800;
+    -fx-background-color: rgba(59, 130, 246, 0.12);
     -fx-border-color: -color-primary-500;
     -fx-border-width: 0 0 0 3px;
 }
 .j-sidebar-item.active .label {
-    -fx-text-fill: white;
+    -fx-text-fill: -color-primary-400;
+    -fx-font-weight: 600;
 }
 .j-sidebar-item.active .j-icon {
-    -fx-fill: -color-primary-500;
+    -fx-fill: -color-primary-400;
 }
 
 /* Light Variant Items */

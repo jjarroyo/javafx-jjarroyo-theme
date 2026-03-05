@@ -27,7 +27,7 @@ public class JLabel extends Label {
     }
 
     private void init() {
-        // No default style class yet, but good for future extensibility
+        getStyleClass().add("j-label");
     }
     
     public JLabel setIcon(JIcon icon) {
@@ -61,4 +61,3 @@ public class JLabel extends Label {
         return this;
     }
 }
-

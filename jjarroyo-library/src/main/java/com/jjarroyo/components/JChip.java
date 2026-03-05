@@ -19,10 +19,10 @@ public class JChip extends HBox {
 
     public enum Variant { FILLED, OUTLINED, SOFT }
     public enum Size { SM, MD, LG }
-
+    public enum ChipColor { PRIMARY, SUCCESS, DANGER, WARNING, INFO, SLATE }
     private final Label textLabel;
     private Label dismissBtn;
-    private String color = "primary";
+    private ChipColor color = ChipColor.PRIMARY;
     private Variant variant = Variant.SOFT;
     private Size size = Size.MD;
     private Node icon;
@@ -47,7 +47,7 @@ public class JChip extends HBox {
     // ─── API ─────────────────────────────────────────────────────────────────────
 
     /** Color: primary, success, danger, warning, info, slate */
-    public JChip setColor(String color) {
+    public JChip setColor(ChipColor color) {
         this.color = color;
         applyStyles();
         return this;
@@ -128,7 +128,7 @@ public class JChip extends HBox {
             c.startsWith("j-chip-size-")
         );
         getStyleClass().addAll(
-            "j-chip-color-" + color,
+            "j-chip-color-" + color.name().toLowerCase(),
             "j-chip-variant-" + variant.name().toLowerCase(),
             "j-chip-size-" + size.name().toLowerCase()
         );
